@@ -1,0 +1,12 @@
+/* Footer */
+
+  .logo-side{
+    padding: 20px;
+  }
+
+  .png-tree , .plan-help, .legal  p{
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    line-height: 36px;
+  }

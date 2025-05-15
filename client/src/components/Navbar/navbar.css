@@ -1,0 +1,67 @@
+/* Button animation */
+
+@keyframes zoom {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+  
+  .zoom-animation {
+    animation: zoom 2s ease-in-out infinite;
+  }
+
+  .gradient-btn {
+    background: linear-gradient(to right, #faff00, #ffc700);
+    color: #333;
+    font-weight: bold;
+    padding: 0.5rem 2rem;
+    border-radius: 9999px;
+    transition: background 0.3s ease;
+    border: 1px solid white;
+  }
+  
+  .gradient-btn:hover {
+    background: linear-gradient(0deg, #ffb802, #ffe602);
+  }
+  
+
+/* toggle css */
+
+  .toggle-menu{
+    transform: translateX(-100%);
+  }
+
+  .toggle-menu-show{
+    transform: translateX(0%);
+  }
+  /* Below Navbar */
+  
+  .navbar{
+    padding: 0px 20px;
+  }
+  .nav-btn button{
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+
+  .below-nav button{
+    padding: 5px 15px;
+    border-radius: .5rem;
+  }
+
+  @keyframes swing-pause {
+    0%   { transform: rotate(0deg); }
+    10%  { transform: rotate(7deg); }
+    20%  { transform: rotate(0deg); }
+    30%  { transform: rotate(-7deg); }
+    40%  { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+  }
+  
+  .swing-animation {
+    animation: swing-pause 2s ease-in-out infinite;
+    transform-origin: top center;
+  }

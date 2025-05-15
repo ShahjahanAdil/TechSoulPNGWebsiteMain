@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+:root {
+    --dark: #000080;
+    --md-dark: #0c06ac;
+    --primary: #2118ff;
+    --secondary: #3f42ff;
+    --md-light: #e5e8ff;
+    --x-light: #f1f4ff;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url("../src/assets/fonts/Roboto.ttf");
+}
+
+* {
+    font-family: 'Roboto';
+}
+
+.slick-arrow {
+    display: none !important;
+}
+
+.slick-slide>div {
+    margin: 0px, 10px;
+}
+
+.slider-left-overlay {
+    filter: blur(15px);
+}
+
+.slider-right-overlay {
+    filter: blur(15px);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #333;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2.2rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-size: 1.8rem;
+}
+
+h5 {
+    font-size: 1.5rem;
+}
+
+h6 {
+    font-size: 1.2rem;
+}
+
+p {
+    font-size: 16px;
+    color: #666;
+}
+
+span {
+    font-size: 16px;
+    display: inline-block;
+}
+
+button {
+    cursor: pointer;
+}
+
+input {
+    outline: none;
+    border: 1px solid #d6d6d6db;
+    color: #666;
+}
+
+input:focus {
+    border: 1px solid var(--secondary);
+}
+
+label {
+    display: block;
+    color: #333;
+}
+
+textarea {
+    outline: none;
+    border: 1px solid #d6d6d6db;
+    color: #666;
+}
+
+textarea:focus {
+    border: 1px solid var(--secondary);
+}
+
+select {
+    outline: none;
+    border: 1px solid #d6d6d6db;
+    color: #666;
+}
+
+select:focus {
+    border: 1px solid var(--secondary);
+}
+
+.link {
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 499px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+    }
+
+    h5 {
+        font-size: 1.1rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+
+    p {
+        font-size: 14px;
+        color: #666;
+    }
+
+    span {
+        font-size: 14px;
+        display: inline-block;
+    }
+
+    .link {
+        display: inline-block;
+        font-size: 14px;
+        cursor: pointer;
+    }
+}
