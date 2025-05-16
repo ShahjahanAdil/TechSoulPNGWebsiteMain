@@ -37,16 +37,21 @@ export default function Cards() {
   };
 
   return (
-    <div className="px-5 md:py-7">
-      <h2 className="md:text-4xl text-2xl font-bold md:mb-6">
-        Explore popular creative pictures
+    <div className="mainContainer px-[8px] md:py-7">
+      <h2 className="!text-[24px] sm:!text-[30px] font-bold md:mb-6">
+        Explore popular creative Assets
       </h2>
 
+<<<<<<< HEAD
       <div className="flex gap-3">
         {tabs?.map((cat) => {
+=======
+      <div className="flex gap-3 mt-5">
+        {tabs.map((cat) => {
+>>>>>>> 69126edb2b6cca0f6983c36005abd3f0b075e7af
           return (
             <button
-              className={`capitalize text-[18px] pb-1 rounded-sm transition-all duration-150 ease-in-out cursor-pointer font-bold text-[#333] border-b-[#5ABC84] ${
+              className={`capitalize text-[14px] sm:text-[18px] pb-1 rounded-sm transition-all duration-150 ease-in-out cursor-pointer font-bold text-[#333] border-b-[#5ABC84] ${
                 cat === activeTab ? "border-b-4" : "border-none"
               }`}
               onClick={() => setActiveTab(cat)}
@@ -70,7 +75,7 @@ export default function Cards() {
               <img
                 src={`${import.meta.env.VITE_HOST}${img.imageURL}`}
                 alt={img.title}
-                className="w-full h-[200px] object-contain p-2 transition-transform duration-300 group-hover:scale-105"
+                className="w-full h-[150px] sm:h-[200px] object-contain p-2 transition-transform duration-300 group-hover:scale-105"
               />
 
               {/* Hover-activated gradient + title */}

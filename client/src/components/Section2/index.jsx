@@ -21,7 +21,8 @@ const images = [
 export default function Section2() {
     return (
         <>
-        <div className="md:text-4xl text-2xl py-2 ps-5 font-bold ">
+        <div className='mainContainer'>
+ <div className="md:text-4xl text-2xl py-2 ps-5 font-bold ">
         Festival Featured images and collections
         </div>
         <p className="text-gray-500 ps-5 sm:text-[13px]">
@@ -40,17 +41,19 @@ export default function Section2() {
                   <img
                     src={img.src}
                     alt={img.title}
-                    className="w-full h-44 object-contain sm:object-cover transition-transform duration-300 hover:scale-105"
+                    className="w-full sm:h-44 h-[100px] object-contain sm:object-cover transition-transform duration-300 hover:scale-105"
                   />
                 </div>
                 <div className="p-4">
-                  <p className="text-gray-800 font-medium">{img.title}</p>
-                  <p className="text-gray-500 text-sm">{img.count}</p>
+                  <p className="text-gray-800 !text-[12px] sm:!text-[16px]">{img.title}</p>
+                
                 </div>
               </div>
             ))}
           </div>
         </section>
+        </div>
+       
         </>
        
       );
