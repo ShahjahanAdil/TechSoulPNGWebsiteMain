@@ -5,16 +5,20 @@ import Admin from './Admin'
 import Frontend from './Frontend'
 import Auth from './Auth'
 import PrivateRoute from '../components/PrivateRoute'
+import ScrollToTop from '../components/ScrollToTop'
 
 export default function Index() {
 
     const { isAuthenticated } = useAuthContext()
 
     return (
-        <Routes>
-            <Route path='/*' element={<Frontend />} />
-            <Route path='/auth/*' element={!isAuthenticated ? <Auth /> : <Navigate to='/' />} />
-            <Route path='/admin/*' element={<PrivateRoute Component={Admin} allowedRoles={['admin']} />} />
-        </Routes>
+        <>
+            <ScrollToTop />
+            <Routes>
+                <Route path='/*' element={<Frontend />} />
+                <Route path='/auth/*' element={!isAuthenticated ? <Auth /> : <Navigate to='/' />} />
+                <Route path='/admin/*' element={<PrivateRoute Component={Admin} allowedRoles={['admin']} />} />
+            </Routes>
+        </>
     )
 }
