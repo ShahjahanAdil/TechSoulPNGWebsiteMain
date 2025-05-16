@@ -43,7 +43,7 @@ export default function Cards() {
       </h2>
 
       <div className="flex gap-3">
-        {tabs.map((cat) => {
+        {tabs?.map((cat) => {
           return (
             <button
               className={`capitalize text-[18px] pb-1 rounded-sm transition-all duration-150 ease-in-out cursor-pointer font-bold text-[#333] border-b-[#5ABC84] ${
@@ -59,7 +59,7 @@ export default function Cards() {
 
       <section className="md:py-10 py-5 md:px-4 max-w-7xl mx-auto">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {images.map((img, index) => (
+          {images?.map((img, index) => (
             <div
               key={img.imageID}
               className={`relative group cursor-pointer rounded-lg shadow-sm overflow-hidden ${
