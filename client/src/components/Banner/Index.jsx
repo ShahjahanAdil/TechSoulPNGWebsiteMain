@@ -40,30 +40,32 @@ export default function Banner() {
       <p className="text-sm md:text-lg text-gray-500 font-medium mt-2">
         Royalty Free Latest PNG Images, JPG, WEBP, Backgrounds, Illustrations
       </p>
-      <div className="flex flex-col md:flex-row items-center justify-center mt-8 gap-3 md:gap-0 ">
-        <div className="relative group inline-block">
-          <button className="px-4 py-3 bg-white border text-[#333] flex gap-2 items-center border-gray-300 rounded-l-md text-base">
-            Categories <IoIosArrowDown />
-          </button>
-          <div className="absolute hidden py-2 group-hover:block bg-white border border-gray-200  z-10 w-45 rounded-[5px]">
-            <ul className="flex flex-col items-start text-sm">
-              {["png", "jpg", "webp", "backgrounds", "illustrations"].map((item, i) => {
-                return (
-                  <li className="px-4 py-2 uppercase text-[#333] transition-all duration-500 ease-in-out hover:text-[#71C194] cursor-pointer">{item}</li>
-                )
-              })}
-            </ul>
+      <div className="flex justify-center">
+        <div className="flex flex-col w-fit md:flex-row items-center justify-center mt-8 gap-3 md:gap-0 transition-all duration-200 rounded-md ease-linear hover:ring-2 ring-[#71C194] hover:ring-offset-1 ring-offset-slate-50">
+          <div className="relative group inline-block">
+            <button className="px-4 py-3 bg-white border text-[#333] flex gap-2 items-center border-gray-300 rounded-l-md text-base">
+              Categories <IoIosArrowDown />
+            </button>
+            <div className="absolute hidden py-2 group-hover:block bg-white border border-gray-200  z-10 w-45 rounded-[5px]">
+              <ul className="flex flex-col items-start text-sm">
+                {["png", "jpg", "webp", "backgrounds", "illustrations"].map((item, i) => {
+                  return (
+                    <li className="px-4 py-2 uppercase text-[#333] transition-all duration-500 ease-in-out hover:text-[#71C194] cursor-pointer">{item}</li>
+                  )
+                })}
+              </ul>
+            </div>
           </div>
-        </div>
-        <input
-          type="text"
-          placeholder="Copyright images waiting for you to discover"
-          className="w-full md:w-[700px] px-4 py-3 border border-b border-gray-400 outline-[#73C295] text-sm md:text-base"
-        />
+          <input
+            type="text"
+            placeholder="Copyright images waiting for you to discover"
+            className="w-full md:w-[700px] px-4 py-3 border border-b border-gray-400 outline-[#73C295] text-sm md:text-base"
+          />
 
-        <button className="bg-[#6FD38E] text-white px-4 py-[13px] rounded-r-md flex items-center gap-1 text-sm md:text-base">
-          <FaSearch /> Search
-        </button>
+          <button className="bg-[#6FD38E] text-white px-4 py-[13px] rounded-r-md flex items-center gap-1 text-sm md:text-base">
+            <FaSearch /> Search
+          </button>
+        </div>
       </div>
 
       <div className="mt-5 text-gray-600">

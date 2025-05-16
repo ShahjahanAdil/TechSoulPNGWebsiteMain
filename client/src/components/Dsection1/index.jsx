@@ -4,8 +4,8 @@ import { FaSearch } from "react-icons/fa";
 
 export default function Dsection1() {
   return (
-    <>
-      <div className="flex flex-col md:flex-row items-center justify-center mt-8 gap-3 md:gap-0 ">
+    <div className='flex justify-center'>
+      <div className="flex flex-col w-fit md:flex-row items-center justify-center mt-8 gap-3 md:gap-0 transition-all duration-200 rounded-md ease-linear hover:ring-2 ring-[#71C194] hover:ring-offset-1 ring-offset-slate-50">
         <div className="relative group inline-block">
           <button className="p-3 bg-white border flex gap-2 items-center border-gray-200 rounded-l-md text-base">
             Categories <IoIosArrowDown className='transition-transform duration-300 group-hover:rotate-180' />
@@ -34,6 +34,6 @@ export default function Dsection1() {
           <FaSearch /> Search
         </button>
       </div>
-    </>
+    </div>
   )
 }

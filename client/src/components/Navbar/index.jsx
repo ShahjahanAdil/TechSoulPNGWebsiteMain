@@ -34,13 +34,27 @@ import {
   IoIosArrowForward,
   IoMdArrowDropdown,
 } from "react-icons/io";
+import { useAuthContext } from "../../contexts/AuthContext";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
+
+  const { userData, handleLogout } = useAuthContext()
+  const { user, logout } = useAuth0()
   const [menuOpen, setMenuOpen] = useState(false);
   const [hoverShow, setHoverShow] = useState(false);
   const navigate = useNavigate();
 
   const { pathname } = useLocation();
+
+  const logoutFunction = () => {
+    if (user) {
+      logout()
+      handleLogout()
+    } else {
+      handleLogout()
+    }
+  }
 
   return (
     <>
@@ -147,108 +161,12 @@ const Navbar = () => {
           </div>
         </section>
       )}
-      {/* <section
-        className="overflow-hidden w-full hidden lg:flex h-18 bg-gradient-to-r from-[#FF0C53] to-[#FF013F]  justify-center items-center"
-        style={{
-          background:
-            'url("https://js.pngtree.com/a5/static/5kaywn.BE_RcDw8.gif")  center center/cover, linear-gradient(to right, #FF0C53, #FF013F)',
-          backgroundSize: "500px",
-        }}
-      >
-        <div className="relative flex flex-1  justify-center items-center gap-7 w-full px-5">
-          <div className="absolute h-[100%] z-20 icon-img hidden lg:block">
-            <img src={iconImg} alt="" className="object-cover" />
-          </div>
-          <div className="left flex ps-[40px] justify-center items-center gap-3">
-            <div className="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="25"
-                fill="#ffffff"
-                viewBox="0 0 20 25"
-              >
-                <path d="m10.994 23.369.033.145a1.44 1.44 0 0 0 1.35 1.047h5.057c.9 0 1.632-.732 1.632-1.632V2.212c0-.9-.732-1.63-1.632-1.63h-5.035a1.42 1.42 0 0 0-1.4 1.17l-.01.05a1.13 1.13 0 0 1-1.115.932c-.542 0-1.013-.39-1.127-.983a1.43 1.43 0 0 0-1.38-1.17H2.313c-.9 0-1.632.732-1.632 1.631v20.719c0 .9.732 1.632 1.632 1.632H7.35c.69 0 1.278-.494 1.408-1.223a1.131 1.131 0 0 1 1.853-.657c.206.176.342.419.384.686m-3.698-.293H2.313a.15.15 0 0 1-.147-.147V9.78c.04.005.074.023.114.023H5.5a.86.86 0 0 0 .858-.858.86.86 0 0 0-.858-.856H2.28c-.04 0-.075.018-.114.022V2.214a.15.15 0 0 1 .147-.149h4.982l.01.056a2.636 2.636 0 0 0 2.57 2.099c1.262 0 2.34-.896 2.578-2.155h4.981a.15.15 0 0 1 .147.147V8.11c-.039-.004-.073-.022-.114-.022h-3.22a.86.86 0 0 0-.857.856.86.86 0 0 0 .857.858h3.22c.04 0 .075-.018.114-.022v13.15a.15.15 0 0 1-.147.148h-4.966l-.029-.059a2.636 2.636 0 0 0-2.565-2.096c-1.253 0-2.326.88-2.578 2.155z" />
-              </svg>
-            </div>
-            <div className="inner-txt">
-              <h6 className="!text-white font-bold lg:text-xl leading-7 text-[16px]">
-                Best Deals
-              </h6>
-              <p className="!text-white font-normal leading-5 !text-[10px] sm:!text-[12px]">
-                On all plans
-              </p>
-            </div>
-          </div>
-          <div className="middle flex justify-center items-center gap-5 pl-6 ">
-            <div className="border-l-2 border-[#FF6B95] h-6"></div>
-
-            <div className="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="25"
-                fill="none"
-                viewBox="0 0 25 25"
-              >
-                <path
-                  fill="#ffffff"
-                  d="M6.42.578c1.172 0 2.343.004 3.515-.002.66-.003 1.217.222 1.754.61.516.371.945.823 1.387 1.265q5.236 5.227 10.465 10.461c.808.808 1.02 2.011.51 3.018a2.6 2.6 0 0 1-.477.664 2916 2916 0 0 1-7.226 7.232c-.996.994-2.642 1-3.637.008-3.772-3.766-7.544-7.531-11.3-11.312-.458-.46-.866-.99-1.01-1.657a2.7 2.7 0 0 1-.062-.566Q.333 6.667.338 3.035C.339 1.667 1.386.597 2.755.582 3.976.568 5.198.58 6.42.58zm-.004 1.625H5.91c-1.03 0-2.062-.003-3.093 0-.513.003-.86.337-.861.832q-.005 3.63.003 7.263c0 .134.03.288.101.399.168.262.342.53.56.748 3.72 3.73 7.446 7.453 11.17 11.178.442.442 1.028.44 1.472-.004 2.366-2.366 4.725-4.738 7.104-7.091a1.083 1.083 0 0 0 .001-1.507c-3.102-3.08-6.181-6.183-9.283-9.262-.781-.775-1.488-1.627-2.392-2.278-.241-.173-.469-.282-.764-.28-1.17.005-2.342.002-3.513.002"
-                />
-                <path
-                  fill="#ffffff"
-                  d="M6.82 10.315a3.255 3.255 0 0 1-3.242-3.259 3.246 3.246 0 0 1 3.25-3.228 3.236 3.236 0 0 1 3.238 3.27 3.25 3.25 0 0 1-3.246 3.217m0-1.628A1.624 1.624 0 0 0 8.447 7.07c0-.885-.726-1.616-1.61-1.62A1.625 1.625 0 0 0 5.2 7.06a1.624 1.624 0 0 0 1.62 1.627"
-                />
-              </svg>
-            </div>
-            <div className="inner-txt">
-              <h6 className="!text-white font-bold lg:text-xl leading-7 text-[16px] ">
-                90% OFF coupons
-              </h6>
-              <p className="!text-white font-normal leading-5 !text-[10px] sm:!text-[12px]">
-                Specials for lifetime plans
-              </p>
-            </div>
-          </div>
-
-          <div className="right flex justify-center items-center gap-5">
-            <div className="border-l-2 border-[#FF6B95] h-6"></div>
-            <div className="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="21"
-                height="25"
-                fill="none"
-                viewBox="0 0 21 25"
-              >
-                <path
-                  fill="#ffffff"
-                  d="M10.032.67a1.7 1.7 0 0 1 1.12 0l8.552 2.959a1.71 1.71 0 0 1 1.151 1.616v8.598q0 5.539-9.478 10.535a1.71 1.71 0 0 1-1.576.01Q.328 19.546.328 13.842V5.245A1.71 1.71 0 0 1 1.48 3.63zm.56 1.617L2.039 5.244v8.599c0 3.01 2.736 6.055 8.54 9.021 5.817-3.065 8.566-6.12 8.566-9.022V5.244zm5.018 6.33.055.055a.817.817 0 0 1 0 1.155l-4.894 4.893a.817.817 0 0 1-1.154 0l-3.08-3.079a.817.817 0 0 1 0-1.155l.056-.054a.817.817 0 0 1 1.155 0l2.446 2.448 4.261-4.262a.817.817 0 0 1 1.155 0"
-                />
-              </svg>
-            </div>
-            <div className="inner-txt">
-              <h6 className="!text-white font-bold lg:text-xl leading-7 text-[16px]">
-                Anniversary Specials
-              </h6>
-              <p className="!text-white font-normal leading-5 !text-[10px] sm:!text-[12px]">
-                Limited time discount
-              </p>
-            </div>
-          </div>
-          <div className="top-btn ">
-            <button className="zoom-animation gradient-btn  bg-gradient-to-r from-[#faff00] to-[#ffc700] text-[#333] font-bold lg:text-base text-[14px] rounded-full">
-              GRAB NOW
-            </button>
-          </div>
-        </div>
-      </section> */}
 
       {/* Below navabar */}
       <section className="navbar relative w-full h-14 bg-[#FFFFFF] flex justify-between items-center !gap-5 px-5">
         <div className="flex  flex-1 items-center gap-[30px] w-full lg:w-fit">
           <div className="logo">
-            <img src={logooo} alt="logo" className="sm:w-[150px] w-[150px] " />
+            <img src={logooo} alt="logo" className="sm:w-[150px] w-[150px] cursor-pointer" onClick={() => navigate('/')} />
           </div>
           <div className="nav-items hidden xl:block">
             <ul className="flex justify-between items-center gap-[15px]">
@@ -393,9 +311,8 @@ const Navbar = () => {
                     </div>
                   </div>
                   <div
-                    className={`drop-content gap-[72px] rounded-b-[12px] !mx-3 flex  !px-3 !py-5 ${
-                      hoverShow && "bg-[#f3f3f3]"
-                    }`}
+                    className={`drop-content gap-[72px] rounded-b-[12px] !mx-3 flex  !px-3 !py-5 ${hoverShow && "bg-[#f3f3f3]"
+                      }`}
                   >
                     <ul className="flex flex-col gap-2">
                       <li className="text-sm">Father's Day</li>
@@ -522,9 +439,8 @@ const Navbar = () => {
                     </div>
                   </div>
                   <div
-                    className={`drop-content gap-[75px] rounded-b-[12px] !mx-3 flex items-center !px-3 !py-5 ${
-                      hoverShow && "bg-[#f3f3f3]"
-                    }`}
+                    className={`drop-content gap-[75px] rounded-b-[12px] !mx-3 flex items-center !px-3 !py-5 ${hoverShow && "bg-[#f3f3f3]"
+                      }`}
                   >
                     <ul className="flex flex-col gap-2">
                       <li className="text-sm">Father's Day</li>
@@ -907,7 +823,7 @@ const Navbar = () => {
           </button>
           {/* SVG Hover */}
           <div className="relative group square hover:text-white  flex justify-center items-center">
-            <div className="absolute invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-[0px] opacity-50 translate-y-[20px] transition-all duration-200 min-h-[100px] w-[300px] z-30 rounded-[12px] !p-5 -left-[180px] top-10 bg-white shadow-lg">
+            <div className="absolute invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-[0px] opacity-50 translate-y-[20px] transition-all duration-200 min-h-[100px] w-[300px] z-30 rounded-[12px] !p-5 -left-[250px] top-10 bg-white shadow-lg">
               <h4 className="!text-base !text-[#333] font-bold !mb-3">
                 New Project
               </h4>
@@ -946,228 +862,233 @@ const Navbar = () => {
               <rect x="10" y="16" width="4" height="4" />
               <rect x="16" y="16" width="4" height="4" />
             </svg>
-          </div>{" "}
-          {/* Login Profile */}
-          <div className="login relative group hidden xl:block">
-            <div className="absolute invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-[0px] opacity-50 translate-y-[20px] transition-all duration-200 flex flex-col items-center justify-between min-h-[400px] w-[400px] bg-white rounded-[12px] z-99 right-0 top-[35px] !p-5 shadow-lg">
-              <div className="absolute top-[15px] right-2">
-                <button className="!text-[14px] hover:!text-red-500 hover:underline ">Logout</button>
-              </div>
-              {/* Profile Content */}
-              <div className="relative flex flex-col items-center ">
-                <div className="absolute z-10 top-[40px] -right-[4px] shadow-xl w-[34px] h-[34px] flex justify-center items-center bg-white !p-1.5 rounded-[50px] ">
-                  <svg
-                    className="_tea4l2"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="28"
-                    height="23"
-                    aria-hidden="true"
-                    viewBox="0 0 28 23"
-                  >
-                    <defs>
-                      <linearGradient
-                        id="isc2z30a"
-                        x1="50%"
-                        x2="50%"
-                        y1="11.131%"
-                        y2="57.082%"
-                      >
-                        <stop offset="0%" stop-color="#C7C7C7"></stop>
-                        <stop offset="100%" stop-color="#9C9C9C"></stop>
-                      </linearGradient>
-                      <linearGradient
-                        id="isc2z30c"
-                        x1="90.916%"
-                        x2="5.301%"
-                        y1="61.059%"
-                        y2="59.126%"
-                      >
-                        <stop offset="0%" stop-color="#D2D2D2"></stop>
-                        <stop offset="100%" stop-color="#C4C4C4"></stop>
-                      </linearGradient>
-                      <linearGradient
-                        id="isc2z30e"
-                        x1="100%"
-                        x2="22.218%"
-                        y1="27.905%"
-                        y2="95.888%"
-                      >
-                        <stop offset="0%" stop-color="#E8E8E8"></stop>
-                        <stop offset="100%" stop-color="#CFCFCF"></stop>
-                      </linearGradient>
-                    </defs>
-                    <path
-                      id="isc2z30b"
-                      d="M25.455 3.662 22.47 18.458c-.116.35-6.731 1.579-9.755 1.579-2.808 0-9.639-1.23-9.756-1.579L0 3.662l7.948 5.016L12.715 0l4.826 8.678z"
-                    ></path>
-                    <g fill="none" fill-rule="evenodd">
-                      <path
-                        fill="url(#isc2z30a)"
-                        fill-rule="nonzero"
-                        d="M9.301 3.906 14 15.866H3.733l4.7-11.96a.467.467 0 0 1 .868 0"
-                        transform="rotate(-20 8.867 9.333)"
-                      ></path>
-                      <path
-                        fill="url(#isc2z30a)"
-                        fill-rule="nonzero"
-                        d="m19.568 3.906 4.699 11.96H14l4.699-11.96a.467.467 0 0 1 .869 0"
-                        transform="scale(-1 1)rotate(-20 0 117.844)"
-                      ></path>
-                      <g transform="translate(1.281 1.389)">
-                        <mask id="isc2z30d" fill="#fff">
-                          <use href="#isc2z30b"></use>
-                        </mask>
-                        <use
-                          fill="url(#isc2z30c)"
-                          fill-rule="nonzero"
-                          href="#isc2z30b"
-                        ></use>
-                        <path
-                          stroke="#FFF"
-                          stroke-linejoin="round"
-                          stroke-width=".933"
-                          d="m23.712 14.935-.305.084a41.3 41.3 0 0 1-10.29 1.435l-.328.003v-.002q-5.422-.03-10.617-1.438l-.305-.084"
-                          mask="url(#isc2z30d)"
-                          opacity=".504"
-                        ></path>
-                      </g>
-                      <ellipse
-                        cx="1.909"
-                        cy="5.682"
-                        fill="url(#isc2z30e)"
-                        fill-rule="nonzero"
-                        rx="1.909"
-                        ry="1.894"
-                      ></ellipse>
-                      <ellipse
-                        cx="14"
-                        cy="1.894"
-                        fill="url(#isc2z30e)"
-                        fill-rule="nonzero"
-                        rx="1.909"
-                        ry="1.894"
-                      ></ellipse>
-                      <ellipse
-                        cx="26.091"
-                        cy="5.682"
-                        fill="url(#isc2z30e)"
-                        fill-rule="nonzero"
-                        rx="1.909"
-                        ry="1.894"
-                      ></ellipse>
-                      <path
-                        fill="#FFF"
-                        fill-rule="nonzero"
-                        d="M14.626 15.48a.7.7 0 0 1-1.224.051l-.028-.051-2.1-4.2a.7.7 0 0 1 1.226-.674l.026.048L14 13.602l1.474-2.948a.7.7 0 0 1 .889-.336l.05.023a.7.7 0 0 1 .336.889l-.023.05z"
-                        opacity=".7"
-                      ></path>
-                    </g>
-                  </svg>
-                </div>
-                <div className=" relative w-[72px] h-[72px] flex items-center justify-center border-3 border-[#efefef] !p-3 rounded-[50px] overflow-hidden ">
-                  <img src={userIcon} alt="" />
-                </div>
-                <div className="!mt-5 flex justify-center items-center gap-1.5">
-                  <p>John</p>
-                  <img src={nameIcon} alt="" className="w-[15px]" />
-                </div>
-                <div className="!mt-1">ID</div>
-                <div className="!mt-1 flex items-center bg-[#E8E8E8]  rounded-full">
-                  {" "}
-                  <span className="!text-sm !py-[5px] font-bold !px-[15px]">
-                    Free user
-                  </span>{" "}
-                </div>
-              </div>
-
-              {/* Download Status */}
-              <div className="flex items-center !py-[20px] gap-10">
-                <div className="flex items-center flex-col">
-                  <p className="!text-[24px] font-bold !text-[#333]">2</p>
-                  <p className="text-[#999] !text-sm">Daily Downloads</p>
-                </div>
-
-                <div className="flex items-center flex-col">
-                  <p className="!text-[24px] font-bold !text-[#333]">2</p>
-                  <p className="text-[#999] !text-sm">Remaning Downloads</p>
-                </div>
-              </div>
-
-              {/* Border Line */}
-
-              <div className="border-t-2 w-full border-[#F7F7F7]"></div>
-
-
-              {/* Sale banner */}
-              <div className=" !mt-4 !p-[20px] relative flex flex-col items-center justify-center bg-[#FFFAEC] w-[350px] min-h-[100px] rounded-[12px] shadow-lg">
-                <div className=" absolute top-0 left-0 z-30 flex flex-col justify-center !px-1">
-                  <p className="!text-[14px] !text-white uppercase font-bold">
-                    Sale
-                  </p>
-                  <p className="!text-[14px] !text-white uppercase font-bold">
-                    80%
-                  </p>
-                </div>
-                <div className="absolute top-[20px] right-[20px] -rotate-30">
-                  <img src={saleCrown} alt="" className="w-[50px]" />
-                </div>
-                <div className="absolute top-0 left-0">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="46"
-                    height="50"
-                    viewBox="0 0 46 50"
-                    fill="none"
-                  >
-                    <path
-                      d="M0 0H46V49.5L23 43.5L0 49.5V0Z"
-                      fill="#FF3E7E"
-                    ></path>
-                  </svg>
-                </div>
-
-                <div className="flex flex-col items-center gap-1 ">
-                  <p className="!text-[14px] !text-[#85713b]">
-                    One Time payment
-                  </p>
-                  <p className="!text-[14px] font-medium !text-[#85713b]">
-                    8,000,000+ curated assets
-                  </p>
-                  <p className="!text-[16px] !text-[#4e2d25] font-semibold">
-                    Unlimited Lifetime Downloads
-                  </p>
-                </div>
-
-                <button className=" !mt-3 bg-linear-65 from-[#f7bc0b] !py-2 to-[#ff9900] w-full !text-[18px] font-bold !text-white">
-                  Buy Now
-                </button>
-              </div>
-
-              {/* Help center */}
-              <div className="!mt-5 flex gap-[100px]">
-                <div className="flex flex-col items-center">
-                  <div className="flex flex-col items-center justify-center bg-[#EDFAF0] w-[60px] h-[60px] rounded-[12px]">
-                  <span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" aria-hidden="true" viewBox="0 0 22 23" class="_tea4l2"><g fill="none" fill-rule="evenodd"><path fill="#83D99B" d="M10.69 11.759c-5.612 0-10.217 4.295-10.687 9.766a.86.86 0 0 0 .866.923h19.64c.503 0 .91-.424.867-.923-.47-5.471-5.074-9.766-10.686-9.766"></path><circle cx="10.69" cy="5.345" r="5.345" fill="#BEEDCC"></circle></g></svg></span>
-                  </div>
-                  <p className="!text-[#333] !py-2 !text-[14px]">My Profile</p>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div className="flex flex-col items-center justify-center bg-[#EDFAF0] w-[60px] h-[60px] rounded-[12px]">
-                  <span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" aria-hidden="true" viewBox="0 0 22 22" class="_tea4l2"><g fill="none"><path fill="#91C4FF" d="M19.387 12.065c0-.355.12-.71.12-1.065s0-.71-.12-1.065L21.8 8.161c.241-.118.241-.473.12-.71l-2.292-3.784c-.12-.237-.483-.355-.724-.237l-2.775 1.065c-.604-.473-1.207-.828-1.931-1.065L13.836.473c0-.236-.242-.473-.604-.473H8.768c-.242 0-.483.237-.604.473L7.802 3.43c-.724.237-1.327.592-1.93 1.065L3.095 3.43c-.241-.118-.483 0-.724.237L.079 7.452c-.12.236-.12.473.12.71l2.414 1.773c0 .355-.12.71-.12 1.065s0 .71.12 1.065L.2 13.839c-.241.118-.241.473-.12.71l2.292 3.784c.12.237.483.355.724.237l2.775-1.065c.604.473 1.207.828 1.931 1.065l.362 2.957c0 .236.242.473.604.473h4.464c.242 0 .483-.237.604-.473l.362-2.957c.724-.237 1.327-.592 1.93-1.065l2.776 1.065c.241.118.483 0 .724-.237l2.293-3.785c.12-.236.12-.473-.12-.71z"></path><path fill="#C8E3FF" d="M11.06 14.785c-2.172 0-3.86-1.656-3.86-3.785s1.69-3.785 3.861-3.785S14.922 8.871 14.922 11s-1.69 3.785-3.862 3.785"></path></g></svg></span>
-                  </div>
-                  <p className="!text-[#333] !py-2 !text-[14px]">Help Center</p>
-                </div>
-              </div>
-            </div>
-
-            <button
-              className="flex items-center gap-2 bg-[#efefef] hover:bg-[#71C194]  text-[#333] hover:text-white font-bold rounded cursor-pointer"
-              onClick={() => navigate("/auth/login")}
-            >
-              Log in
-            </button>
           </div>
+
+          {/* Login Profile */}
+          {
+            userData.userID ?
+              <div className="w-[30px] h-[30px] cursor-pointer login relative group hidden xl:block">
+                <img src={userIcon} alt={userData.username} className="w-full h-full object-contain" />
+                <div className="absolute invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-[0px] opacity-50 translate-y-[20px] transition-all duration-200 flex flex-col items-center justify-between min-h-[400px] w-[400px] bg-white rounded-[12px] z-99 right-0 top-[35px] !p-5 shadow-lg">
+                  <div className="absolute top-[15px] right-2">
+                    <button className="!text-[14px] hover:!text-red-500 hover:underline" onClick={handleLogout}>Logout</button>
+                  </div>
+                  {/* Profile Content */}
+                  <div className="relative flex flex-col items-center ">
+                    <div className="absolute z-10 top-[40px] -right-[4px] shadow-xl w-[34px] h-[34px] flex justify-center items-center bg-white !p-1.5 rounded-[50px] ">
+                      <svg
+                        className="_tea4l2"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="28"
+                        height="23"
+                        aria-hidden="true"
+                        viewBox="0 0 28 23"
+                      >
+                        <defs>
+                          <linearGradient
+                            id="isc2z30a"
+                            x1="50%"
+                            x2="50%"
+                            y1="11.131%"
+                            y2="57.082%"
+                          >
+                            <stop offset="0%" stop-color="#C7C7C7"></stop>
+                            <stop offset="100%" stop-color="#9C9C9C"></stop>
+                          </linearGradient>
+                          <linearGradient
+                            id="isc2z30c"
+                            x1="90.916%"
+                            x2="5.301%"
+                            y1="61.059%"
+                            y2="59.126%"
+                          >
+                            <stop offset="0%" stop-color="#D2D2D2"></stop>
+                            <stop offset="100%" stop-color="#C4C4C4"></stop>
+                          </linearGradient>
+                          <linearGradient
+                            id="isc2z30e"
+                            x1="100%"
+                            x2="22.218%"
+                            y1="27.905%"
+                            y2="95.888%"
+                          >
+                            <stop offset="0%" stop-color="#E8E8E8"></stop>
+                            <stop offset="100%" stop-color="#CFCFCF"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path
+                          id="isc2z30b"
+                          d="M25.455 3.662 22.47 18.458c-.116.35-6.731 1.579-9.755 1.579-2.808 0-9.639-1.23-9.756-1.579L0 3.662l7.948 5.016L12.715 0l4.826 8.678z"
+                        ></path>
+                        <g fill="none" fill-rule="evenodd">
+                          <path
+                            fill="url(#isc2z30a)"
+                            fill-rule="nonzero"
+                            d="M9.301 3.906 14 15.866H3.733l4.7-11.96a.467.467 0 0 1 .868 0"
+                            transform="rotate(-20 8.867 9.333)"
+                          ></path>
+                          <path
+                            fill="url(#isc2z30a)"
+                            fill-rule="nonzero"
+                            d="m19.568 3.906 4.699 11.96H14l4.699-11.96a.467.467 0 0 1 .869 0"
+                            transform="scale(-1 1)rotate(-20 0 117.844)"
+                          ></path>
+                          <g transform="translate(1.281 1.389)">
+                            <mask id="isc2z30d" fill="#fff">
+                              <use href="#isc2z30b"></use>
+                            </mask>
+                            <use
+                              fill="url(#isc2z30c)"
+                              fill-rule="nonzero"
+                              href="#isc2z30b"
+                            ></use>
+                            <path
+                              stroke="#FFF"
+                              stroke-linejoin="round"
+                              stroke-width=".933"
+                              d="m23.712 14.935-.305.084a41.3 41.3 0 0 1-10.29 1.435l-.328.003v-.002q-5.422-.03-10.617-1.438l-.305-.084"
+                              mask="url(#isc2z30d)"
+                              opacity=".504"
+                            ></path>
+                          </g>
+                          <ellipse
+                            cx="1.909"
+                            cy="5.682"
+                            fill="url(#isc2z30e)"
+                            fill-rule="nonzero"
+                            rx="1.909"
+                            ry="1.894"
+                          ></ellipse>
+                          <ellipse
+                            cx="14"
+                            cy="1.894"
+                            fill="url(#isc2z30e)"
+                            fill-rule="nonzero"
+                            rx="1.909"
+                            ry="1.894"
+                          ></ellipse>
+                          <ellipse
+                            cx="26.091"
+                            cy="5.682"
+                            fill="url(#isc2z30e)"
+                            fill-rule="nonzero"
+                            rx="1.909"
+                            ry="1.894"
+                          ></ellipse>
+                          <path
+                            fill="#FFF"
+                            fill-rule="nonzero"
+                            d="M14.626 15.48a.7.7 0 0 1-1.224.051l-.028-.051-2.1-4.2a.7.7 0 0 1 1.226-.674l.026.048L14 13.602l1.474-2.948a.7.7 0 0 1 .889-.336l.05.023a.7.7 0 0 1 .336.889l-.023.05z"
+                            opacity=".7"
+                          ></path>
+                        </g>
+                      </svg>
+                    </div>
+                    <div className=" relative w-[72px] h-[72px] flex items-center justify-center border-3 border-[#efefef] !p-3 rounded-[50px] overflow-hidden ">
+                      <img src={userIcon} alt="" />
+                    </div>
+                    <div className="!mt-5 flex justify-center items-center gap-1.5">
+                      <p>John</p>
+                      <img src={nameIcon} alt="" className="w-[15px]" />
+                    </div>
+                    <div className="!mt-1">ID</div>
+                    <div className="!mt-1 flex items-center bg-[#E8E8E8]  rounded-full">
+                      {" "}
+                      <span className="!text-sm !py-[5px] font-bold !px-[15px]">
+                        Free user
+                      </span>{" "}
+                    </div>
+                  </div>
+
+                  {/* Download Status */}
+                  <div className="flex items-center !py-[20px] gap-10">
+                    <div className="flex items-center flex-col">
+                      <p className="!text-[24px] font-bold !text-[#333]">2</p>
+                      <p className="text-[#999] !text-sm">Daily Downloads</p>
+                    </div>
+
+                    <div className="flex items-center flex-col">
+                      <p className="!text-[24px] font-bold !text-[#333]">2</p>
+                      <p className="text-[#999] !text-sm">Remaning Downloads</p>
+                    </div>
+                  </div>
+
+                  {/* Border Line */}
+
+                  <div className="border-t-2 w-full border-[#F7F7F7]"></div>
+
+
+                  {/* Sale banner */}
+                  <div className=" !mt-4 !p-[20px] relative flex flex-col items-center justify-center bg-[#FFFAEC] w-[350px] min-h-[100px] rounded-[12px] shadow-lg">
+                    <div className=" absolute top-0 left-0 z-30 flex flex-col justify-center !px-1">
+                      <p className="!text-[14px] !text-white uppercase font-bold">
+                        Sale
+                      </p>
+                      <p className="!text-[14px] !text-white uppercase font-bold">
+                        80%
+                      </p>
+                    </div>
+                    <div className="absolute top-[20px] right-[20px] -rotate-30">
+                      <img src={saleCrown} alt="" className="w-[50px]" />
+                    </div>
+                    <div className="absolute top-0 left-0">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="46"
+                        height="50"
+                        viewBox="0 0 46 50"
+                        fill="none"
+                      >
+                        <path
+                          d="M0 0H46V49.5L23 43.5L0 49.5V0Z"
+                          fill="#FF3E7E"
+                        ></path>
+                      </svg>
+                    </div>
+
+                    <div className="flex flex-col items-center gap-1 ">
+                      <p className="!text-[14px] !text-[#85713b]">
+                        One Time payment
+                      </p>
+                      <p className="!text-[14px] font-medium !text-[#85713b]">
+                        8,000,000+ curated assets
+                      </p>
+                      <p className="!text-[16px] !text-[#4e2d25] font-semibold">
+                        Unlimited Lifetime Downloads
+                      </p>
+                    </div>
+
+                    <button className=" !mt-3 bg-linear-65 from-[#f7bc0b] !py-2 to-[#ff9900] w-full !text-[18px] font-bold !text-white">
+                      Buy Now
+                    </button>
+                  </div>
+
+                  {/* Help center */}
+                  <div className="!mt-5 flex gap-[100px]">
+                    <div className="flex flex-col items-center">
+                      <div className="flex flex-col items-center justify-center bg-[#EDFAF0] w-[60px] h-[60px] rounded-[12px]">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" aria-hidden="true" viewBox="0 0 22 23" class="_tea4l2"><g fill="none" fill-rule="evenodd"><path fill="#83D99B" d="M10.69 11.759c-5.612 0-10.217 4.295-10.687 9.766a.86.86 0 0 0 .866.923h19.64c.503 0 .91-.424.867-.923-.47-5.471-5.074-9.766-10.686-9.766"></path><circle cx="10.69" cy="5.345" r="5.345" fill="#BEEDCC"></circle></g></svg></span>
+                      </div>
+                      <p className="!text-[#333] !py-2 !text-[14px]">My Profile</p>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <div className="flex flex-col items-center justify-center bg-[#EDFAF0] w-[60px] h-[60px] rounded-[12px]">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" aria-hidden="true" viewBox="0 0 22 22" class="_tea4l2"><g fill="none"><path fill="#91C4FF" d="M19.387 12.065c0-.355.12-.71.12-1.065s0-.71-.12-1.065L21.8 8.161c.241-.118.241-.473.12-.71l-2.292-3.784c-.12-.237-.483-.355-.724-.237l-2.775 1.065c-.604-.473-1.207-.828-1.931-1.065L13.836.473c0-.236-.242-.473-.604-.473H8.768c-.242 0-.483.237-.604.473L7.802 3.43c-.724.237-1.327.592-1.93 1.065L3.095 3.43c-.241-.118-.483 0-.724.237L.079 7.452c-.12.236-.12.473.12.71l2.414 1.773c0 .355-.12.71-.12 1.065s0 .71.12 1.065L.2 13.839c-.241.118-.241.473-.12.71l2.292 3.784c.12.237.483.355.724.237l2.775-1.065c.604.473 1.207.828 1.931 1.065l.362 2.957c0 .236.242.473.604.473h4.464c.242 0 .483-.237.604-.473l.362-2.957c.724-.237 1.327-.592 1.93-1.065l2.776 1.065c.241.118.483 0 .724-.237l2.293-3.785c.12-.236.12-.473-.12-.71z"></path><path fill="#C8E3FF" d="M11.06 14.785c-2.172 0-3.86-1.656-3.86-3.785s1.69-3.785 3.861-3.785S14.922 8.871 14.922 11s-1.69 3.785-3.862 3.785"></path></g></svg></span>
+                      </div>
+                      <p className="!text-[#333] !py-2 !text-[14px]">Help Center</p>
+                    </div>
+                  </div>
+                </div>
+              </div> :
+              <button
+                className="flex items-center gap-2 bg-[#efefef] hover:bg-[#71C194]  text-[#333] hover:text-white font-bold rounded cursor-pointer"
+                onClick={() => navigate("/auth/login")}
+              >
+                Log in
+              </button>
+          }
         </div>
+
         <div className="menu block xl:hidden border-1 border-gray-200 rounded-[5px] !p-2">
           {!menuOpen ? (
             <CgMenu
@@ -1184,9 +1105,8 @@ const Navbar = () => {
 
         {/* Toogle Menu  */}
         <div
-          className={`toggle-menu absolute top-[100%] h-[calc(100vh-56px)] !px-5 w-full z-999 sm:w-[400px] transition-all duration-300 !py-3 left-0 bg-gray-100 ${
-            menuOpen && "toggle-menu-show"
-          }`}
+          className={`toggle-menu absolute top-[100%] h-[calc(100vh-56px)] !px-5 w-full z-999 sm:w-[400px] transition-all duration-300 !py-3 left-0 bg-gray-100 ${menuOpen && "toggle-menu-show"
+            }`}
         >
           <div className="">
             <ul className="gap-7">
