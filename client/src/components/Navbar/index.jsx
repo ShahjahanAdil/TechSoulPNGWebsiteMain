@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Crown } from "lucide-react";
 import logooo from "../../assets/images/logo.png";
 import { CgMenu } from "react-icons/cg";
@@ -38,10 +38,113 @@ const Navbar = () => {
   const [hoverShow, setHoverShow] = useState(false);
   const navigate = useNavigate();
 
+  const { pathname } = useLocation()
+
   return (
     <>
       {/* Top Navbar */}
-      <section
+      {
+        pathname == "/about" ?
+          "" : pathname == "/contact" ?
+            "" :
+            <section
+              className="overflow-hidden w-full hidden lg:flex h-18 bg-gradient-to-r from-[#FF0C53] to-[#FF013F]  justify-center items-center"
+              style={{
+                background:
+                  'url("https://js.pngtree.com/a5/static/5kaywn.BE_RcDw8.gif")  center center/cover, linear-gradient(to right, #FF0C53, #FF013F)',
+                backgroundSize: "500px",
+              }}
+            >
+              <div className="relative flex flex-1  justify-center items-center gap-7 w-full px-5">
+                <div className="absolute h-[100%] z-20 icon-img hidden lg:block">
+                  <img src={iconImg} alt="" className="object-cover" />
+                </div>
+                <div className="left flex ps-[40px] justify-center items-center gap-3">
+                  <div className="icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="25"
+                      fill="#ffffff"
+                      viewBox="0 0 20 25"
+                    >
+                      <path d="m10.994 23.369.033.145a1.44 1.44 0 0 0 1.35 1.047h5.057c.9 0 1.632-.732 1.632-1.632V2.212c0-.9-.732-1.63-1.632-1.63h-5.035a1.42 1.42 0 0 0-1.4 1.17l-.01.05a1.13 1.13 0 0 1-1.115.932c-.542 0-1.013-.39-1.127-.983a1.43 1.43 0 0 0-1.38-1.17H2.313c-.9 0-1.632.732-1.632 1.631v20.719c0 .9.732 1.632 1.632 1.632H7.35c.69 0 1.278-.494 1.408-1.223a1.131 1.131 0 0 1 1.853-.657c.206.176.342.419.384.686m-3.698-.293H2.313a.15.15 0 0 1-.147-.147V9.78c.04.005.074.023.114.023H5.5a.86.86 0 0 0 .858-.858.86.86 0 0 0-.858-.856H2.28c-.04 0-.075.018-.114.022V2.214a.15.15 0 0 1 .147-.149h4.982l.01.056a2.636 2.636 0 0 0 2.57 2.099c1.262 0 2.34-.896 2.578-2.155h4.981a.15.15 0 0 1 .147.147V8.11c-.039-.004-.073-.022-.114-.022h-3.22a.86.86 0 0 0-.857.856.86.86 0 0 0 .857.858h3.22c.04 0 .075-.018.114-.022v13.15a.15.15 0 0 1-.147.148h-4.966l-.029-.059a2.636 2.636 0 0 0-2.565-2.096c-1.253 0-2.326.88-2.578 2.155z" />
+                    </svg>
+                  </div>
+                  <div className="inner-txt">
+                    <h6 className="!text-white font-bold lg:text-xl leading-7 text-[16px]">
+                      Best Deals
+                    </h6>
+                    <p className="!text-white font-normal leading-5 !text-[10px] sm:!text-[12px]">
+                      On all plans
+                    </p>
+                  </div>
+                </div>
+                <div className="middle flex justify-center items-center gap-5 pl-6 ">
+                  <div className="border-l-2 border-[#FF6B95] h-6"></div>
+
+                  <div className="icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      fill="none"
+                      viewBox="0 0 25 25"
+                    >
+                      <path
+                        fill="#ffffff"
+                        d="M6.42.578c1.172 0 2.343.004 3.515-.002.66-.003 1.217.222 1.754.61.516.371.945.823 1.387 1.265q5.236 5.227 10.465 10.461c.808.808 1.02 2.011.51 3.018a2.6 2.6 0 0 1-.477.664 2916 2916 0 0 1-7.226 7.232c-.996.994-2.642 1-3.637.008-3.772-3.766-7.544-7.531-11.3-11.312-.458-.46-.866-.99-1.01-1.657a2.7 2.7 0 0 1-.062-.566Q.333 6.667.338 3.035C.339 1.667 1.386.597 2.755.582 3.976.568 5.198.58 6.42.58zm-.004 1.625H5.91c-1.03 0-2.062-.003-3.093 0-.513.003-.86.337-.861.832q-.005 3.63.003 7.263c0 .134.03.288.101.399.168.262.342.53.56.748 3.72 3.73 7.446 7.453 11.17 11.178.442.442 1.028.44 1.472-.004 2.366-2.366 4.725-4.738 7.104-7.091a1.083 1.083 0 0 0 .001-1.507c-3.102-3.08-6.181-6.183-9.283-9.262-.781-.775-1.488-1.627-2.392-2.278-.241-.173-.469-.282-.764-.28-1.17.005-2.342.002-3.513.002"
+                      />
+                      <path
+                        fill="#ffffff"
+                        d="M6.82 10.315a3.255 3.255 0 0 1-3.242-3.259 3.246 3.246 0 0 1 3.25-3.228 3.236 3.236 0 0 1 3.238 3.27 3.25 3.25 0 0 1-3.246 3.217m0-1.628A1.624 1.624 0 0 0 8.447 7.07c0-.885-.726-1.616-1.61-1.62A1.625 1.625 0 0 0 5.2 7.06a1.624 1.624 0 0 0 1.62 1.627"
+                      />
+                    </svg>
+                  </div>
+                  <div className="inner-txt">
+                    <h6 className="!text-white font-bold lg:text-xl leading-7 text-[16px] ">
+                      90% OFF coupons
+                    </h6>
+                    <p className="!text-white font-normal leading-5 !text-[10px] sm:!text-[12px]">
+                      Specials for lifetime plans
+                    </p>
+                  </div>
+                </div>
+
+                <div className="right flex justify-center items-center gap-5">
+                  <div className="border-l-2 border-[#FF6B95] h-6"></div>
+                  <div className="icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="21"
+                      height="25"
+                      fill="none"
+                      viewBox="0 0 21 25"
+                    >
+                      <path
+                        fill="#ffffff"
+                        d="M10.032.67a1.7 1.7 0 0 1 1.12 0l8.552 2.959a1.71 1.71 0 0 1 1.151 1.616v8.598q0 5.539-9.478 10.535a1.71 1.71 0 0 1-1.576.01Q.328 19.546.328 13.842V5.245A1.71 1.71 0 0 1 1.48 3.63zm.56 1.617L2.039 5.244v8.599c0 3.01 2.736 6.055 8.54 9.021 5.817-3.065 8.566-6.12 8.566-9.022V5.244zm5.018 6.33.055.055a.817.817 0 0 1 0 1.155l-4.894 4.893a.817.817 0 0 1-1.154 0l-3.08-3.079a.817.817 0 0 1 0-1.155l.056-.054a.817.817 0 0 1 1.155 0l2.446 2.448 4.261-4.262a.817.817 0 0 1 1.155 0"
+                      />
+                    </svg>
+                  </div>
+                  <div className="inner-txt">
+                    <h6 className="!text-white font-bold lg:text-xl leading-7 text-[16px]">
+                      Anniversary Specials
+                    </h6>
+                    <p className="!text-white font-normal leading-5 !text-[10px] sm:!text-[12px]">
+                      Limited time discount
+                    </p>
+                  </div>
+                </div>
+                <div className="top-btn ">
+                  <button className="zoom-animation gradient-btn  bg-gradient-to-r from-[#faff00] to-[#ffc700] text-[#333] font-bold lg:text-base text-[14px] rounded-full">
+                    GRAB NOW
+                  </button>
+                </div>
+              </div>
+            </section>
+      }
+      {/* <section
         className="overflow-hidden w-full hidden lg:flex h-18 bg-gradient-to-r from-[#FF0C53] to-[#FF013F]  justify-center items-center"
         style={{
           background:
@@ -136,7 +239,7 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Below navabar */}
       <section className="navbar relative w-full h-14 bg-[#FFFFFF] flex justify-between items-center !gap-5 px-5">
@@ -287,9 +390,8 @@ const Navbar = () => {
                     </div>
                   </div>
                   <div
-                    className={`drop-content gap-[72px] rounded-b-[12px] !mx-3 flex  !px-3 !py-5 ${
-                      hoverShow && "bg-[#f3f3f3]"
-                    }`}
+                    className={`drop-content gap-[72px] rounded-b-[12px] !mx-3 flex  !px-3 !py-5 ${hoverShow && "bg-[#f3f3f3]"
+                      }`}
                   >
                     <ul className="flex flex-col gap-2">
                       <li className="text-sm">Father's Day</li>
@@ -416,9 +518,8 @@ const Navbar = () => {
                     </div>
                   </div>
                   <div
-                    className={`drop-content gap-[75px] rounded-b-[12px] !mx-3 flex items-center !px-3 !py-5 ${
-                      hoverShow && "bg-[#f3f3f3]"
-                    }`}
+                    className={`drop-content gap-[75px] rounded-b-[12px] !mx-3 flex items-center !px-3 !py-5 ${hoverShow && "bg-[#f3f3f3]"
+                      }`}
                   >
                     <ul className="flex flex-col gap-2">
                       <li className="text-sm">Father's Day</li>
@@ -848,11 +949,11 @@ const Navbar = () => {
               <div>
                 <div
                   className=" relative w-[72px] h-[72px] flex items-center justify-center border-2 !p-3 rounded-[50px] overflow-hidden ">
-                    <div className="absolute w-[34px] h-[34px] flex justify-center items-center bg-white !p-1 rounded-[50px]" >
-                      <svg className="_tea4l2" xmlns="http://www.w3.org/2000/svg" width="28" height="23" aria-hidden="true" viewBox="0 0 28 23"><defs><linearGradient id="isc2z30a" x1="50%" x2="50%" y1="11.131%" y2="57.082%"><stop offset="0%" stop-color="#C7C7C7"></stop><stop offset="100%" stop-color="#9C9C9C"></stop></linearGradient><linearGradient id="isc2z30c" x1="90.916%" x2="5.301%" y1="61.059%" y2="59.126%"><stop offset="0%" stop-color="#D2D2D2"></stop><stop offset="100%" stop-color="#C4C4C4"></stop></linearGradient><linearGradient id="isc2z30e" x1="100%" x2="22.218%" y1="27.905%" y2="95.888%"><stop offset="0%" stop-color="#E8E8E8"></stop><stop offset="100%" stop-color="#CFCFCF"></stop></linearGradient></defs><path id="isc2z30b" d="M25.455 3.662 22.47 18.458c-.116.35-6.731 1.579-9.755 1.579-2.808 0-9.639-1.23-9.756-1.579L0 3.662l7.948 5.016L12.715 0l4.826 8.678z"></path><g fill="none" fill-rule="evenodd"><path fill="url(#isc2z30a)" fill-rule="nonzero" d="M9.301 3.906 14 15.866H3.733l4.7-11.96a.467.467 0 0 1 .868 0" transform="rotate(-20 8.867 9.333)"></path><path fill="url(#isc2z30a)" fill-rule="nonzero" d="m19.568 3.906 4.699 11.96H14l4.699-11.96a.467.467 0 0 1 .869 0" transform="scale(-1 1)rotate(-20 0 117.844)"></path><g transform="translate(1.281 1.389)"><mask id="isc2z30d" fill="#fff"><use href="#isc2z30b"></use></mask><use fill="url(#isc2z30c)" fill-rule="nonzero" href="#isc2z30b"></use><path stroke="#FFF" stroke-linejoin="round" stroke-width=".933" d="m23.712 14.935-.305.084a41.3 41.3 0 0 1-10.29 1.435l-.328.003v-.002q-5.422-.03-10.617-1.438l-.305-.084" mask="url(#isc2z30d)" opacity=".504"></path></g><ellipse cx="1.909" cy="5.682" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse><ellipse cx="14" cy="1.894" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse><ellipse cx="26.091" cy="5.682" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse><path fill="#FFF" fill-rule="nonzero" d="M14.626 15.48a.7.7 0 0 1-1.224.051l-.028-.051-2.1-4.2a.7.7 0 0 1 1.226-.674l.026.048L14 13.602l1.474-2.948a.7.7 0 0 1 .889-.336l.05.023a.7.7 0 0 1 .336.889l-.023.05z" opacity=".7"></path></g></svg>
-                    </div>
-                    <img src={userIcon} alt="" />
+                  <div className="absolute w-[34px] h-[34px] flex justify-center items-center bg-white !p-1 rounded-[50px]" >
+                    <svg className="_tea4l2" xmlns="http://www.w3.org/2000/svg" width="28" height="23" aria-hidden="true" viewBox="0 0 28 23"><defs><linearGradient id="isc2z30a" x1="50%" x2="50%" y1="11.131%" y2="57.082%"><stop offset="0%" stop-color="#C7C7C7"></stop><stop offset="100%" stop-color="#9C9C9C"></stop></linearGradient><linearGradient id="isc2z30c" x1="90.916%" x2="5.301%" y1="61.059%" y2="59.126%"><stop offset="0%" stop-color="#D2D2D2"></stop><stop offset="100%" stop-color="#C4C4C4"></stop></linearGradient><linearGradient id="isc2z30e" x1="100%" x2="22.218%" y1="27.905%" y2="95.888%"><stop offset="0%" stop-color="#E8E8E8"></stop><stop offset="100%" stop-color="#CFCFCF"></stop></linearGradient></defs><path id="isc2z30b" d="M25.455 3.662 22.47 18.458c-.116.35-6.731 1.579-9.755 1.579-2.808 0-9.639-1.23-9.756-1.579L0 3.662l7.948 5.016L12.715 0l4.826 8.678z"></path><g fill="none" fill-rule="evenodd"><path fill="url(#isc2z30a)" fill-rule="nonzero" d="M9.301 3.906 14 15.866H3.733l4.7-11.96a.467.467 0 0 1 .868 0" transform="rotate(-20 8.867 9.333)"></path><path fill="url(#isc2z30a)" fill-rule="nonzero" d="m19.568 3.906 4.699 11.96H14l4.699-11.96a.467.467 0 0 1 .869 0" transform="scale(-1 1)rotate(-20 0 117.844)"></path><g transform="translate(1.281 1.389)"><mask id="isc2z30d" fill="#fff"><use href="#isc2z30b"></use></mask><use fill="url(#isc2z30c)" fill-rule="nonzero" href="#isc2z30b"></use><path stroke="#FFF" stroke-linejoin="round" stroke-width=".933" d="m23.712 14.935-.305.084a41.3 41.3 0 0 1-10.29 1.435l-.328.003v-.002q-5.422-.03-10.617-1.438l-.305-.084" mask="url(#isc2z30d)" opacity=".504"></path></g><ellipse cx="1.909" cy="5.682" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse><ellipse cx="14" cy="1.894" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse><ellipse cx="26.091" cy="5.682" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse><path fill="#FFF" fill-rule="nonzero" d="M14.626 15.48a.7.7 0 0 1-1.224.051l-.028-.051-2.1-4.2a.7.7 0 0 1 1.226-.674l.026.048L14 13.602l1.474-2.948a.7.7 0 0 1 .889-.336l.05.023a.7.7 0 0 1 .336.889l-.023.05z" opacity=".7"></path></g></svg>
                   </div>
+                  <img src={userIcon} alt="" />
+                </div>
                 <div>name</div>
                 <div>ID</div>
                 <div>User Status</div>
@@ -889,9 +990,8 @@ const Navbar = () => {
 
         {/* Toogle Menu  */}
         <div
-          className={`toggle-menu absolute top-[100%] h-[calc(100vh-56px)] !px-5 w-full z-999 sm:w-[400px] transition-all duration-300 !py-3 left-0 bg-gray-100 ${
-            menuOpen && "toggle-menu-show"
-          }`}
+          className={`toggle-menu absolute top-[100%] h-[calc(100vh-56px)] !px-5 w-full z-999 sm:w-[400px] transition-all duration-300 !py-3 left-0 bg-gray-100 ${menuOpen && "toggle-menu-show"
+            }`}
         >
           <div className="">
             <ul className="gap-7">

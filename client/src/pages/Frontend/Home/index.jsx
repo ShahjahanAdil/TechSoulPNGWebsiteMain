@@ -15,7 +15,7 @@ import Slider2 from "../../../Components/Slider2";
 export default function Home() {
   return (
     <div className="overflow-x-hidden">
-      <Navbar />
+      {/* <Navbar /> */}
       <Banner />
       <CardsSlider />
       <Cards />
@@ -26,7 +26,7 @@ export default function Home() {
       <Slider2 />
       <Testimonials />
       <Stat />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

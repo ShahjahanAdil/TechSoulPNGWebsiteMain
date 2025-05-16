@@ -6,10 +6,10 @@ import Dcards from "../../../Components/Dcards";
 export default function DownloadPage() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Dsection1 />
       <Dcards />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
