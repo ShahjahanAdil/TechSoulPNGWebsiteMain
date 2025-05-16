@@ -39,7 +39,7 @@ export default function Cards() {
   return (
     <div className="px-5 md:py-7">
       <h2 className="md:text-4xl text-2xl font-bold md:mb-6">
-        Explore popular creative assets
+        Explore popular creative pictures
       </h2>
 
       <div className="flex gap-3">
