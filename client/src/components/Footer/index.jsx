@@ -122,8 +122,8 @@ const Footer = () => {
         {/* PNGTREE Section */}
         <div className="png-tree w-1/2">
           <div className="inner-items">
-            <h4 className="font-bold uppercase">PNGTREE.COM</h4>
-            <ul className="space-y-1 mt-2">
+            <h6 className="font-bold uppercase !text-[16px]">PNGTREE.COM</h6>
+            <ul className=" mt-2">
               <li><a href="#" className="text-sm text-gray-700 hover:text-green-600">About Us</a></li>
               <li><a href="#" className="text-sm text-gray-700 hover:text-green-600">Contributor Project</a></li>
               <li><a href="#" className="text-sm text-gray-700 hover:text-green-600">Popular Searches</a></li>
@@ -139,8 +139,8 @@ const Footer = () => {
         {/* Plans & Help */}
         <div className="plan-help w-1/2">
           <div className="plan mb-4">
-            <h4 className="font-bold uppercase">PLANS</h4>
-            <ul className="space-y-1 mt-2">
+            <h4 className="font-bold uppercase !text-[16px]">PLANS</h4>
+            <ul className=" mt-2">
               <li><a href="#" className="text-sm text-gray-700 hover:text-green-600">Enterprise Plan</a></li>
               <li><a href="#" className="text-sm text-gray-700 hover:text-green-600">Individual Plan</a></li>
               <li><a href="#" className="text-sm text-gray-700 hover:text-green-600">Education Plan</a></li>
@@ -148,8 +148,8 @@ const Footer = () => {
             </ul>
           </div>
           <div className="help">
-            <h4 className="font-bold uppercase">HELP</h4>
-            <ul className="space-y-1 mt-2">
+            <h4 className="font-bold uppercase !text-[16px]">HELP</h4>
+            <ul className=" mt-2">
               <li><a href="#" className="text-sm text-gray-700 hover:text-green-600">Help Center</a></li>
               <li><a href="#" className="text-sm text-gray-700 hover:text-green-600">Contact Us</a></li>
               <li><a href="#" className="text-sm text-gray-700 hover:text-green-600">Partnerships</a></li>
@@ -161,11 +161,11 @@ const Footer = () => {
         {/* Legal */}
         <div className="legal w-1/2">
           <div className="inner-items">
-            <h4 className="font-bold uppercase">LEGAL</h4>
-            <ul className="space-y-1 mt-2">
+            <h4 className="font-bold uppercase !text-[16px]">LEGAL</h4>
+            <ul className="!mt-2 flex flex-col gap-[10px]">
               <li><a href="#" className="text-sm text-gray-700 hover:text-green-600">Term of Service</a></li>
               <li><a href="#" className="text-sm text-gray-700 hover:text-green-600">Privacy Policy</a></li>
-              <li><a href="#" className="text-sm text-gray-700 hover:text-green-600">Copyrights Infringement Notification</a></li>
+              <li><a href="#" className="text-sm text-gray-700 hover:text-green-600">Copyrights</a></li>
               <li><a href="#" className="text-sm text-gray-700 hover:text-green-600">Cookies Policy</a></li>
               <li><a href="#" className="text-sm text-gray-700 hover:text-green-600">License Terms</a></li>
               <li><a href="#" className="text-sm text-gray-700 hover:text-green-600">Refund Policy</a></li>
