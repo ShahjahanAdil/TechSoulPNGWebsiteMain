@@ -43,7 +43,7 @@ const Background = () => {
     <div className="p-6 space-y-10 mainContainer">
       {categories.map((section, sectionIndex) => (
         <div key={sectionIndex}>
-          <h2 className="text-2xl font-bold mb-4">{section.title}</h2>
+          <h3 className="mb-6">{section.title}</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
             {section.items.map((item, itemIndex) => (
               <div
@@ -55,7 +55,7 @@ const Background = () => {
                   alt={item.name}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-opacity-50 text-white p-2 "  style={{ textShadow: '0 2px 4px rgba(0,0,0,0.9)' }}>
+                <div className="absolute bottom-0 left-0 right-0 bg-opacity-50 text-white p-2 " style={{ textShadow: '0 2px 4px rgba(0,0,0,0.9)' }}>
                   <div className="text-lg font-bold">{item.name}</div>
                   <div className="text-sm">{item.imageCount} images</div>
                 </div>

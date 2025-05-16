@@ -33,9 +33,10 @@
 .slider-right-overlay {
     filter: blur(15px);
 }
-.mainContainer{
+
+.mainContainer {
     width: 100%;
-    max-width: 1280px;
+    max-width: 1600px;
     margin: 0 auto;
 }
 
