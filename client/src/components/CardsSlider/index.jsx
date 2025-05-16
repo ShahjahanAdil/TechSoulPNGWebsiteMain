@@ -37,7 +37,8 @@ export default function CardsSlider() {
 
   return (
     <>
-      <div className="text-start font-bold ms-5 text-2xl md:text-4xl text-[#000]">
+      <div className='mainContainer'>
+        <div className="text-start font-bold ms-5 text-2xl md:text-4xl text-[#000]">
         Marketing Calendar
       </div>
 
@@ -108,6 +109,7 @@ export default function CardsSlider() {
             </div>
           ))}
         </Slider>
+      </div>
       </div>
     </>
   );

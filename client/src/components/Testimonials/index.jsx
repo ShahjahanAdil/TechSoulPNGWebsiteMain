@@ -12,7 +12,7 @@ const Testimonials = () => {
         Find out why pngtree is trusted by users
       </h2>
 
-      <div className="flex flex-col lg:flex-row items-start gap-12">
+      <div className="flex flex-col lg:flex-row items-start gap-12 mainContainer">
 
         <div className="flex flex-col gap-6 w-full lg:w-1/2">
           {/* User 1 */}
