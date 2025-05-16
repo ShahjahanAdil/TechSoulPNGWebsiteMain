@@ -42,13 +42,8 @@ export default function Cards() {
         Explore popular creative Assets
       </h2>
 
-<<<<<<< HEAD
       <div className="flex gap-3">
         {tabs?.map((cat) => {
-=======
-      <div className="flex gap-3 mt-5">
-        {tabs.map((cat) => {
->>>>>>> 69126edb2b6cca0f6983c36005abd3f0b075e7af
           return (
             <button
               className={`capitalize text-[14px] sm:text-[18px] pb-1 rounded-sm transition-all duration-150 ease-in-out cursor-pointer font-bold text-[#333] border-b-[#5ABC84] ${
