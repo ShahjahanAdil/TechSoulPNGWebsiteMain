@@ -33,10 +33,23 @@
 .slider-right-overlay {
     filter: blur(15px);
 }
-.mainContainer{
+
+.mainContainer {
     width: 100%;
     max-width: 1280px;
     margin: 0 auto;
+}
+
+.dashboard-sidebar {
+    display: none;
+    opacity: 0.5;
+    transform: translateX(-100%);
+    transition: all 200ms ease-in;
+}
+
+.dashboard-sidebar-active {
+    opacity: 1;
+    transform: translateX(0%);
 }
 
 h1,
@@ -101,6 +114,7 @@ input:focus {
 label {
     display: block;
     color: #333;
+    font-size: 16px;
 }
 
 textarea {
@@ -127,6 +141,12 @@ select:focus {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard-sidebar {
+        display: block;
+    }
 }
 
 @media screen and (max-width: 499px) {
@@ -168,5 +188,10 @@ select:focus {
         display: inline-block;
         font-size: 14px;
         cursor: pointer;
+    }
+
+
+    label {
+        font-size: 13px;
     }
 }
