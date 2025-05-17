@@ -53,7 +53,7 @@ const contributor = [
 
 export default function Contributors() {
   return (
-    <section className="relative py-10 px-6 w-full rounded-3xl bg-[#E6F5ED] overflow-hidden z-[-2]">
+    <section className="relative mt-12 py-10 px-6 w-full rounded-3xl bg-[#E6F5ED] overflow-hidden z-[-2]">
       {/* SVG Background for the whole section */}
       <svg
         xmlns="http://www.w3.org/2000/svg"

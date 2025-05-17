@@ -9,12 +9,12 @@ import AboutBanner from '../../../Components/AboutBanner/Index'
 export default function About() {
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             <AboutBanner />
             <Contributors />
             <Stat />
             <Slider2 />
-            <Footer />
+            {/* <Footer /> */}
         </>
     )
 }

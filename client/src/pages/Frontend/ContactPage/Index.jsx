@@ -5,9 +5,9 @@ import Footer from "../../../Components/Footer";
 export default function ContactPage() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <ContactUs />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

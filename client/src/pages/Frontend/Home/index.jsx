@@ -1,9 +1,7 @@
 import React from "react";
-import Navbar from "../../../Components/Navbar";
 import Banner from "../../../Components/Banner";
 import CardsSlider from "../../../Components/CardsSlider";
 import Cards from "../../../Components/Cards";
-import Footer from "../../../Components/Footer";
 import Stat from "../../../Components/Stat";
 import Testimonials from "../../../Components/Testimonials";
 import Contributors from "../../../Components/Contributors";
@@ -15,7 +13,6 @@ import Slider2 from "../../../Components/Slider2";
 export default function Home() {
   return (
     <div className="overflow-x-hidden">
-      <Navbar />
       <Banner />
       <CardsSlider />
       <Cards />
@@ -26,7 +23,6 @@ export default function Home() {
       <Slider2 />
       <Testimonials />
       <Stat />
-      <Footer />
     </div>
   );
 }
