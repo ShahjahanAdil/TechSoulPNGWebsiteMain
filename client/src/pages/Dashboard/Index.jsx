@@ -12,6 +12,7 @@ import { PiUserGearBold } from "react-icons/pi";
 import { IoCloudUploadSharp, IoGiftSharp } from "react-icons/io5";
 import { SidebarOpen } from "lucide-react";
 import { RiMenuFold2Line } from "react-icons/ri";
+import Subscription from "./Subscription";
 
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -172,6 +173,7 @@ export default function Dashboard() {
           <Routes>
             <Route index element={<Profile />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="subscription" element={<Subscription />} />
           </Routes>
         </div>
       </div>
