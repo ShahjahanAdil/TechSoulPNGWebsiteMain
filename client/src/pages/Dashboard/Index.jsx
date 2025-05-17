@@ -1,21 +1,33 @@
 import React, { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import Profile from "./Profile";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import userImage from "../../assets/images/user.png";
 import { FaCrown, FaUser, FaHeart, FaFolderOpen } from "react-icons/fa";
 import { FaCreditCard, FaUsersGear, FaX } from "react-icons/fa6";
-import { MdOutlineStarPurple500, MdDevices } from "react-icons/md";
+import { MdOutlineStarPurple500 } from "react-icons/md";
 import { LuDownload } from "react-icons/lu";
 import { PiUserGearBold } from "react-icons/pi";
-import { IoCloudUploadSharp, IoGiftSharp } from "react-icons/io5";
+import { IoCloudUploadSharp } from "react-icons/io5";
 import { SidebarOpen } from "lucide-react";
 import { RiMenuFold2Line } from "react-icons/ri";
+import Customers from "./Customers";
+import Authorization from "./Authorization";
+import Favourites from "./Favourites";
+import Downloads from "./Downloads";
+import Followings from "./Followings";
+import Projects from "./Projects";
+import MyUploads from "./MyUploads";
 
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  console.log(sidebarOpen);
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    setSidebarOpen(false);
+    navigate(`/dashboard/${path}`);
+  };
 
   return (
     <div className="overflow-x-hidden">
@@ -57,50 +69,63 @@ export default function Dashboard() {
           {/* Menu */}
           <div className="bg-white shadow-lg hidden md:block rounded-3xl mt-4">
             <ul className="p-[30px] space-y-2 text-gray-700 font-medium">
-              <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
-                <FaUser />
-                My Profile
-              </li>
-              <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
-                <MdDevices />
-                Device Manager
-              </li>
-              <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
-                <FaCreditCard />
-                Subscription
-              </li>
-              <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
-                <PiUserGearBold />
-                My Authorization
-              </li>
-              <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
-                <FaUsersGear />
-                My Customer
-              </li>
-              <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
-                <FaHeart />
-                My Favorites
-              </li>
-              <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
-                <LuDownload />
-                My Downloads
-              </li>
-              <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
-                <MdOutlineStarPurple500 />
-                My Following
-              </li>
-              <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
-                <FaFolderOpen />
-                My Projects
-              </li>
-              <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
-                <IoCloudUploadSharp />
-                My Uploads
-              </li>
-              <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
-                <IoGiftSharp />
-                Redeem Gifts
-              </li>
+              <Link to="/dashboard/profile">
+                <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
+                  <FaUser />
+                  My Profile
+                </li>
+              </Link>
+
+              <Link to="/dashboard/subscriptions">
+                <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
+                  <FaCreditCard />
+                  Subscription
+                </li>
+              </Link>
+
+              <Link to="/dashboard/authorization">
+                <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
+                  <PiUserGearBold />
+                  My Authorization
+                </li>
+              </Link>
+
+              <Link to="/dashboard/customer">
+                <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
+                  <FaUsersGear />
+                  My Customer
+                </li>
+              </Link>
+              <Link to="/dashboard/favourites">
+                <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
+                  <FaHeart />
+                  My Favourites
+                </li>
+              </Link>
+              <Link to="/dashboard/downloads">
+                <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
+                  <LuDownload />
+                  My Downloads
+                </li>
+              </Link>
+              <Link to="/dashboard/followings">
+                <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
+                  <MdOutlineStarPurple500 />
+                  My Followings
+                </li>
+              </Link>
+              <Link to="/dashboard/projects">
+                <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
+                  <FaFolderOpen />
+                  My Projects
+                </li>
+              </Link>
+              <Link to="/dashboard/uploads">
+                <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[16px] py-2 cursor-pointer">
+                  <IoCloudUploadSharp />
+                  My Uploads
+                </li>
+              </Link>
             </ul>
           </div>
         </div>
@@ -114,49 +139,68 @@ export default function Dashboard() {
             <FaX onClick={() => setSidebarOpen(false)} />
           </p>
           <ul className="p-[20px] space-y-2 text-gray-700 font-medium">
-            <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer">
+            <li
+              className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer"
+              onClick={() => handleNavigate("profile")}
+            >
               <FaUser />
               My Profile
             </li>
-            <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer">
-              <MdDevices />
-              Device Manager
-            </li>
-            <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer">
+            <li
+              className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer"
+              onClick={() => handleNavigate("subscription")}
+            >
               <FaCreditCard />
               Subscription
             </li>
-            <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer">
+            <li
+              className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer"
+              onClick={() => handleNavigate("authorization")}
+            >
               <PiUserGearBold />
               My Authorization
             </li>
-            <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer">
+            <li
+              className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer"
+              onClick={() => handleNavigate("customer")}
+            >
               <FaUsersGear />
               My Customer
             </li>
-            <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer">
+            <li
+              className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer"
+              onClick={() => handleNavigate("favourites")}
+            >
               <FaHeart />
-              My Favorites
+              My Favourites
             </li>
-            <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer">
+            <li
+              className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer"
+              onClick={() => handleNavigate("downloads")}
+            >
               <LuDownload />
               My Downloads
             </li>
-            <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer">
+            <li
+              className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer"
+              onClick={() => handleNavigate("followings")}
+            >
               <MdOutlineStarPurple500 />
-              My Following
+              My Followings
             </li>
-            <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer">
+            <li
+              className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer"
+              onClick={() => handleNavigate("projects")}
+            >
               <FaFolderOpen />
               My Projects
             </li>
-            <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer">
+            <li
+              className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer"
+              onClick={() => handleNavigate("uploads")}
+            >
               <IoCloudUploadSharp />
               My Uploads
-            </li>
-            <li className="hover:text-green-500 flex items-center gap-3 text-gray-500 font-semibold !text-[12px] py-2 cursor-pointer">
-              <IoGiftSharp />
-              Redeem Gifts
             </li>
           </ul>
         </div>
@@ -172,6 +216,13 @@ export default function Dashboard() {
           <Routes>
             <Route index element={<Profile />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="authorization" element={<Authorization />} />
+            <Route path="customer" element={<Customers />} />
+            <Route path="favourites" element={<Favourites />} />
+            <Route path="followings" element={<Followings />} />
+            <Route path="downloads" element={<Downloads />} />
+            <Route path="projects" element={<Projects />} />
+            <Route path="uploads" element={<MyUploads />} />
           </Routes>
         </div>
       </div>
