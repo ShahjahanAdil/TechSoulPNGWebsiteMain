@@ -13,6 +13,7 @@ import { IoCloudUploadSharp, IoGiftSharp } from "react-icons/io5";
 import { SidebarOpen } from "lucide-react";
 import { RiMenuFold2Line } from "react-icons/ri";
 import { useAuthContext } from "../../contexts/AuthContext";
+import Subscription from "./Subscription";
 
 export default function Dashboard() {
 
@@ -173,6 +174,7 @@ export default function Dashboard() {
           <Routes>
             <Route index element={<Profile />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="subscription" element={<Subscription />} />
           </Routes>
         </div>
       </div>
