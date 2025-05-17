@@ -12,10 +12,12 @@ import { PiUserGearBold } from "react-icons/pi";
 import { IoCloudUploadSharp, IoGiftSharp } from "react-icons/io5";
 import { SidebarOpen } from "lucide-react";
 import { RiMenuFold2Line } from "react-icons/ri";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export default function Dashboard() {
+
+  const { userData } = useAuthContext()
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  console.log(sidebarOpen);
 
   return (
     <div className="overflow-x-hidden">
@@ -40,15 +42,15 @@ export default function Dashboard() {
             </div>
 
             <div className="text-center py-4">
-              <p className="text-[16px] text-black font-bold">User Name</p>
-              <p className="text-gray-400 font-semibold">ID:123456</p>
+              <p className="text-[16px] text-black font-bold">{userData?.username}</p>
+              <p className="text-gray-400 font-semibold">ID: {userData?.userID}</p>
               <div className="flex justify-center mt-2 mb-3">
                 <p className="!text-[#39a166] bg-green-100 px-3 !text-[14px] rounded-full flex items-center  gap-2">
                   Active
                   <span className="animate-pulse w-[8px] rounded-full h-[8px] bg-[#39a166]"></span>
                 </p>
               </div>
-              <button className="md:px-[20px] md:py-3 px-[15px] py-2 rounded-full bg-gradient-to-t from-[#F3574C] via-[#F65A48] to-[#f86055] text-white sm:!text-[12px] !text-[10px] font-medium my-2 shadow-lg transform transition-all duration-300 hover:scale-105">
+              <button className="md:px-[20px] md:py-3 px-[15px] py-2 rounded-full font-bold bg-gradient-to-t from-[#F3574C] via-[#F65A48] to-[#f86055] text-white sm:!text-[12px] !text-[10px] my-2 shadow-lg transform transition-all duration-300 hover:scale-105">
                 Become a Member
               </button>
             </div>
@@ -106,9 +108,8 @@ export default function Dashboard() {
         </div>
 
         <div
-          className={`dashboard-sidebar fixed left-0 top-0 bg-white w-full min-h-screen z-[9999999999] ${
-            sidebarOpen && "dashboard-sidebar-active"
-          }`}
+          className={`dashboard-sidebar fixed left-0 top-0 bg-white w-full min-h-screen z-[9999999999] ${sidebarOpen && "dashboard-sidebar-active"
+            }`}
         >
           <p className="flex justify-end !text-[12px] px-5 pt-5">
             <FaX onClick={() => setSidebarOpen(false)} />

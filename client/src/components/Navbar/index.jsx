@@ -48,12 +48,8 @@ const Navbar = () => {
   const { pathname } = useLocation();
 
   const logoutFunction = () => {
-    if (user) {
-      logout()
-      handleLogout()
-    } else {
-      handleLogout()
-    }
+    logout()
+    handleLogout()
   }
 
   return (
@@ -867,11 +863,11 @@ const Navbar = () => {
           {/* Login Profile */}
           {
             userData.userID ?
-              <div className="w-[30px] h-[30px] cursor-pointer login relative group hidden xl:block">
+              <div className="w-[30px] h-[30px] login relative group hidden xl:block">
                 <img src={userIcon} alt={userData.username} className="w-full h-full object-contain" />
                 <div className="absolute invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-[0px] opacity-50 translate-y-[20px] transition-all duration-200 flex flex-col items-center justify-between min-h-[400px] w-[400px] bg-white rounded-[12px] z-99 right-0 top-[35px] !p-5 shadow-lg">
                   <div className="absolute top-[15px] right-2">
-                    <button className="!text-[14px] hover:!text-red-500 hover:underline" onClick={handleLogout}>Logout</button>
+                    <button className="!text-[14px] hover:!text-red-500 hover:underline" onClick={logoutFunction}>Logout</button>
                   </div>
                   {/* Profile Content */}
                   <div className="relative flex flex-col items-center ">
@@ -988,14 +984,16 @@ const Navbar = () => {
                       <img src={userIcon} alt="" />
                     </div>
                     <div className="!mt-5 flex justify-center items-center gap-1.5">
-                      <p>John</p>
+                      <p>{userData?.username}</p>
                       <img src={nameIcon} alt="" className="w-[15px]" />
                     </div>
-                    <div className="!mt-1">ID</div>
-                    <div className="!mt-1 flex items-center bg-[#E8E8E8]  rounded-full">
+                    <div className="!mt-1 mb-3">
+                      <p>ID: {userData.userID}</p>
+                    </div>
+                    <div className={`!mt-1 flex items-center bg-[#E8E8E8]  rounded-full ${userData.plan === 'free' ? 'bg-[#E8E8E8]' : 'bg-[#fced7c] !text-[#7f7000]'}`}>
                       {" "}
-                      <span className="!text-sm !py-[5px] font-bold !px-[15px]">
-                        Free user
+                      <span className={`!text-sm !py-[5px] font-bold capitalize !px-[15px]`}>
+                        <span>{userData.plan}</span> user
                       </span>{" "}
                     </div>
                   </div>
@@ -1019,7 +1017,7 @@ const Navbar = () => {
 
 
                   {/* Sale banner */}
-                  <div className=" !mt-4 !p-[20px] relative flex flex-col items-center justify-center bg-[#FFFAEC] w-[350px] min-h-[100px] rounded-[12px] shadow-lg">
+                  <div className={`!mt-4 !p-[20px] relative flex flex-col items-center justify-center bg-[#FFFAEC] w-[350px] min-h-[100px] rounded-[12px] shadow-lg ${userData.plan === 'premium' && 'hidden'}`}>
                     <div className=" absolute top-0 left-0 z-30 flex flex-col justify-center !px-1">
                       <p className="!text-[14px] !text-white uppercase font-bold">
                         Sale
@@ -1065,13 +1063,13 @@ const Navbar = () => {
 
                   {/* Help center */}
                   <div className="!mt-5 flex gap-[100px]">
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col items-center cursor-pointer" onClick={() => navigate("/dashboard/profile")}>
                       <div className="flex flex-col items-center justify-center bg-[#EDFAF0] w-[60px] h-[60px] rounded-[12px]">
                         <span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" aria-hidden="true" viewBox="0 0 22 23" class="_tea4l2"><g fill="none" fill-rule="evenodd"><path fill="#83D99B" d="M10.69 11.759c-5.612 0-10.217 4.295-10.687 9.766a.86.86 0 0 0 .866.923h19.64c.503 0 .91-.424.867-.923-.47-5.471-5.074-9.766-10.686-9.766"></path><circle cx="10.69" cy="5.345" r="5.345" fill="#BEEDCC"></circle></g></svg></span>
                       </div>
                       <p className="!text-[#333] !py-2 !text-[14px]">My Profile</p>
                     </div>
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col items-center cursor-pointer">
                       <div className="flex flex-col items-center justify-center bg-[#EDFAF0] w-[60px] h-[60px] rounded-[12px]">
                         <span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" aria-hidden="true" viewBox="0 0 22 22" class="_tea4l2"><g fill="none"><path fill="#91C4FF" d="M19.387 12.065c0-.355.12-.71.12-1.065s0-.71-.12-1.065L21.8 8.161c.241-.118.241-.473.12-.71l-2.292-3.784c-.12-.237-.483-.355-.724-.237l-2.775 1.065c-.604-.473-1.207-.828-1.931-1.065L13.836.473c0-.236-.242-.473-.604-.473H8.768c-.242 0-.483.237-.604.473L7.802 3.43c-.724.237-1.327.592-1.93 1.065L3.095 3.43c-.241-.118-.483 0-.724.237L.079 7.452c-.12.236-.12.473.12.71l2.414 1.773c0 .355-.12.71-.12 1.065s0 .71.12 1.065L.2 13.839c-.241.118-.241.473-.12.71l2.292 3.784c.12.237.483.355.724.237l2.775-1.065c.604.473 1.207.828 1.931 1.065l.362 2.957c0 .236.242.473.604.473h4.464c.242 0 .483-.237.604-.473l.362-2.957c.724-.237 1.327-.592 1.93-1.065l2.776 1.065c.241.118.483 0 .724-.237l2.293-3.785c.12-.236.12-.473-.12-.71z"></path><path fill="#C8E3FF" d="M11.06 14.785c-2.172 0-3.86-1.656-3.86-3.785s1.69-3.785 3.861-3.785S14.922 8.871 14.922 11s-1.69 3.785-3.862 3.785"></path></g></svg></span>
                       </div>
