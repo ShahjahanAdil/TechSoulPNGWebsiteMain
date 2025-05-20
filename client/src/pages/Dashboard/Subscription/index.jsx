@@ -35,11 +35,11 @@ export default function Subscription() {
                 </svg>
               </div>
               <div>
-                <p className="text-center" >
+                <p className="text-center">
                   <span className=" text-[#F24A88] font-bold">
                     Multi-account
-                  </span>
-                  {" "}teamwork
+                  </span>{" "}
+                  teamwork
                 </p>
               </div>
             </div>
@@ -62,9 +62,9 @@ export default function Subscription() {
               </div>
               <div>
                 <p className="text-center">
-                  Industry-leading {" "}
+                  Industry-leading{" "}
                   <span className="text-[#0083EE] font-bold">
-                legal protection
+                    legal protection
                   </span>
                 </p>
               </div>
@@ -131,8 +131,8 @@ export default function Subscription() {
               </div>
               <div>
                 <p className="text-center">
-                  <span className="text-[#F74D3F] font-bold">Copyright</span>
-                  {" "}protection
+                  <span className="text-[#F74D3F] font-bold">Copyright</span>{" "}
+                  protection
                 </p>
               </div>
             </div>
@@ -178,8 +178,8 @@ export default function Subscription() {
               </div>
               <div>
                 <p className="text-center">
-                  <span className="text-[#F24A88] font-bold">8,000,000+</span>
-                  {" "}curated assets
+                  <span className="text-[#F24A88] font-bold">8,000,000+</span>{" "}
+                  curated assets
                 </p>
               </div>
             </div>
@@ -202,8 +202,8 @@ export default function Subscription() {
               </div>
               <div>
                 <p className="text-center">
-                  <span className="text-[#0083EE] font-bold">Unlimited</span>
-                  {" "}downloads forever
+                  <span className="text-[#0083EE] font-bold">Unlimited</span>{" "}
+                  downloads forever
                 </p>
               </div>
             </div>
@@ -238,8 +238,8 @@ export default function Subscription() {
               <div>
                 <p className="text-center">
                   Valid{" "}
-                  <span className="text-[#754DFD] font-bold">commercial</span>
-                  {" "}licenses
+                  <span className="text-[#754DFD] font-bold">commercial</span>{" "}
+                  licenses
                 </p>
               </div>
             </div>
@@ -269,7 +269,7 @@ export default function Subscription() {
               </div>
               <div>
                 <p className="text-center">
-                  Content is {" "}
+                  Content is{" "}
                   <span className="text-[#F74D3F] font-bold">
                     updated continuously
                   </span>
