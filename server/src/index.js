@@ -23,6 +23,29 @@ app.listen(PORT, () => {
     console.log(`Server running on PORT ${PORT}`)
 })
 
+// const authModel = require("./models/auth")
+
+// async function updateUsers() {
+//     try {
+//         const updateResult = await authModel.updateMany(
+//             {},
+//             {
+//                 $set: {
+//                     dailyDownloadCount: 0,
+//                     lastDownloadDate: null
+//                 }
+//             }
+//         );
+//         console.log(`Successfully updated ${updateResult.modifiedCount} users with new fields.`);
+//     } catch (error) {
+//         console.error("Error updating users:", error);
+//     }
+// }
+
+// mongoose.connection.once('open', async () => {
+//     await updateUsers();
+// });
+
 const authRouter = require('./routes/auth')
 const adminDashboardRouter = require('./routes/adminDashboard')
 const usersRouter = require('./routes/users')

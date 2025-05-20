@@ -15,7 +15,9 @@ const authSchema = new Schema({
     freeDownloads: { type: Number, default: 0 },
     premiumDownloads: { type: Number, default: 0 },
     uploads: { type: Number },
-    points: { type: Number }
+    points: { type: Number },
+    dailyDownloadCount: { type: Number, default: 0 },
+    lastDownloadDate: { type: Date, default: null },
 }, { timestamps: true })
 
 const authModel = mongoose.models.users || mongoose.model("users", authSchema)

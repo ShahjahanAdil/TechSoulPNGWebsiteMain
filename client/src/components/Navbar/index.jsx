@@ -47,6 +47,11 @@ const Navbar = () => {
 
   const { pathname } = useLocation();
 
+  const isPremium = userData?.plan === "premium"
+  const dailyDownloadLimit = isPremium ? 50 : 10
+
+  const remainingDownloads = dailyDownloadLimit - userData.dailyDownloadCount
+
   const logoutFunction = () => {
     logout()
     handleLogout()
@@ -1001,12 +1006,12 @@ const Navbar = () => {
                   {/* Download Status */}
                   <div className="flex items-center !py-[20px] gap-10">
                     <div className="flex items-center flex-col">
-                      <p className="!text-[24px] font-bold !text-[#333]">2</p>
+                      <p className="!text-[24px] font-bold !text-[#333]">{dailyDownloadLimit}</p>
                       <p className="text-[#999] !text-sm">Daily Downloads</p>
                     </div>
 
                     <div className="flex items-center flex-col">
-                      <p className="!text-[24px] font-bold !text-[#333]">2</p>
+                      <p className="!text-[24px] font-bold !text-[#333]">{remainingDownloads}</p>
                       <p className="text-[#999] !text-sm">Remaning Downloads</p>
                     </div>
                   </div>

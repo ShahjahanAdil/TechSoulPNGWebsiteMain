@@ -3,62 +3,22 @@ import { useNavigate } from 'react-router-dom'
 import { IoIosArrowDown } from "react-icons/io";
 import { IoSearchOutline } from "react-icons/io5";
 import { ChevronRight, ChevronLeft } from "lucide-react";
-import img1 from "../../../assets/images/car.png";
+import pngBg from '../../../assets/images/bgPNGFinal.jpg'
 import axios from 'axios'
-
-const buttonLabels = [
-    "Arrows",
-    "Hearts",
-    "Tree",
-    "Star",
-    "Birthday",
-    "Flower",
-    "Light",
-    "Crown",
-    "Sun",
-    "Smoke",
-    "Explosion",
-    "Animals",
-    "Logo",
-    "Cloud",
-    "Ribbons",
-    "Circle",
-    "Bird",
-    "Line",
-    "People",
-    "Cars",
-    "Explosion",
-    "Animals",
-    "Logo",
-    "Cloud",
-    "Ribbons",
-    "Circle",
-    "Bird",
-    "Line",
-    "People",
-    "Cars",
-    "Explosion",
-    "Animals",
-    "Logo",
-    "Cloud",
-    "Ribbons",
-    "Circle",
-    "Bird",
-    "Line",
-    "People",
-    "Cars",
-];
-
-const images = [img1];
+import Loader from "../../../components/Loader";
 
 export default function Main() {
 
+    const [images, setImages] = useState([])
+    const [page, setPage] = useState(1)
+    const [totalImagePages, setTotalImagePages] = useState(1)
     const [categories, setCategories] = useState([])
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
 
     useEffect(() => {
         fetchCategories()
+        fetchImages()
     }, [])
 
     const fetchCategories = () => {
@@ -77,6 +37,24 @@ export default function Main() {
                 setLoading(false);
             });
     };
+
+    const fetchImages = () => {
+        setLoading(true);
+        axios.get(`${import.meta.env.VITE_HOST}/frontend/main/fetch-images?page=${page}`)
+            .then((res) => {
+                const { status, data } = res;
+                if (status === 200) {
+                    setImages(data.imgs);
+                    setTotalImagePages(Math.ceil(data?.totalImgs / 25))
+                }
+            })
+            .catch((err) => {
+                console.error("Frontend POST error", err.message);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }
 
     const [buttonsPerPage, setButtonsPerPage] = useState(20);
     const [currentPage, setCurrentPage] = useState(0);
@@ -108,6 +86,10 @@ export default function Main() {
     const sliderWidth = `${100 * totalPages}%`;
     const slideOffset = `-${(100 / totalPages) * currentPage}%`;
     // const buttonWidth = `${100 / buttonsPerPage}%`;
+
+    if (loading) {
+        return <Loader />
+    }
 
     return (
         <>
@@ -198,15 +180,16 @@ export default function Main() {
                 </div>
 
                 {/* Images */}
-                <div className="!my-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
-                    {images.map((src, i) => (
+                <div className="!my-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 p-4">
+                    {images.map(img => (
                         <div
-                            key={i}
-                            className="w-full h-48 overflow-hidden rounded-lg shadow-sm"
+                            key={img.imageID}
+                            className="w-full h-[300px] overflow-hidden bg-cover rounded-lg shadow-sm"
+                            style={{ backgroundImage: `url(${pngBg})`, backgroundSize: '300%' }}
                         >
                             <img
-                                src={src}
-                                alt={`Image ${i}`}
+                                src={`${import.meta.env.VITE_HOST}${img.imageURL}`}
+                                alt={img.title}
                                 className="w-full h-full object-contain rounded-lg"
                             />
                         </div>
