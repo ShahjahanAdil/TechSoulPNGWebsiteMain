@@ -21,7 +21,7 @@ import { FaCrown, FaHeart } from "react-icons/fa";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { BsInfoCircleFill } from "react-icons/bs";
 import { HiOutlineDownload } from "react-icons/hi";
-import pngImg from "../../assets/images/png bg.jpeg";
+import pngImg from "../../assets/images/bgPNGFinal.jpg";
 import iconImg from "../../assets/images/icons-img.png";
 import { CiSearch } from "react-icons/ci";
 
@@ -37,7 +37,7 @@ const Dcards = ({ imageDets, dimensions, handleDownload }) => {
                         </p>
                         <div
                             className="relative bg-cover bg-center h-[500px] rounded-xl !p-5 flex flex-col justify-end"
-                            style={{ backgroundImage: `url(${pngImg})` }}
+                            style={{ backgroundImage: `url(${pngImg})`, backgroundSize: '220%' }}
                         >
                             {/* Free Tag */}
                             <span className="absolute top-4 left-4 bg-[#4EAA76] text-white !text-xs font-semibold !px-2 !py-1 rounded">

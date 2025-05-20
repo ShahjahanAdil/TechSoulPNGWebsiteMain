@@ -4,10 +4,12 @@ import Dsection1 from "../../../Components/Dsection1";
 import Dcards from "../../../Components/Dcards";
 import Loader from "../../../Components/Loader";
 import axios from "axios";
+import { useAuthContext } from "../../../contexts/AuthContext";
 
 export default function DownloadPage() {
 
     const { imageID } = useParams();
+    const { userData, dispatch } = useAuthContext()
 
     const [imageDets, setImageDets] = useState({});
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -33,8 +35,7 @@ export default function DownloadPage() {
 
     const fetchImage = () => {
         setLoading(true);
-        axios
-            .get(`${import.meta.env.VITE_HOST}/frontend/image?imageID=${imageID}`)
+        axios.get(`${import.meta.env.VITE_HOST}/frontend/image?imageID=${imageID}`)
             .then((res) => {
                 const { status, data } = res;
                 if (status === 200) {
@@ -51,28 +52,48 @@ export default function DownloadPage() {
 
     const handleDownload = async () => {
         try {
-            const response = await fetch(
-                `${import.meta.env.VITE_HOST}${imageDets.imageURL}`,
-                {
-                    mode: "cors",
-                }
-            );
+            const res = await axios.post(`${import.meta.env.VITE_HOST}/frontend/image/download/${imageID}`, {
+                userID: userData.userID,
+            });
 
-            const blob = await response.blob();
-            const blobUrl = URL.createObjectURL(blob);
+            const { status, data } = res;
 
-            const link = document.createElement("a");
-            link.href = blobUrl;
-            link.download = imageDets.title || "download.png";
-            document.body.appendChild(link);
-            link.click();
-            link.remove();
+            if (status === 200) {
+                window.toastify(data.message, "success");
 
-            URL.revokeObjectURL(blobUrl);
+                dispatch({
+                    type: "SET_PROFILE",
+                    payload: {
+                        user: {
+                            ...userData,
+                            dailyDownloadCount: data.dailyDownloadCount,
+                        },
+                    },
+                });
+
+                const response = await fetch(
+                    `${import.meta.env.VITE_HOST}${imageDets.imageURL}`,
+                    { mode: "cors" }
+                );
+
+                const blob = await response.blob();
+                const blobUrl = URL.createObjectURL(blob);
+
+                const link = document.createElement("a");
+                link.href = blobUrl;
+                link.download = imageDets.title || "download.png";
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+
+                URL.revokeObjectURL(blobUrl);
+            }
         } catch (err) {
+            window.toastify(err.response?.data?.message || "Download failed", "error");
             console.error("Download failed:", err);
         }
     };
+
 
     if (loading) {
         return <Loader />;

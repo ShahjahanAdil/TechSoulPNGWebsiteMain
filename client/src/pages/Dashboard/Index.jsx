@@ -226,7 +226,7 @@ export default function Dashboard() {
             <Route path="downloads" element={<Downloads />} />
             <Route path="projects" element={<Projects />} />
             <Route path="uploads" element={<MyUploads />} />
-            <Route path="subscription" element={<Subscription />} />
+            <Route path="subscriptions" element={<Subscription />} />
           </Routes>
         </div>
       </div>

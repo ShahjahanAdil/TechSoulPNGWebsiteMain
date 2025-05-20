@@ -1,13 +1,15 @@
 const express = require("express")
 const router = express.Router()
+const moment = require("moment");
 
+const authModel = require("../models/auth");
 const imagesModel = require('../models/images')
 
 router.get("/image", async (req, res) => {
     try {
         const imageID = req.query.imageID
 
-        const img = await imagesModel.findOne({imageID})
+        const img = await imagesModel.findOne({ imageID })
 
         return res.status(200).json({ message: "Image fetched successfully!", img })
     }
@@ -16,5 +18,44 @@ router.get("/image", async (req, res) => {
         res.status(500).json({ message: "Internal server error" })
     }
 })
+
+router.post("/image/download/:imageID", async (req, res) => {
+    try {
+        const userID = req.body.userID
+        const user = await authModel.findOne({ userID })
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found." })
+        }
+
+        const today = moment().startOf("day")
+        const lastDownload = user.lastDownloadDate ? moment(user.lastDownloadDate).startOf("day") : null
+
+        if (!lastDownload || !today.isSame(lastDownload)) {
+            user.dailyDownloadCount = 0
+            user.lastDownloadDate = new Date()
+        }
+
+        const isPremium = user.plan === "premium"
+        const dailyLimit = isPremium ? 50 : 10
+
+        if (user.dailyDownloadCount >= dailyLimit) {
+            return res.status(403).json({ message: "Daily download limit reached." })
+        }
+
+        user.dailyDownloadCount += 1
+
+        if (isPremium) user.premiumDownloads += 1
+        else user.freeDownloads += 1
+
+        await user.save()
+
+        return res.status(200).json({ message: "Image downloaded.", remainingDownloads: dailyLimit - user.dailyDownloadCount, dailyDownloadCount: user.dailyDownloadCount });
+
+    } catch (error) {
+        console.error("Download error:", error);
+        res.status(500).json({ message: "Internal server error." });
+    }
+});
 
 module.exports = router

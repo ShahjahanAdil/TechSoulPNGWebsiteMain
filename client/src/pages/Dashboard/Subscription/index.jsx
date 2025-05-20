@@ -64,7 +64,7 @@ export default function Subscription() {
                 <p className="text-center">
                   Industry-leading {" "}
                   <span className="text-[#0083EE] font-bold">
-                legal protection
+                    legal protection
                   </span>
                 </p>
               </div>
