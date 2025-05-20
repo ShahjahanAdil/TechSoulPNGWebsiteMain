@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Dsection1 from "../../../Components/Dsection1";
+// import Dsection1 from "../../../Components/Dsection1";
 import Dcards from "../../../Components/Dcards";
 import Loader from "../../../Components/Loader";
 import axios from "axios";
 import { useAuthContext } from "../../../contexts/AuthContext";
+import Search from "../../../components/Search";
 
 export default function DownloadPage() {
 
@@ -101,7 +102,7 @@ export default function DownloadPage() {
 
     return (
         <>
-            <Dsection1 />
+            <Search />
             <Dcards imageDets={imageDets} dimensions={dimensions} handleDownload={handleDownload} />
         </>
     );
