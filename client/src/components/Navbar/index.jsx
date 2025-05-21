@@ -869,14 +869,14 @@ const Navbar = () => {
           {
             userData.userID ?
               <div className="w-[30px] h-[30px] login relative group hidden xl:block">
-                <img src={userIcon} alt={userData.username} className="w-full h-full object-contain" />
+                <img src={userIcon} alt={userData.username} className="w-full h-full object-contain cursor-pointer" />
                 <div className="absolute invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-[0px] opacity-50 translate-y-[20px] transition-all duration-200 flex flex-col items-center justify-between min-h-[400px] w-[400px] bg-white rounded-[12px] z-99 right-0 top-[35px] !p-5 shadow-lg">
                   <div className="absolute top-[15px] right-2">
                     <button className="!text-[14px] hover:!text-red-500 hover:underline" onClick={logoutFunction}>Logout</button>
                   </div>
                   {/* Profile Content */}
                   <div className="relative flex flex-col items-center ">
-                    <div className="absolute z-10 top-[40px] -right-[4px] shadow-xl w-[34px] h-[34px] flex justify-center items-center bg-white !p-1.5 rounded-[50px] ">
+                    <div className="absolute z-10 top-[40px] right-[5px] shadow-xl w-[34px] h-[34px] flex justify-center items-center bg-white !p-1.5 rounded-[50px] cursor-pointer ">
                       <svg
                         className="_tea4l2"
                         xmlns="http://www.w3.org/2000/svg"

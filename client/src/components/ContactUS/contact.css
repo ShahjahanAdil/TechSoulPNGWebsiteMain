@@ -1,0 +1,14 @@
+
+/* dropdown */
+.selector-show {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.selector-show.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}

@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import contactBG from "../../assets/images/contactbg.jpeg";
+import { IoIosArrowDown } from "react-icons/io";
+import "./contact.css";
 const ContactUs = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState("");
+
+  const handleSelect = (value) => {
+    setSelectedValue(value);
+    setIsOpen(false); // close the dropdown after selection
+  };
+
   return (
     <div>
       <div
@@ -14,7 +24,7 @@ const ContactUs = () => {
       >
         <div className="inner-txt flex flex-col justify-center items-center">
           <div>
-            <h1 className="font-bold text-center text-[24px] md:text-[36px] text-white">
+            <h1 className="font-bold text-center text-[24px] md:text-[36px] !text-white">
               How can we help you?
             </h1>
           </div>
@@ -35,27 +45,81 @@ const ContactUs = () => {
             </h2>
           </div>
           <form className="flex flex-col gap-4">
-            {/*  Input */}
+            {/*  Selector */}
+            <div className="relative">
+              {/* Arrow Icon */}
+              <div
+                className={`absolute right-5 top-6 text-xl !text-[#848484] cursor-pointer transition-transform duration-300 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <IoIosArrowDown />
+              </div>
+
+              {/* Dropdown Menu */}
+              <div
+                className={`selector-show absolute flex flex-col gap-4 w-full min-h-[50%] bg-[#fefefe] shadow-lg rounded-[8px] top-[80px] transition-all duration-300 ${
+                  isOpen ? "active" : ""
+                }`}
+              >
+                <div
+                  className="cursor-pointer hover:bg-[#CCCCCC]"
+                  onClick={() => handleSelect("Login/Password/Account")}
+                >
+                  <p className="!p-4 !text-[14px]">Login/Password/Account</p>
+                </div>
+
+                <div
+                  className="cursor-pointer hover:bg-[#CCCCCC]"
+                  onClick={() => handleSelect("Download/Functional issue")}
+                >
+                  <p className="!p-4 !text-[14px]">Download/Functional issue</p>
+                </div>
+
+                <div
+                  className="cursor-pointer hover:bg-[#CCCCCC]"
+                  onClick={() => handleSelect("File content/format issue")}
+                >
+                  <p className="!p-4 !text-[14px]">File content/format issue</p>
+                </div>
+
+                <div
+                  className="cursor-pointer hover:bg-[#CCCCCC]"
+                  onClick={() => handleSelect("Others")}
+                >
+                  <p className="!p-4 !text-[14px]">Others</p>
+                </div>
+              </div>
+
+              {/* Input Field */}
+              <input
+                type="text"
+                value={selectedValue}
+                placeholder="Choose Your Topic"
+                className="w-full !p-3 sm:!p-5 border-2 border-gray-200 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-green-500 mt-2"
+                readOnly
+              />
+            </div>
+
+            {/* Input */}
             <input
               type="text"
-              placeholder="Your "
+              placeholder="Your Name "
               className="w-[100%] !p-3 sm:!p-5 border-2 border-gray-200 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-green-500"
             />
-
             {/* Email Input */}
             <input
               type="email"
               placeholder="Your Email"
               className="w-[100%] !p-3 sm:!p-5 border-2 border-gray-200 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-green-500"
             />
-
             {/* Textarea */}
             <textarea
               placeholder="Your Message"
               rows="8"
               className="w-[100%] !p-3 sm:!p-5 border-2 resize-none border-gray-200 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-green-500"
             ></textarea>
-
             <p className="text-[#666] text-[14px] !py-2">
               In order to help you solve the problem faster, we hope you can
               describe the problem in as much detail as possible. For example,
@@ -63,7 +127,6 @@ const ContactUs = () => {
               prompt that appears on the instruction page. Thank you for your
               cooperation.
             </p>
-
             {/* Submit Button */}
             <div className="flex justify-end">
               <button
