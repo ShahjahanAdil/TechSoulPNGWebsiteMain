@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-// import Dsection1 from "../../../Components/Dsection1";
+import { useLocation, useParams } from "react-router-dom";
 import Dcards from "../../../Components/Dcards";
 import Loader from "../../../Components/Loader";
 import axios from "axios";
@@ -11,14 +10,22 @@ export default function DownloadPage() {
 
     const { imageID } = useParams();
     const { userData, dispatch } = useAuthContext()
+    const { pathname } = useLocation()
 
     const [imageDets, setImageDets] = useState({});
+    const [similarImages, setSimilarImages] = useState([]);
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        fetchImage();
-    }, []);
+        fetchImage()
+    }, [pathname])
+
+    useEffect(() => {
+        if (imageDets.imageID) {
+            fetchSimilarImages()
+        }
+    }, [imageDets, pathname])
 
     useEffect(() => {
         if (!imageDets?.imageURL) return;
@@ -51,8 +58,32 @@ export default function DownloadPage() {
             });
     };
 
+    const fetchSimilarImages = () => {
+        axios.get(`${import.meta.env.VITE_HOST}/frontend/similar-images?imageCategory=${imageDets?.category}`)
+            .then((res) => {
+                const { status, data } = res;
+                if (status === 200) {
+                    setSimilarImages(data.similarImgs);
+                }
+            })
+            .catch((err) => {
+                console.error("Frontend POST error", err.message);
+            })
+    };
+
     const handleDownload = async () => {
         try {
+            if (!userData.userID) {
+                return window.toastify("Please login to continue downloading!", "info")
+            }
+
+            const isFreeUser = userData.plan === "free";
+            const isFreeImage = imageDets.license === "free";
+
+            if (isFreeUser && !isFreeImage) {
+                return window.toastify("Upgrade to premium to download this image!", "error");
+            }
+
             const res = await axios.post(`${import.meta.env.VITE_HOST}/frontend/image/download/${imageID}`, {
                 userID: userData.userID,
             });
@@ -64,12 +95,7 @@ export default function DownloadPage() {
 
                 dispatch({
                     type: "SET_PROFILE",
-                    payload: {
-                        user: {
-                            ...userData,
-                            dailyDownloadCount: data.dailyDownloadCount,
-                        },
-                    },
+                    payload: { user: { ...userData, dailyDownloadCount: data.dailyDownloadCount, }, },
                 });
 
                 const response = await fetch(
@@ -103,7 +129,7 @@ export default function DownloadPage() {
     return (
         <>
             <Search />
-            <Dcards imageDets={imageDets} dimensions={dimensions} handleDownload={handleDownload} />
+            <Dcards imageDets={imageDets} similarImages={similarImages} dimensions={dimensions} handleDownload={handleDownload} />
         </>
     );
 }
