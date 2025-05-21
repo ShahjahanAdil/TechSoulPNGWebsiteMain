@@ -25,7 +25,7 @@ router.get("/main/fetch-images", async (req, res) => {
         const imgs = await imagesModel.find().sort({ createdAt: -1 }).skip(skip).limit(limit)
         const totalImgs = await imagesModel.countDocuments()
 
-        return res.status(200).json({ message: "Categories fetched successfully!", imgs, totalImgs })
+        return res.status(200).json({ message: "Images fetched successfully!", imgs, totalImgs })
     }
     catch (error) {
         console.error(error)

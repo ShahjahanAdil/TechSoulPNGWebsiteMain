@@ -42,7 +42,7 @@ export default function Dashboard() {
           <div className="bg-white shadow-lg rounded-3xl">
             <div className="flex justify-center items-center">
               <div className="relative mt-5">
-                <div className="md:w-[120px] md:h-[120px] w-[80px] h-[80px]  rounded-full border-5 p-1 border-gray-300 overflow-hidden">
+                <div className={`md:w-[120px] md:h-[120px] w-[80px] h-[80px]  rounded-full border-3 p-2 ${userData.plan === 'premium' ? 'border-[#ffe895]' : ' border-gray-200'} overflow-hidden`}>
                   <img
                     src={userImage}
                     alt="User"
@@ -64,9 +64,15 @@ export default function Dashboard() {
                   <span className="animate-pulse w-[8px] rounded-full h-[8px] bg-[#39a166]"></span>
                 </p>
               </div>
-              <button className="md:px-[20px] md:py-3 px-[15px] py-2 rounded-full font-bold bg-gradient-to-t from-[#F3574C] via-[#F65A48] to-[#f86055] text-white sm:!text-[12px] !text-[10px] my-2 shadow-lg transform transition-all duration-300 hover:scale-105">
-                Become a Member
-              </button>
+              {
+                userData.plan === 'free' ?
+                  <button className="md:px-[20px] md:py-3 px-[15px] py-2 rounded-full font-bold bg-gradient-to-t from-[#F3574C] via-[#F65A48] to-[#f86055] text-white sm:!text-[14px] !text-[12px] my-2 shadow-lg transform transition-all duration-300 hover:scale-105">
+                    Become a Member
+                  </button> :
+                  <button className="md:px-[20px] md:py-3 px-[15px] py-2 rounded-full font-bold bg-linear-to-b from-[#FAD961] to-[#F76B1C] text-white sm:!text-[14px] !text-[12px] my-2 shadow-lg !cursor-default">
+                    Premium Account
+                  </button>
+              }
             </div>
           </div>
 

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 const tabs = ["nature", "technology", "clothing", "food"];
 
@@ -16,11 +17,10 @@ export default function Cards() {
 
     const fetchImages = () => {
         setLoading(true);
-        axios
-            .get(
-                `${import.meta.env.VITE_HOST
-                }/frontend/fetch-tab-images?category=${activeTab}`
-            )
+        axios.get(
+            `${import.meta.env.VITE_HOST
+            }/frontend/fetch-tab-images?category=${activeTab}`
+        )
             .then((res) => {
                 const { status, data } = res;
                 if (status === 200) {
@@ -80,6 +80,10 @@ export default function Cards() {
                     ))}
                 </div>
             </section>
+
+            <div className="flex justify-center my-3 md:my-5">
+                <button className="flex gap-2 items-center text-[#5ABC84] hover:text-[#4e9f71]" onClick={() => navigate("/images")}>Explore more <AiOutlineArrowRight /></button>
+            </div>
         </div>
     );
 }

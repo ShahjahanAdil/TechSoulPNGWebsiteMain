@@ -1,10 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { FaSearch } from "react-icons/fa";
-import { IoIosArrowDown } from "react-icons/io";
 import { RiSearchLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import Search from "../Search";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 export default function Banner() {
 
@@ -41,7 +40,7 @@ export default function Banner() {
       <p className="text-sm md:text-lg text-gray-500 font-medium mt-2">
         Royalty Free Latest PNG Images, JPG, WEBP, Backgrounds, Illustrations
       </p>
-     <Search/>
+      <Search />
 
       <div className="mt-5 text-gray-600">
         <ul className="flex flex-wrap justify-center gap-2 cursor-pointer">
@@ -56,6 +55,9 @@ export default function Banner() {
         </ul>
       </div>
 
+      <div className="flex justify-center my-3 md:!mt-8">
+        <button className="flex gap-2 items-center text-[#5ABC84] hover:text-[#4e9f71]" onClick={() => navigate("/images")}>Explore images <AiOutlineArrowRight /></button>
+      </div>
     </div>
   );
 }
