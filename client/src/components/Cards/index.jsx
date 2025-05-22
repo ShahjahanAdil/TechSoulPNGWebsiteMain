@@ -82,7 +82,7 @@ export default function Cards() {
             </section>
 
             <div className="flex justify-center my-3 md:my-5">
-                <button className="flex gap-2 items-center text-[#5ABC84] hover:text-[#4e9f71]" onClick={() => navigate("/images")}>Explore more <AiOutlineArrowRight /></button>
+                <button className="flex gap-2 items-center p-2 rounded-[25px] px-[25px] bg-[#5ABC84] hover:gap-4 transition-all duration-300 text-white font-semibold hover:bg-[#5abc84c9]" onClick={() => navigate("/images")}>Explore more <AiOutlineArrowRight /></button>
             </div>
         </div>
     );
