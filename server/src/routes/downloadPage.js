@@ -19,6 +19,30 @@ router.get("/image", async (req, res) => {
     }
 })
 
+router.get("/similar-images", async (req, res) => {
+    try {
+        const imageCategory = req.query.imageCategory
+
+         const searchQuery = {
+            $or: [
+                { title: { $regex: imageCategory, $options: "i" } },
+                { description: { $regex: imageCategory, $options: "i" } },
+                { category: { $regex: imageCategory, $options: "i" } },
+                { subcategory: { $regex: imageCategory, $options: "i" } },
+                { tags: { $elemMatch: { $regex: imageCategory, $options: "i" } } }
+            ]
+        }
+
+        const similarImgs = await imagesModel.find(searchQuery).sort({ createdAt: -1 }).limit(10)
+
+        return res.status(200).json({ message: "Similar Images fetched successfully!", similarImgs })
+    }
+    catch (error) {
+        console.error(error)
+        res.status(500).json({ message: "Internal server error" })
+    }
+})
+
 router.post("/image/download/:imageID", async (req, res) => {
     try {
         const userID = req.body.userID

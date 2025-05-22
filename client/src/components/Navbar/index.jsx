@@ -820,427 +820,7 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
-            </section>
-          {/* Buttons Hover */}
-          <div className="hidden sm:block">
-            <div className="pre-btn  nav-btn flex justify-end gap-4">
-              <div className="relative group ">
-                <button className="flex items-center gap-2 bg-[#5b658d] hover:bg-[#313e68] !text-[14px] !text-[#FFE4CA] font-bold rounded cursor-pointer">
-                  <Crown size={16} color="white" fill="#ffffff" />
-                  Enterprise
-                </button>
-                <div className="absolute invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-[0px] opacity-50 translate-y-[20px] transition-all duration-200 -left-[70%] w-[340px] min-h-[100px] !p-5 bg-white z-20 rounded-[12px] shadow-lg">
-                  <div className="bg-img relative">
-                    <img src={bgImg} alt="" className="object-cover " />
-                    <div className="iner-txt absolute top-4 left-5">
-                      <h4 className="!text-white font-bold !text-[18px]">
-                        Enterprise Plan
-                      </h4>
-                    </div>
-                    <div className="iner-content bg-[#EDF2FC] !p-5">
-                      <p className="flex gap-2 items-center text-[#333] text-[14px] ">
-                        {" "}
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="18"
-                          height="18"
-                          viewBox="0 0 18 18"
-                          className="_ktturt _tea4l2 _1yoi2w4"
-                        >
-                          <path
-                            fill="#47537D"
-                            d="M8.96 0a8.96 8.96 0 1 1-.001 17.921A8.96 8.96 0 0 1 8.96 0m.106 4.52C6.868 4.52 5.6 6.004 5.6 8.456v1.046c0 2.434 1.268 3.898 3.466 3.898 1.88 0 3.254-1.176 3.254-2.828a.094.094 0 0 0-.094-.094H11.09a.16.16 0 0 0-.16.146c-.084.922-.802 1.556-1.86 1.556-1.306 0-2.042-.958-2.042-2.672V8.456c.002-1.74.74-2.71 2.044-2.71 1.06 0 1.78.676 1.86 1.668a.16.16 0 0 0 .16.148h1.134a.094.094 0 0 0 .094-.094c0-1.734-1.368-2.948-3.254-2.948"
-                          ></path>
-                        </svg>
-                        Access to all assets
-                      </p>
-                      <p className="flex gap-2 items-center text-[#333] text-[14px] !my-2 ">
-                        {" "}
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="18"
-                          height="18"
-                          viewBox="0 0 18 18"
-                          className="_ktturt _tea4l2 _1yoi2w4"
-                        >
-                          <g fill="none" fill-rule="evenodd">
-                            <circle cx="9" cy="9" r="9" fill="#47537D"></circle>
-                            <g fill="#FFF" transform="translate(3.5 2.723)">
-                              <path
-                                fill-rule="nonzero"
-                                d="m6.6 10.755 2.646-.022a.66.66 0 0 0 .654-.66V5.475a1.32 1.32 0 0 0-1.32-1.32H6.6zM5.557.565a.88.88 0 0 1 .218.58V9.93H.825V4.137c0-.38.164-.742.45-.993L4.316.483a.88.88 0 0 1 1.242.082m-1.02 5.24h-1.65a.412.412 0 1 0 0 .825h1.65a.412.412 0 1 0 0-.825m0-1.65h-1.65a.412.412 0 1 0 0 .825h1.65a.412.412 0 1 0 0-.825"
-                              ></path>
-                              <rect
-                                width="10.725"
-                                height="1"
-                                y="9.93"
-                                rx=".5"
-                              ></rect>
-                            </g>
-                          </g>
-                        </svg>
-                        Maximun commercial use rights
-                      </p>
-                      <p className="flex gap-2 items-center text-[#333] text-[14px] ">
-                        {" "}
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="18"
-                          height="18"
-                          viewBox="0 0 18 18"
-                          className="_ktturt _tea4l2 _1yoi2w4"
-                        >
-                          <g fill="none" fill-rule="evenodd">
-                            <circle cx="9" cy="9" r="9" fill="#47537D"></circle>
-                            <g fill="#FFF" fill-rule="nonzero">
-                              <path d="M10.25 9.269a2.32 2.32 0 0 0 1.06-1.998A2.318 2.318 0 1 0 7.734 9.27a.193.193 0 0 1-.032.34 3.4 3.4 0 0 0-2.046 2.545.484.484 0 0 0 .48.565h5.713a.484.484 0 0 0 .48-.565 3.39 3.39 0 0 0-2.047-2.543.193.193 0 0 1-.031-.342"></path>
-                              <path d="M13.98 11.04a2.25 2.25 0 0 0-1.355-1.683.128.128 0 0 1-.02-.226 1.533 1.533 0 0 0-.941-2.819 2.85 2.85 0 0 1-.674 3.05 3.93 3.93 0 0 1 1.696 2.051h.976a.32.32 0 0 0 .318-.373M6.994 9.364a2.87 2.87 0 0 1-.675-3.052l-.023-.002a1.533 1.533 0 0 0-.915 2.821.128.128 0 0 1-.021.225 2.25 2.25 0 0 0-1.355 1.684.32.32 0 0 0 .318.374h.975c.31-.86.909-1.585 1.695-2.05"></path>
-                            </g>
-                          </g>
-                        </svg>
-                        Multi-account use
-                      </p>
-                      <button className="!mt-3  bg-linear-to-t from-[#dfab62] to-[#fdce87] w-full text-[16px] font-bold !p-3 text-white rounded-[12px]">
-                        Get Enterprise Authorization
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative group">
-                <div className="absolute invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-[0px] opacity-50 translate-y-[20px] transition-all duration-200 top-[100%] -left-[70%] w-[340px] min-h-[100px] !p-5 bg-white z-20 rounded-[12px] shadow-lg">
-                  <div className="pricing relative">
-                    <h4 className="absolute top-4 left-5 !text-white font-bold !text-[18px]">
-                      Individual Plan
-                    </h4>
-                    <img src={priceImg} alt="" />
-                    <div className="iner-content bg-[#D6F8DE] !p-3">
-                      <p className="flex gap-2 items-center text-[#333] text-[14px] ">
-                        {" "}
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="18"
-                          height="18"
-                          viewBox="0 0 18 18"
-                          className="_ktturt _tea4l2 _1yoi2w4"
-                        >
-                          <g fill="none">
-                            <path
-                              fill="#77C88E"
-                              d="M9 18A9 9 0 1 0 9 0a9 9 0 0 0 0 18"
-                            ></path>
-                            <path
-                              fill="#FFF"
-                              d="M8.438 4.5h1.124a.562.562 0 0 0 0-1.125H8.438a.562.562 0 0 0 0 1.125m.024 8.723c.29.334.76.334 1.05 0l2.622-3.016a.93.93 0 0 0 .21-.727.55.55 0 0 0-.546-.48h-1.673V6.189a.56.56 0 0 0-.563-.563H8.437a.56.56 0 0 0-.562.563V9h-1.7a.55.55 0 0 0-.545.479.93.93 0 0 0 .21.727z"
-                            ></path>
-                          </g>
-                        </svg>
-                        Unlimited Downloads
-                      </p>
-                      <p className="flex gap-2 items-center text-[#333] text-[14px] !my-2 ">
-                        {" "}
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="18"
-                          height="18"
-                          viewBox="0 0 18 18"
-                          className="_ktturt _tea4l2 _1yoi2w4"
-                        >
-                          <g fill="none">
-                            <path
-                              fill="#77C88E"
-                              d="M9 18A9 9 0 1 0 9 0a9 9 0 0 0 0 18"
-                            ></path>
-                            <path
-                              fill="#FFF"
-                              d="M8.908 4.025a.24.24 0 0 1 .215 0l3.631 1.335c.154.067.246.2.246.367v4.17c-.123 2.502-3.723 4.003-3.877 4.07C9.093 14 9.031 14 9 14c-.03 0-.092-.034-.123-.034C8.723 13.9 5.092 12.4 5 9.93V5.727c0-.167.092-.3.246-.367Zm1.969 3.17-2.4 2.601-1.17-1.267a.316.316 0 0 0-.46 0 .385.385 0 0 0 0 .5l1.384 1.535a.33.33 0 0 0 .246.1.33.33 0 0 0 .246-.1l2.646-2.836a.385.385 0 0 0 0-.5c-.122-.166-.338-.166-.492-.033"
-                            ></path>
-                          </g>
-                        </svg>
-                        Personal commercial use
-                      </p>
-                      <p className="flex gap-2 items-center text-[#333] text-[14px] ">
-                        {" "}
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="18"
-                          height="18"
-                          viewBox="0 0 18 18"
-                          className="_ktturt _tea4l2 _1yoi2w4"
-                        >
-                          <g fill="none">
-                            <path
-                              fill="#77C88E"
-                              d="M9 18A9 9 0 1 0 9 0a9 9 0 0 0 0 18"
-                            ></path>
-                            <path
-                              fill="#FFF"
-                              d="M9.223 9.009c1.453 0 2.638-1.122 2.638-2.505S10.676 4 9.223 4 6.584 5.121 6.584 6.504c0 1.378 1.181 2.505 2.639 2.505m-1.016.456C6.37 9.465 5 10.662 5 12.406v.186c0 .912 1.472.912 3.329.912h1.977c1.789 0 3.334 0 3.334-.912v-.186c0-1.739-1.37-2.941-3.207-2.941z"
-                            ></path>
-                          </g>
-                        </svg>
-                        Individual Authorization
-                      </p>
-                      <button className="!mt-3  bg-linear-to-t from-[#ff910f] to-[#ffc76b] w-full text-[16px] font-bold !p-3 text-white rounded-[12px]">
-                        Go Premium
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <button className="flex items-center gap-2 bg-[#ff7d04] hover:bg-[#ff9f0f] !text-[14px] !text-white font-bold rounded cursor-pointer">
-                  <Crown size={16} color="white" fill="#ffffff" />
-                  Pricing
-                </button>
-              </div>
-            </div>
-          </div>
-        <div className="below-nav flex justify-center items-center gap-6 ">
-          <button className="swing-animation text-[12px] sm:text-[16px] flex items-center gap-2 bg-[#ff9992] hover:bg-[#f04c41]  text-white font-bold rounded cursor-pointer">
-            90% OFF
-          </button>
-          {/* SVG Hover */}
-          <div className="relative group square hover:text-white  flex justify-center items-center">
-            <div className="absolute invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-[0px] opacity-50 translate-y-[20px] transition-all duration-200 min-h-[100px] w-[300px] z-30 rounded-[12px] !p-5 -left-[250px] top-10 bg-white shadow-lg">
-              <h4 className="!text-base !text-[#333] font-bold !mb-3">
-                New Project
-              </h4>
-              <div className="top-item flex gap-2 items-center">
-                <div className="bg-[#DBECFF] rounded-[12px] ">
-                  <img src={lovePik} alt="" />
-                </div>
-                <div className="!bg-[#FFEBD4] rounded-[12px] ">
-                  <img src={pikBest} alt="" />
-                </div>
-              </div>
-              <div className="down-item !my-2 flex gap-2 items-center">
-                <div className="bg-[#FFE7EB] rounded-[12px] ">
-                  <img src={seaPik} alt="" />
-                </div>
-                <div className="bg-[#D9EBFF]  rounded-[12px] h-[64px] flex items-center !px-3 w-[130px]">
-                  <img src={slideDoc} alt="" />
-                </div>
-              </div>
-            </div>
-            <svg
-              className="!pl-1  !pt-1 rounded-full hover:bg-[#5ABC84] bg-[#efefef] cursor-pointer"
-              width="30"
-              height="30"
-              viewBox="0 0 30 30"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect x="4" y="4" width="4" height="4" />
-              <rect x="10" y="4" width="4" height="4" />
-              <rect x="16" y="4" width="4" height="4" />
-              <rect x="4" y="10" width="4" height="4" />
-              <rect x="10" y="10" width="4" height="4" />
-              <rect x="16" y="10" width="4" height="4" />
-              <rect x="4" y="16" width="4" height="4" />
-              <rect x="10" y="16" width="4" height="4" />
-              <rect x="16" y="16" width="4" height="4" />
-            </svg>
-          </div>
-
-          {/* Login Profile */}
-          {
-            userData.userID ?
-              <div className="w-[30px] h-[30px] login relative group hidden xl:block">
-                <img src={userIcon} alt={userData.username} className="w-full h-full object-contain cursor-pointer" />
-                <div className="absolute invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-[0px] opacity-50 translate-y-[20px] transition-all duration-200 flex flex-col items-center justify-between min-h-[400px] w-[400px] bg-white rounded-[12px] z-99 right-0 top-[35px] !p-5 shadow-lg">
-                  <div className="absolute top-[15px] right-2">
-                    <button className="!text-[14px] hover:!text-red-500 hover:underline" onClick={logoutFunction}>Logout</button>
-                  </div>
-                  {/* Profile Content */}
-                  <div className="relative flex flex-col items-center ">
-                    <div className="absolute z-10 top-[40px] right-[5px] shadow-xl w-[34px] h-[34px] flex justify-center items-center bg-white !p-1.5 rounded-[50px] cursor-pointer ">
-                      <svg
-                        className="_tea4l2"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="28"
-                        height="23"
-                        aria-hidden="true"
-                        viewBox="0 0 28 23"
-                      >
-                        <defs>
-                          <linearGradient
-                            id="isc2z30a"
-                            x1="50%"
-                            x2="50%"
-                            y1="11.131%"
-                            y2="57.082%"
-                          >
-                            <stop offset="0%" stop-color="#C7C7C7"></stop>
-                            <stop offset="100%" stop-color="#9C9C9C"></stop>
-                          </linearGradient>
-                          <linearGradient
-                            id="isc2z30c"
-                            x1="90.916%"
-                            x2="5.301%"
-                            y1="61.059%"
-                            y2="59.126%"
-                          >
-                            <stop offset="0%" stop-color="#D2D2D2"></stop>
-                            <stop offset="100%" stop-color="#C4C4C4"></stop>
-                          </linearGradient>
-                          <linearGradient
-                            id="isc2z30e"
-                            x1="100%"
-                            x2="22.218%"
-                            y1="27.905%"
-                            y2="95.888%"
-                          >
-                            <stop offset="0%" stop-color="#E8E8E8"></stop>
-                            <stop offset="100%" stop-color="#CFCFCF"></stop>
-                          </linearGradient>
-                        </defs>
-                        <path
-                          id="isc2z30b"
-                          d="M25.455 3.662 22.47 18.458c-.116.35-6.731 1.579-9.755 1.579-2.808 0-9.639-1.23-9.756-1.579L0 3.662l7.948 5.016L12.715 0l4.826 8.678z"
-                        ></path>
-                        <g fill="none" fill-rule="evenodd">
-                          <path
-                            fill="url(#isc2z30a)"
-                            fill-rule="nonzero"
-                            d="M9.301 3.906 14 15.866H3.733l4.7-11.96a.467.467 0 0 1 .868 0"
-                            transform="rotate(-20 8.867 9.333)"
-                          ></path>
-                          <path
-                            fill="url(#isc2z30a)"
-                            fill-rule="nonzero"
-                            d="m19.568 3.906 4.699 11.96H14l4.699-11.96a.467.467 0 0 1 .869 0"
-                            transform="scale(-1 1)rotate(-20 0 117.844)"
-                          ></path>
-                          <g transform="translate(1.281 1.389)">
-                            <mask id="isc2z30d" fill="#fff">
-                              <use href="#isc2z30b"></use>
-                            </mask>
-                            <use
-                              fill="url(#isc2z30c)"
-                              fill-rule="nonzero"
-                              href="#isc2z30b"
-                            ></use>
-                            <path
-                              stroke="#FFF"
-                              stroke-linejoin="round"
-                              stroke-width=".933"
-                              d="m23.712 14.935-.305.084a41.3 41.3 0 0 1-10.29 1.435l-.328.003v-.002q-5.422-.03-10.617-1.438l-.305-.084"
-                              mask="url(#isc2z30d)"
-                              opacity=".504"
-                            ></path>
-                          </g>
-                          <ellipse
-                            cx="1.909"
-                            cy="5.682"
-                            fill="url(#isc2z30e)"
-                            fill-rule="nonzero"
-                            rx="1.909"
-                            ry="1.894"
-                          ></ellipse>
-                          <ellipse
-                            cx="14"
-                            cy="1.894"
-                            fill="url(#isc2z30e)"
-                            fill-rule="nonzero"
-                            rx="1.909"
-                            ry="1.894"
-                          ></ellipse>
-                          <ellipse
-                            cx="26.091"
-                            cy="5.682"
-                            fill="url(#isc2z30e)"
-                            fill-rule="nonzero"
-                            rx="1.909"
-                            ry="1.894"
-                          ></ellipse>
-                          <path
-                            fill="#FFF"
-                            fill-rule="nonzero"
-                            d="M14.626 15.48a.7.7 0 0 1-1.224.051l-.028-.051-2.1-4.2a.7.7 0 0 1 1.226-.674l.026.048L14 13.602l1.474-2.948a.7.7 0 0 1 .889-.336l.05.023a.7.7 0 0 1 .336.889l-.023.05z"
-                            opacity=".7"
-                          ></path>
-                        </g>
-                      </svg>
-                    </div>
-                    <div className=" relative w-[72px] h-[72px] flex items-center justify-center border-3 border-[#efefef] !p-3 rounded-[50px] overflow-hidden ">
-                      <img src={userIcon} alt="" />
-                    </div>
-                    <div className="!mt-5 flex justify-center items-center gap-1.5">
-                      <p>{userData?.username}</p>
-                      <img src={nameIcon} alt="" className="w-[15px]" />
-                    </div>
-                    <div className="!mt-1 mb-3">
-                      <p>ID: {userData.userID}</p>
-                    </div>
-                    <div className={`!mt-1 flex items-center bg-[#E8E8E8]  rounded-full ${userData.plan === 'free' ? 'bg-[#E8E8E8]' : 'bg-[#fced7c] !text-[#7f7000]'}`}>
-                      {" "}
-                      <span className={`!text-sm !py-[5px] font-bold capitalize !px-[15px]`}>
-                        <span>{userData.plan}</span> user
-                      </span>{" "}
-                    </div>
-                  </div>
-
-                  {/* Download Status */}
-                  <div className="flex items-center !py-[20px] gap-10">
-                    <div className="flex items-center flex-col">
-                      <p className="!text-[24px] font-bold !text-[#333]">{dailyDownloadLimit}</p>
-                      <p className="text-[#999] !text-sm">Daily Downloads</p>
-                    </div>
-
-                    <div className="flex items-center flex-col">
-                      <p className="!text-[24px] font-bold !text-[#333]">{remainingDownloads}</p>
-                      <p className="text-[#999] !text-sm">Remaning Downloads</p>
-                    </div>
-                  </div>
-
-                  {/* Border Line */}
-
-                  <div className="border-t-2 w-full border-[#F7F7F7]"></div>
-
-
-                  {/* Sale banner */}
-                <div className={`!mt-4 !p-[20px] relative flex flex-col items-center justify-center bg-[#FFFAEC] w-[350px] min-h-[100px] rounded-[12px] shadow-lg ${userData.plan === 'premium' && 'hidden'}`}>
-                    <div className=" absolute top-0 left-0 z-30 flex flex-col justify-center !px-1">
-                      <p className="!text-[14px] !text-white uppercase font-bold">
-                        Sale
-                      </p>
-                      <p className="!text-[14px] !text-white uppercase font-bold">
-                        80%
-                      </p>
-                    </div>
-                    <div className="absolute top-[20px] right-[20px] -rotate-30">
-                      <img src={saleCrown} alt="" className="w-[50px]" />
-                    </div>
-                    <div className="absolute top-0 left-0">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="46"
-                        height="50"
-                        viewBox="0 0 46 50"
-                        fill="none"
-                      >
-                        <path
-                          d="M0 0H46V49.5L23 43.5L0 49.5V0Z"
-                          fill="#FF3E7E"
-                        ></path>
-                      </svg>
-                    </div>
-
-                    <div className="flex flex-col items-center gap-1 ">
-                      <p className="!text-[14px] !text-[#85713b]">
-                        One Time payment
-                      </p>
-                      <p className="!text-[14px] font-medium !text-[#85713b]">
-                        8,000,000+ curated assets
-                      </p>
-                      <p className="!text-[16px] !text-[#4e2d25] font-semibold">
-                        Unlimited Lifetime Downloads
-                      </p>
-                    </div>
-
-                    <button className=" !mt-3 bg-linear-65 from-[#f7bc0b] !py-2 to-[#ff9900] w-full !text-[18px] font-bold !text-white">
-                      Buy Now
-                    <div className="below-nav flex justify-center items-center gap-6 ">
+                <div className="below-nav flex justify-center items-center gap-6 ">
                     <button className="swing-animation text-[12px] sm:text-[16px] flex items-center gap-2 bg-[#ff9992] hover:bg-[#f04c41]  text-white font-bold rounded cursor-pointer">
                         90% OFF
                     </button>
@@ -1290,7 +870,7 @@ const Navbar = () => {
                     {/* Login Profile */}
                     {
                         userData.userID ?
-                            <div className="w-[30px] h-[30px] login relative group hidden xl:block">
+                            <div className="w-[30px] h-[30px] login relative group cursor-pointer hidden xl:block">
                                 <img src={userIcon} alt={userData.username} className="w-full h-full object-contain" />
                                 <div className="absolute invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-[0px] opacity-50 translate-y-[20px] transition-all duration-200 flex flex-col items-center justify-between min-h-[400px] w-[400px] bg-white rounded-[12px] z-99 right-0 top-[35px] !p-5 shadow-lg">
                                     <div className="absolute top-[15px] right-2">
@@ -1298,114 +878,150 @@ const Navbar = () => {
                                     </div>
                                     {/* Profile Content */}
                                     <div className="relative flex flex-col items-center ">
-                                        <div className="absolute z-10 top-[40px] -right-[4px] shadow-xl w-[34px] h-[34px] flex justify-center items-center bg-white !p-1.5 rounded-[50px] ">
-                                            <svg
-                                                className="_tea4l2"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="28"
-                                                height="23"
-                                                aria-hidden="true"
-                                                viewBox="0 0 28 23"
-                                            >
-                                                <defs>
-                                                    <linearGradient
-                                                        id="isc2z30a"
-                                                        x1="50%"
-                                                        x2="50%"
-                                                        y1="11.131%"
-                                                        y2="57.082%"
+                                        <div className="absolute z-10 top-[40px] right-[0px] cursor-pointer shadow-xl w-[34px] h-[34px] flex justify-center items-center bg-white !p-1.5 rounded-[50px] "
+                                        onClick={()=>navigate("/dashboard/subscriptions")}>
+                                            {
+                                                userData.plan === 'premium' ?
+                                                    <svg class="_tea4l2" xmlns="http://www.w3.org/2000/svg" width="28" height="23" aria-hidden="true" viewBox="0 0 28 23">
+                                                        <defs>
+                                                            <linearGradient id="isc2z30a" x1="50%" x2="50%" y1="11.131%" y2="57.082%">
+                                                                <stop offset="0%" stop-color="#FFD700"></stop>
+                                                                <stop offset="100%" stop-color="#FFC300"></stop>
+                                                            </linearGradient>
+                                                            <linearGradient id="isc2z30c" x1="90.916%" x2="5.301%" y1="61.059%" y2="59.126%">
+                                                                <stop offset="0%" stop-color="#FFD700"></stop>
+                                                                <stop offset="100%" stop-color="#FFB800"></stop>
+                                                            </linearGradient>
+                                                            <linearGradient id="isc2z30e" x1="100%" x2="22.218%" y1="27.905%" y2="95.888%">
+                                                                <stop offset="0%" stop-color="#FFD700"></stop>
+                                                                <stop offset="100%" stop-color="#FFC300"></stop>
+                                                            </linearGradient>
+                                                        </defs>
+                                                        <path id="isc2z30b" d="M25.455 3.662 22.47 18.458c-.116.35-6.731 1.579-9.755 1.579-2.808 0-9.639-1.23-9.756-1.579L0 3.662l7.948 5.016L12.715 0l4.826 8.678z"></path>
+                                                        <g fill="none" fill-rule="evenodd">
+                                                            <path fill="url(#isc2z30a)" fill-rule="nonzero" d="M9.301 3.906 14 15.866H3.733l4.7-11.96a.467.467 0 0 1 .868 0" transform="rotate(-20 8.867 9.333)"></path>
+                                                            <path fill="url(#isc2z30a)" fill-rule="nonzero" d="m19.568 3.906 4.699 11.96H14l4.699-11.96a.467.467 0 0 1 .869 0" transform="scale(-1 1)rotate(-20 0 117.844)"></path>
+                                                            <g transform="translate(1.281 1.389)">
+                                                                <mask id="isc2z30d" fill="#fff">
+                                                                    <use href="#isc2z30b"></use>
+                                                                </mask>
+                                                                <use fill="url(#isc2z30c)" fill-rule="nonzero" href="#isc2z30b"></use>
+                                                                <path stroke="#FFF8DC" stroke-linejoin="round" stroke-width=".933" d="m23.712 14.935-.305.084a41.3 41.3 0 0 1-10.29 1.435l-.328.003v-.002q-5.422-.03-10.617-1.438l-.305-.084" mask="url(#isc2z30d)" opacity=".504"></path>
+                                                            </g>
+                                                            <ellipse cx="1.909" cy="5.682" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse>
+                                                            <ellipse cx="14" cy="1.894" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse>
+                                                            <ellipse cx="26.091" cy="5.682" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse>
+                                                            <path fill="#FFF8DC" fill-rule="nonzero" d="M14.626 15.48a.7.7 0 0 1-1.224.051l-.028-.051-2.1-4.2a.7.7 0 0 1 1.226-.674l.026.048L14 13.602l1.474-2.948a.7.7 0 0 1 .889-.336l.05.023a.7.7 0 0 1 .336.889l-.023.05z" opacity=".7"></path>
+                                                        </g>
+                                                    </svg> :
+                                                    <svg
+                                                        className="_tea4l2"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width="28"
+                                                        height="23"
+                                                        aria-hidden="true"
+                                                        viewBox="0 0 28 23"
                                                     >
-                                                        <stop offset="0%" stop-color="#C7C7C7"></stop>
-                                                        <stop offset="100%" stop-color="#9C9C9C"></stop>
-                                                    </linearGradient>
-                                                    <linearGradient
-                                                        id="isc2z30c"
-                                                        x1="90.916%"
-                                                        x2="5.301%"
-                                                        y1="61.059%"
-                                                        y2="59.126%"
-                                                    >
-                                                        <stop offset="0%" stop-color="#D2D2D2"></stop>
-                                                        <stop offset="100%" stop-color="#C4C4C4"></stop>
-                                                    </linearGradient>
-                                                    <linearGradient
-                                                        id="isc2z30e"
-                                                        x1="100%"
-                                                        x2="22.218%"
-                                                        y1="27.905%"
-                                                        y2="95.888%"
-                                                    >
-                                                        <stop offset="0%" stop-color="#E8E8E8"></stop>
-                                                        <stop offset="100%" stop-color="#CFCFCF"></stop>
-                                                    </linearGradient>
-                                                </defs>
-                                                <path
-                                                    id="isc2z30b"
-                                                    d="M25.455 3.662 22.47 18.458c-.116.35-6.731 1.579-9.755 1.579-2.808 0-9.639-1.23-9.756-1.579L0 3.662l7.948 5.016L12.715 0l4.826 8.678z"
-                                                ></path>
-                                                <g fill="none" fill-rule="evenodd">
-                                                    <path
-                                                        fill="url(#isc2z30a)"
-                                                        fill-rule="nonzero"
-                                                        d="M9.301 3.906 14 15.866H3.733l4.7-11.96a.467.467 0 0 1 .868 0"
-                                                        transform="rotate(-20 8.867 9.333)"
-                                                    ></path>
-                                                    <path
-                                                        fill="url(#isc2z30a)"
-                                                        fill-rule="nonzero"
-                                                        d="m19.568 3.906 4.699 11.96H14l4.699-11.96a.467.467 0 0 1 .869 0"
-                                                        transform="scale(-1 1)rotate(-20 0 117.844)"
-                                                    ></path>
-                                                    <g transform="translate(1.281 1.389)">
-                                                        <mask id="isc2z30d" fill="#fff">
-                                                            <use href="#isc2z30b"></use>
-                                                        </mask>
-                                                        <use
-                                                            fill="url(#isc2z30c)"
-                                                            fill-rule="nonzero"
-                                                            href="#isc2z30b"
-                                                        ></use>
+                                                        <defs>
+                                                            <linearGradient
+                                                                id="isc2z30a"
+                                                                x1="50%"
+                                                                x2="50%"
+                                                                y1="11.131%"
+                                                                y2="57.082%"
+                                                            >
+                                                                <stop offset="0%" stop-color="#C7C7C7"></stop>
+                                                                <stop offset="100%" stop-color="#9C9C9C"></stop>
+                                                            </linearGradient>
+                                                            <linearGradient
+                                                                id="isc2z30c"
+                                                                x1="90.916%"
+                                                                x2="5.301%"
+                                                                y1="61.059%"
+                                                                y2="59.126%"
+                                                            >
+                                                                <stop offset="0%" stop-color="#D2D2D2"></stop>
+                                                                <stop offset="100%" stop-color="#C4C4C4"></stop>
+                                                            </linearGradient>
+                                                            <linearGradient
+                                                                id="isc2z30e"
+                                                                x1="100%"
+                                                                x2="22.218%"
+                                                                y1="27.905%"
+                                                                y2="95.888%"
+                                                            >
+                                                                <stop offset="0%" stop-color="#E8E8E8"></stop>
+                                                                <stop offset="100%" stop-color="#CFCFCF"></stop>
+                                                            </linearGradient>
+                                                        </defs>
                                                         <path
-                                                            stroke="#FFF"
-                                                            stroke-linejoin="round"
-                                                            stroke-width=".933"
-                                                            d="m23.712 14.935-.305.084a41.3 41.3 0 0 1-10.29 1.435l-.328.003v-.002q-5.422-.03-10.617-1.438l-.305-.084"
-                                                            mask="url(#isc2z30d)"
-                                                            opacity=".504"
+                                                            id="isc2z30b"
+                                                            d="M25.455 3.662 22.47 18.458c-.116.35-6.731 1.579-9.755 1.579-2.808 0-9.639-1.23-9.756-1.579L0 3.662l7.948 5.016L12.715 0l4.826 8.678z"
                                                         ></path>
-                                                    </g>
-                                                    <ellipse
-                                                        cx="1.909"
-                                                        cy="5.682"
-                                                        fill="url(#isc2z30e)"
-                                                        fill-rule="nonzero"
-                                                        rx="1.909"
-                                                        ry="1.894"
-                                                    ></ellipse>
-                                                    <ellipse
-                                                        cx="14"
-                                                        cy="1.894"
-                                                        fill="url(#isc2z30e)"
-                                                        fill-rule="nonzero"
-                                                        rx="1.909"
-                                                        ry="1.894"
-                                                    ></ellipse>
-                                                    <ellipse
-                                                        cx="26.091"
-                                                        cy="5.682"
-                                                        fill="url(#isc2z30e)"
-                                                        fill-rule="nonzero"
-                                                        rx="1.909"
-                                                        ry="1.894"
-                                                    ></ellipse>
-                                                    <path
-                                                        fill="#FFF"
-                                                        fill-rule="nonzero"
-                                                        d="M14.626 15.48a.7.7 0 0 1-1.224.051l-.028-.051-2.1-4.2a.7.7 0 0 1 1.226-.674l.026.048L14 13.602l1.474-2.948a.7.7 0 0 1 .889-.336l.05.023a.7.7 0 0 1 .336.889l-.023.05z"
-                                                        opacity=".7"
-                                                    ></path>
-                                                </g>
-                                            </svg>
+                                                        <g fill="none" fill-rule="evenodd">
+                                                            <path
+                                                                fill="url(#isc2z30a)"
+                                                                fill-rule="nonzero"
+                                                                d="M9.301 3.906 14 15.866H3.733l4.7-11.96a.467.467 0 0 1 .868 0"
+                                                                transform="rotate(-20 8.867 9.333)"
+                                                            ></path>
+                                                            <path
+                                                                fill="url(#isc2z30a)"
+                                                                fill-rule="nonzero"
+                                                                d="m19.568 3.906 4.699 11.96H14l4.699-11.96a.467.467 0 0 1 .869 0"
+                                                                transform="scale(-1 1)rotate(-20 0 117.844)"
+                                                            ></path>
+                                                            <g transform="translate(1.281 1.389)">
+                                                                <mask id="isc2z30d" fill="#fff">
+                                                                    <use href="#isc2z30b"></use>
+                                                                </mask>
+                                                                <use
+                                                                    fill="url(#isc2z30c)"
+                                                                    fill-rule="nonzero"
+                                                                    href="#isc2z30b"
+                                                                ></use>
+                                                                <path
+                                                                    stroke="#FFF"
+                                                                    stroke-linejoin="round"
+                                                                    stroke-width=".933"
+                                                                    d="m23.712 14.935-.305.084a41.3 41.3 0 0 1-10.29 1.435l-.328.003v-.002q-5.422-.03-10.617-1.438l-.305-.084"
+                                                                    mask="url(#isc2z30d)"
+                                                                    opacity=".504"
+                                                                ></path>
+                                                            </g>
+                                                            <ellipse
+                                                                cx="1.909"
+                                                                cy="5.682"
+                                                                fill="url(#isc2z30e)"
+                                                                fill-rule="nonzero"
+                                                                rx="1.909"
+                                                                ry="1.894"
+                                                            ></ellipse>
+                                                            <ellipse
+                                                                cx="14"
+                                                                cy="1.894"
+                                                                fill="url(#isc2z30e)"
+                                                                fill-rule="nonzero"
+                                                                rx="1.909"
+                                                                ry="1.894"
+                                                            ></ellipse>
+                                                            <ellipse
+                                                                cx="26.091"
+                                                                cy="5.682"
+                                                                fill="url(#isc2z30e)"
+                                                                fill-rule="nonzero"
+                                                                rx="1.909"
+                                                                ry="1.894"
+                                                            ></ellipse>
+                                                            <path
+                                                                fill="#FFF"
+                                                                fill-rule="nonzero"
+                                                                d="M14.626 15.48a.7.7 0 0 1-1.224.051l-.028-.051-2.1-4.2a.7.7 0 0 1 1.226-.674l.026.048L14 13.602l1.474-2.948a.7.7 0 0 1 .889-.336l.05.023a.7.7 0 0 1 .336.889l-.023.05z"
+                                                                opacity=".7"
+                                                            ></path>
+                                                        </g>
+                                                    </svg>
+                                            }
                                         </div>
                                         <div className={`relative w-[72px] h-[72px] flex items-center justify-center border-2 ${userData.plan === 'premium' ? 'border-[#ffe895]' : 'border-[#efefef]'} !p-3 rounded-[50px] overflow-hidden`}>
                                             <img src={userIcon} alt="" />
@@ -1585,7 +1201,8 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
-    </>
+            </section>
+        </>
     );
 };
 

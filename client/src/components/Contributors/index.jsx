@@ -105,7 +105,7 @@ export default function Contributors() {
             Become a pngtree contributor and earn cash uploading your copyrighted images and designs.
           </p>
           <p className="md:text-4xl ext-2xl font-bold text-gray-800">
-            147,079 <div className="md:text-2xl font-medium">contributors</div>
+            147,079 <span className="md:!text-2xl !font-medium">contributors</span>
           </p>
           <button className="bg-green-500 text-white font-semibold py-2 px-6 rounded-lg hover:bg-green-600 transition">
             Join us →
