@@ -34,6 +34,7 @@ import {
     IoIosArrowForward,
     IoMdArrowDropdown,
 } from "react-icons/io";
+import { MdManageAccounts } from "react-icons/md";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useAuth0 } from "@auth0/auth0-react";
 import dayjs from 'dayjs'
@@ -41,7 +42,7 @@ import dayjs from 'dayjs'
 const Navbar = () => {
 
     const { userData, handleLogout } = useAuthContext()
-    const { user, logout } = useAuth0()
+    const { logout } = useAuth0()
     const [menuOpen, setMenuOpen] = useState(false);
     const [hoverShow, setHoverShow] = useState(false);
     const navigate = useNavigate();
@@ -821,6 +822,12 @@ const Navbar = () => {
                     </div>
                 </div>
                 <div className="below-nav flex justify-center items-center gap-6 ">
+                    {
+                        userData.role === 'admin' &&
+                        <button className="flex gap-1 items-center bg-[#4EAA76] !text-[#fff] font-bold hover:bg-[#4eaa76a6]" onClick={() => navigate("/admin/dashboard")}>
+                            <MdManageAccounts /> Admin
+                        </button>
+                    }
                     <button className="swing-animation text-[12px] sm:text-[16px] flex items-center gap-2 bg-[#ff9992] hover:bg-[#f04c41]  text-white font-bold rounded cursor-pointer">
                         90% OFF
                     </button>
@@ -879,7 +886,7 @@ const Navbar = () => {
                                     {/* Profile Content */}
                                     <div className="relative flex flex-col items-center ">
                                         <div className="absolute z-10 top-[40px] right-[0px] cursor-pointer shadow-xl w-[34px] h-[34px] flex justify-center items-center bg-white !p-1.5 rounded-[50px] "
-                                        onClick={()=>navigate("/dashboard/subscriptions")}>
+                                            onClick={() => navigate("/dashboard/subscriptions")}>
                                             {
                                                 userData.plan === 'premium' ?
                                                     <svg class="_tea4l2" xmlns="http://www.w3.org/2000/svg" width="28" height="23" aria-hidden="true" viewBox="0 0 28 23">
@@ -1112,7 +1119,7 @@ const Navbar = () => {
                                             </div>
                                             <p className="!text-[#333] !py-2 !text-[14px]">My Profile</p>
                                         </div>
-                                        <div className="flex flex-col items-center cursor-pointer">
+                                        <div className="flex flex-col items-center cursor-pointer" onClick={() => navigate("/contact")}>
                                             <div className="flex flex-col items-center justify-center bg-[#EDFAF0] w-[60px] h-[60px] rounded-[12px]">
                                                 <span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" aria-hidden="true" viewBox="0 0 22 22" class="_tea4l2"><g fill="none"><path fill="#91C4FF" d="M19.387 12.065c0-.355.12-.71.12-1.065s0-.71-.12-1.065L21.8 8.161c.241-.118.241-.473.12-.71l-2.292-3.784c-.12-.237-.483-.355-.724-.237l-2.775 1.065c-.604-.473-1.207-.828-1.931-1.065L13.836.473c0-.236-.242-.473-.604-.473H8.768c-.242 0-.483.237-.604.473L7.802 3.43c-.724.237-1.327.592-1.93 1.065L3.095 3.43c-.241-.118-.483 0-.724.237L.079 7.452c-.12.236-.12.473.12.71l2.414 1.773c0 .355-.12.71-.12 1.065s0 .71.12 1.065L.2 13.839c-.241.118-.241.473-.12.71l2.292 3.784c.12.237.483.355.724.237l2.775-1.065c.604.473 1.207.828 1.931 1.065l.362 2.957c0 .236.242.473.604.473h4.464c.242 0 .483-.237.604-.473l.362-2.957c.724-.237 1.327-.592 1.93-1.065l2.776 1.065c.241.118.483 0 .724-.237l2.293-3.785c.12-.236.12-.473-.12-.71z"></path><path fill="#C8E3FF" d="M11.06 14.785c-2.172 0-3.86-1.656-3.86-3.785s1.69-3.785 3.861-3.785S14.922 8.871 14.922 11s-1.69 3.785-3.862 3.785"></path></g></svg></span>
                                             </div>
