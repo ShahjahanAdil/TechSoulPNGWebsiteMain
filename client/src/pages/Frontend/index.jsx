@@ -19,6 +19,7 @@ export default function Frontend() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/images" element={<Main />} />
+        <Route path="/images/:category" element={<Main />} />
       </Routes>
       <Footer />
     </>

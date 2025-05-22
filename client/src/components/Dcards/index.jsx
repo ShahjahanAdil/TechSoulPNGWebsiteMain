@@ -6,13 +6,15 @@ import flag15 from "../../assets/images/fbg3.jpg";
 import flag16 from "../../assets/images/fbg4.jpg";
 import flag17 from "../../assets/images/fbg5.jpg";
 import flag18 from "../../assets/images/fbg6.jpg";
+import crownIcon from '../../assets/images/crown.png'
 import { FaCrown, FaHeart } from "react-icons/fa";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { BsInfoCircleFill } from "react-icons/bs";
 import { HiOutlineDownload } from "react-icons/hi";
 import pngImg from "../../assets/images/bgPNGFinal.jpg";
+import ButtonLoader from "../ButtonLoader";
 
-const Dcards = ({ imageDets, similarImages, dimensions, handleDownload }) => {
+const Dcards = ({ imageDets, similarImages, dimensions, handleDownload, downloadLoading }) => {
 
     const navigate = useNavigate()
 
@@ -30,43 +32,44 @@ const Dcards = ({ imageDets, similarImages, dimensions, handleDownload }) => {
                             style={{ backgroundImage: `url(${pngImg})`, backgroundSize: '220%' }}
                         >
                             {/* License Tag */}
-                            <span className={`absolute top-2 left-2 sm:top-3 sm:left-3 ${imageDets.license === 'free' ? 'bg-[#4EAA76]' : 'bg-transparent'} text-white !text-xs font-semibold !px-2 !py-1 rounded`}>
+                            <span className={`absolute top-1 left-1 sm:top-2 sm:left-2 ${imageDets.license === 'free' ? 'bg-[#4EAA76]' : 'bg-transparent'} text-white !text-xs font-semibold !px-2 !py-1 rounded`}>
                                 {
                                     imageDets.license === 'free' ?
                                         'FREE'
                                         :
-                                        <svg class="_tea4l2" xmlns="http://www.w3.org/2000/svg" width="28" height="23" aria-hidden="true" viewBox="0 0 28 23">
-                                            <defs>
-                                                <linearGradient id="isc2z30a" x1="50%" x2="50%" y1="11.131%" y2="57.082%">
-                                                    <stop offset="0%" stop-color="#FFD700"></stop>
-                                                    <stop offset="100%" stop-color="#FFC300"></stop>
-                                                </linearGradient>
-                                                <linearGradient id="isc2z30c" x1="90.916%" x2="5.301%" y1="61.059%" y2="59.126%">
-                                                    <stop offset="0%" stop-color="#FFD700"></stop>
-                                                    <stop offset="100%" stop-color="#FFB800"></stop>
-                                                </linearGradient>
-                                                <linearGradient id="isc2z30e" x1="100%" x2="22.218%" y1="27.905%" y2="95.888%">
-                                                    <stop offset="0%" stop-color="#FFD700"></stop>
-                                                    <stop offset="100%" stop-color="#FFC300"></stop>
-                                                </linearGradient>
-                                            </defs>
-                                            <path id="isc2z30b" d="M25.455 3.662 22.47 18.458c-.116.35-6.731 1.579-9.755 1.579-2.808 0-9.639-1.23-9.756-1.579L0 3.662l7.948 5.016L12.715 0l4.826 8.678z"></path>
-                                            <g fill="none" fill-rule="evenodd">
-                                                <path fill="url(#isc2z30a)" fill-rule="nonzero" d="M9.301 3.906 14 15.866H3.733l4.7-11.96a.467.467 0 0 1 .868 0" transform="rotate(-20 8.867 9.333)"></path>
-                                                <path fill="url(#isc2z30a)" fill-rule="nonzero" d="m19.568 3.906 4.699 11.96H14l4.699-11.96a.467.467 0 0 1 .869 0" transform="scale(-1 1)rotate(-20 0 117.844)"></path>
-                                                <g transform="translate(1.281 1.389)">
-                                                    <mask id="isc2z30d" fill="#fff">
-                                                        <use href="#isc2z30b"></use>
-                                                    </mask>
-                                                    <use fill="url(#isc2z30c)" fill-rule="nonzero" href="#isc2z30b"></use>
-                                                    <path stroke="#FFF8DC" stroke-linejoin="round" stroke-width=".933" d="m23.712 14.935-.305.084a41.3 41.3 0 0 1-10.29 1.435l-.328.003v-.002q-5.422-.03-10.617-1.438l-.305-.084" mask="url(#isc2z30d)" opacity=".504"></path>
-                                                </g>
-                                                <ellipse cx="1.909" cy="5.682" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse>
-                                                <ellipse cx="14" cy="1.894" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse>
-                                                <ellipse cx="26.091" cy="5.682" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse>
-                                                <path fill="#FFF8DC" fill-rule="nonzero" d="M14.626 15.48a.7.7 0 0 1-1.224.051l-.028-.051-2.1-4.2a.7.7 0 0 1 1.226-.674l.026.048L14 13.602l1.474-2.948a.7.7 0 0 1 .889-.336l.05.023a.7.7 0 0 1 .336.889l-.023.05z" opacity=".7"></path>
-                                            </g>
-                                        </svg>
+                                        // <svg class="_tea4l2" xmlns="http://www.w3.org/2000/svg" width="28" height="23" aria-hidden="true" viewBox="0 0 28 23">
+                                        //     <defs>
+                                        //         <linearGradient id="isc2z30a" x1="50%" x2="50%" y1="11.131%" y2="57.082%">
+                                        //             <stop offset="0%" stop-color="#FFD700"></stop>
+                                        //             <stop offset="100%" stop-color="#FFC300"></stop>
+                                        //         </linearGradient>
+                                        //         <linearGradient id="isc2z30c" x1="90.916%" x2="5.301%" y1="61.059%" y2="59.126%">
+                                        //             <stop offset="0%" stop-color="#FFD700"></stop>
+                                        //             <stop offset="100%" stop-color="#FFB800"></stop>
+                                        //         </linearGradient>
+                                        //         <linearGradient id="isc2z30e" x1="100%" x2="22.218%" y1="27.905%" y2="95.888%">
+                                        //             <stop offset="0%" stop-color="#FFD700"></stop>
+                                        //             <stop offset="100%" stop-color="#FFC300"></stop>
+                                        //         </linearGradient>
+                                        //     </defs>
+                                        //     <path id="isc2z30b" d="M25.455 3.662 22.47 18.458c-.116.35-6.731 1.579-9.755 1.579-2.808 0-9.639-1.23-9.756-1.579L0 3.662l7.948 5.016L12.715 0l4.826 8.678z"></path>
+                                        //     <g fill="none" fill-rule="evenodd">
+                                        //         <path fill="url(#isc2z30a)" fill-rule="nonzero" d="M9.301 3.906 14 15.866H3.733l4.7-11.96a.467.467 0 0 1 .868 0" transform="rotate(-20 8.867 9.333)"></path>
+                                        //         <path fill="url(#isc2z30a)" fill-rule="nonzero" d="m19.568 3.906 4.699 11.96H14l4.699-11.96a.467.467 0 0 1 .869 0" transform="scale(-1 1)rotate(-20 0 117.844)"></path>
+                                        //         <g transform="translate(1.281 1.389)">
+                                        //             <mask id="isc2z30d" fill="#fff">
+                                        //                 <use href="#isc2z30b"></use>
+                                        //             </mask>
+                                        //             <use fill="url(#isc2z30c)" fill-rule="nonzero" href="#isc2z30b"></use>
+                                        //             <path stroke="#FFF8DC" stroke-linejoin="round" stroke-width=".933" d="m23.712 14.935-.305.084a41.3 41.3 0 0 1-10.29 1.435l-.328.003v-.002q-5.422-.03-10.617-1.438l-.305-.084" mask="url(#isc2z30d)" opacity=".504"></path>
+                                        //         </g>
+                                        //         <ellipse cx="1.909" cy="5.682" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse>
+                                        //         <ellipse cx="14" cy="1.894" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse>
+                                        //         <ellipse cx="26.091" cy="5.682" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse>
+                                        //         <path fill="#FFF8DC" fill-rule="nonzero" d="M14.626 15.48a.7.7 0 0 1-1.224.051l-.028-.051-2.1-4.2a.7.7 0 0 1 1.226-.674l.026.048L14 13.602l1.474-2.948a.7.7 0 0 1 .889-.336l.05.023a.7.7 0 0 1 .336.889l-.023.05z" opacity=".7"></path>
+                                        //     </g>
+                                        // </svg>
+                                        <img src={crownIcon} alt="crown" className="w-[25px] md:w-[35px]" />
                                 }
                             </span>
 
@@ -134,12 +137,18 @@ const Dcards = ({ imageDets, similarImages, dimensions, handleDownload }) => {
 
                         <button
                             className="flex items-center gap-3 justify-center !text-[16px] sm:!text-[20px] font-bold bg-[#4EAA76] text-white !px-1 !py-3 sm:!py-5 rounded-lg w-full hover:bg-[#4eaa76ba] cursor-pointer transition !mb-5"
-                            onClick={handleDownload}
+                            disabled={downloadLoading} onClick={handleDownload}
                         >
-                            <HiOutlineDownload className="!text-[20px] sm:!text-[30px]" /> {
-                                imageDets.license === 'free' ?
-                                'Free Download' :
-                                'Download Image'
+                            <HiOutlineDownload className="!text-[20px] sm:!text-[30px]" />
+                            {
+                                !downloadLoading ?
+                                    imageDets.license === 'free' ?
+                                        'Free Download' :
+                                        'Download Image'
+                                    :
+                                    <>
+                                        Downloading < ButtonLoader />
+                                    </>
                             }
                         </button>
 
@@ -193,38 +202,39 @@ const Dcards = ({ imageDets, similarImages, dimensions, handleDownload }) => {
                                                 {
                                                     similarImg.license === 'free' ?
                                                         'FREE' :
-                                                        <svg class="_tea4l2" xmlns="http://www.w3.org/2000/svg" width="18" height="18" aria-hidden="true" viewBox="0 0 28 23">
-                                                            <defs>
-                                                                <linearGradient id="isc2z30a" x1="50%" x2="50%" y1="11.131%" y2="57.082%">
-                                                                    <stop offset="0%" stop-color="#FFD700"></stop>
-                                                                    <stop offset="100%" stop-color="#FFC300"></stop>
-                                                                </linearGradient>
-                                                                <linearGradient id="isc2z30c" x1="90.916%" x2="5.301%" y1="61.059%" y2="59.126%">
-                                                                    <stop offset="0%" stop-color="#FFD700"></stop>
-                                                                    <stop offset="100%" stop-color="#FFB800"></stop>
-                                                                </linearGradient>
-                                                                <linearGradient id="isc2z30e" x1="100%" x2="22.218%" y1="27.905%" y2="95.888%">
-                                                                    <stop offset="0%" stop-color="#FFD700"></stop>
-                                                                    <stop offset="100%" stop-color="#FFC300"></stop>
-                                                                </linearGradient>
-                                                            </defs>
-                                                            <path id="isc2z30b" d="M25.455 3.662 22.47 18.458c-.116.35-6.731 1.579-9.755 1.579-2.808 0-9.639-1.23-9.756-1.579L0 3.662l7.948 5.016L12.715 0l4.826 8.678z"></path>
-                                                            <g fill="none" fill-rule="evenodd">
-                                                                <path fill="url(#isc2z30a)" fill-rule="nonzero" d="M9.301 3.906 14 15.866H3.733l4.7-11.96a.467.467 0 0 1 .868 0" transform="rotate(-20 8.867 9.333)"></path>
-                                                                <path fill="url(#isc2z30a)" fill-rule="nonzero" d="m19.568 3.906 4.699 11.96H14l4.699-11.96a.467.467 0 0 1 .869 0" transform="scale(-1 1)rotate(-20 0 117.844)"></path>
-                                                                <g transform="translate(1.281 1.389)">
-                                                                    <mask id="isc2z30d" fill="#fff">
-                                                                        <use href="#isc2z30b"></use>
-                                                                    </mask>
-                                                                    <use fill="url(#isc2z30c)" fill-rule="nonzero" href="#isc2z30b"></use>
-                                                                    <path stroke="#FFF8DC" stroke-linejoin="round" stroke-width=".933" d="m23.712 14.935-.305.084a41.3 41.3 0 0 1-10.29 1.435l-.328.003v-.002q-5.422-.03-10.617-1.438l-.305-.084" mask="url(#isc2z30d)" opacity=".504"></path>
-                                                                </g>
-                                                                <ellipse cx="1.909" cy="5.682" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse>
-                                                                <ellipse cx="14" cy="1.894" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse>
-                                                                <ellipse cx="26.091" cy="5.682" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse>
-                                                                <path fill="#FFF8DC" fill-rule="nonzero" d="M14.626 15.48a.7.7 0 0 1-1.224.051l-.028-.051-2.1-4.2a.7.7 0 0 1 1.226-.674l.026.048L14 13.602l1.474-2.948a.7.7 0 0 1 .889-.336l.05.023a.7.7 0 0 1 .336.889l-.023.05z" opacity=".7"></path>
-                                                            </g>
-                                                        </svg>
+                                                        // <svg class="_tea4l2" xmlns="http://www.w3.org/2000/svg" width="18" height="18" aria-hidden="true" viewBox="0 0 28 23">
+                                                        //     <defs>
+                                                        //         <linearGradient id="isc2z30a" x1="50%" x2="50%" y1="11.131%" y2="57.082%">
+                                                        //             <stop offset="0%" stop-color="#FFD700"></stop>
+                                                        //             <stop offset="100%" stop-color="#FFC300"></stop>
+                                                        //         </linearGradient>
+                                                        //         <linearGradient id="isc2z30c" x1="90.916%" x2="5.301%" y1="61.059%" y2="59.126%">
+                                                        //             <stop offset="0%" stop-color="#FFD700"></stop>
+                                                        //             <stop offset="100%" stop-color="#FFB800"></stop>
+                                                        //         </linearGradient>
+                                                        //         <linearGradient id="isc2z30e" x1="100%" x2="22.218%" y1="27.905%" y2="95.888%">
+                                                        //             <stop offset="0%" stop-color="#FFD700"></stop>
+                                                        //             <stop offset="100%" stop-color="#FFC300"></stop>
+                                                        //         </linearGradient>
+                                                        //     </defs>
+                                                        //     <path id="isc2z30b" d="M25.455 3.662 22.47 18.458c-.116.35-6.731 1.579-9.755 1.579-2.808 0-9.639-1.23-9.756-1.579L0 3.662l7.948 5.016L12.715 0l4.826 8.678z"></path>
+                                                        //     <g fill="none" fill-rule="evenodd">
+                                                        //         <path fill="url(#isc2z30a)" fill-rule="nonzero" d="M9.301 3.906 14 15.866H3.733l4.7-11.96a.467.467 0 0 1 .868 0" transform="rotate(-20 8.867 9.333)"></path>
+                                                        //         <path fill="url(#isc2z30a)" fill-rule="nonzero" d="m19.568 3.906 4.699 11.96H14l4.699-11.96a.467.467 0 0 1 .869 0" transform="scale(-1 1)rotate(-20 0 117.844)"></path>
+                                                        //         <g transform="translate(1.281 1.389)">
+                                                        //             <mask id="isc2z30d" fill="#fff">
+                                                        //                 <use href="#isc2z30b"></use>
+                                                        //             </mask>
+                                                        //             <use fill="url(#isc2z30c)" fill-rule="nonzero" href="#isc2z30b"></use>
+                                                        //             <path stroke="#FFF8DC" stroke-linejoin="round" stroke-width=".933" d="m23.712 14.935-.305.084a41.3 41.3 0 0 1-10.29 1.435l-.328.003v-.002q-5.422-.03-10.617-1.438l-.305-.084" mask="url(#isc2z30d)" opacity=".504"></path>
+                                                        //         </g>
+                                                        //         <ellipse cx="1.909" cy="5.682" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse>
+                                                        //         <ellipse cx="14" cy="1.894" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse>
+                                                        //         <ellipse cx="26.091" cy="5.682" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse>
+                                                        //         <path fill="#FFF8DC" fill-rule="nonzero" d="M14.626 15.48a.7.7 0 0 1-1.224.051l-.028-.051-2.1-4.2a.7.7 0 0 1 1.226-.674l.026.048L14 13.602l1.474-2.948a.7.7 0 0 1 .889-.336l.05.023a.7.7 0 0 1 .336.889l-.023.05z" opacity=".7"></path>
+                                                        //     </g>
+                                                        // </svg>
+                                                        <img src={crownIcon} alt="crown" className="w-[12px] md:w-[20px]" />
                                                 }
                                             </span>
                                             <span className="bg-[#4EAA76] text-white !text-[10px] uppercase px-2 py-1 rounded shadow transform scale-0 opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-100 !flex items-center gap-1">

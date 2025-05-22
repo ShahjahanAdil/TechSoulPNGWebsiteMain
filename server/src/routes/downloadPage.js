@@ -4,6 +4,7 @@ const moment = require("moment");
 
 const authModel = require("../models/auth");
 const imagesModel = require('../models/images')
+const downloadsModel = require("../models/downloads")
 
 router.get("/image", async (req, res) => {
     try {
@@ -23,7 +24,7 @@ router.get("/similar-images", async (req, res) => {
     try {
         const imageCategory = req.query.imageCategory
 
-         const searchQuery = {
+        const searchQuery = {
             $or: [
                 { title: { $regex: imageCategory, $options: "i" } },
                 { description: { $regex: imageCategory, $options: "i" } },
@@ -47,6 +48,7 @@ router.post("/image/download/:imageID", async (req, res) => {
     try {
         const userID = req.body.userID
         const user = await authModel.findOne({ userID })
+        const imageID = req.params.imageID
 
         if (!user) {
             return res.status(404).json({ message: "User not found." })
@@ -73,6 +75,8 @@ router.post("/image/download/:imageID", async (req, res) => {
         else user.freeDownloads += 1
 
         await user.save()
+
+        await downloadsModel.create({ userID, imageID })
 
         return res.status(200).json({ message: "Image downloaded.", remainingDownloads: dailyLimit - user.dailyDownloadCount, dailyDownloadCount: user.dailyDownloadCount });
 

@@ -27,21 +27,27 @@ export default function Users() {
     const buttonRef = useRef(null)
 
     const handleActionClick = (e, user) => {
-        const rect = e.currentTarget.getBoundingClientRect()
-        const dropdownWidth = 220
+        // const rect = e.currentTarget.getBoundingClientRect()
+        // const dropdownWidth = 220
 
-        setActionPos({
-            top: rect.bottom + window.scrollY + 8,
-            left: rect.right + window.scrollX - dropdownWidth,
-        })
-        setShowActions(!showActions)
+        // setActionPos({
+        //     top: rect.bottom + window.scrollY + 8,
+        //     left: rect.right + window.scrollX - dropdownWidth,
+        // })
+        // setShowActions(!showActions)
 
-        const { userID } = user
+        // const { userID } = user
 
-        setMakeAdminID(userID)
-        setMakeRegUserID(userID)
+        // setMakeAdminID(userID)
+        // setMakeRegUserID(userID)
+        // setUserDetails(user)
+        // setDelUserID(userID)
+
+        setShowActions(prev => !(userDetails.userID === user.userID && showActions))
         setUserDetails(user)
-        setDelUserID(userID)
+        setMakeAdminID(user.userID)
+        setMakeRegUserID(user.userID)
+        setDelUserID(user.userID)
     }
 
     useEffect(() => {
@@ -227,6 +233,15 @@ export default function Users() {
                                                         <span className={`px-2 rounded-full ${plan === 'premium' && 'bg-[#e6d737] text-[#fff] !text-[14px]'}`}>{plan}</span>
                                                     </td>
                                                     <td className="p-4 text-[#333]">{new Date(createdAt).toLocaleDateString()}</td>
+                                                    {/* <td className="relative p-4 text-[#333] text-end">
+                                                        <button
+                                                            ref={buttonRef}
+                                                            className='text-[18px] font-bold px-2 pb-2 rounded-[8px] hover:bg-[var(--md-light)]'
+                                                            onClick={(e) => handleActionClick(e, user)}
+                                                        >
+                                                            ...
+                                                        </button>
+                                                    </td> */}
                                                     <td className="relative p-4 text-[#333] text-end">
                                                         <button
                                                             ref={buttonRef}
@@ -235,6 +250,17 @@ export default function Users() {
                                                         >
                                                             ...
                                                         </button>
+
+                                                        {showActions && userDetails.userID === user.userID && (
+                                                            <div
+                                                                className='absolute right-0 mt-2 flex flex-col gap-3 items-start w-[220px] min-h-[100px] p-3 bg-white rounded-[12px] shadow-md z-50'
+                                                            >
+                                                                <button className='flex gap-2 items-center hover:text-gray-600' onClick={handleMakeAdmin}><BiShield /> Make Admin</button>
+                                                                <button className='flex gap-2 items-center hover:text-gray-600' onClick={handleMakeRegUser}><BiUser /> Make Regular User</button>
+                                                                <button className='flex gap-2 items-center text-blue-500 hover:text-blue-300' onClick={handleShowDetails}><BiInfoCircle /> View Details</button>
+                                                                <button className='flex gap-2 items-center text-red-500 hover:text-red-300' onClick={handleDeleteUser}><CgTrashEmpty /> Delete User</button>
+                                                            </div>
+                                                        )}
                                                     </td>
                                                 </tr>
                                             );
@@ -249,7 +275,7 @@ export default function Users() {
                                                 <span className={`px-2 rounded-full ${searchedUser.plan === 'premium' && 'bg-[#e6d737] text-[#fff] !text-[14px]'}`}>{searchedUser.plan}</span>
                                             </td>
                                             <td className="p-4 text-[#333]">{new Date(searchedUser.createdAt).toLocaleDateString()}</td>
-                                            <td className="relative p-4 text-[#333] text-end">
+                                            {/* <td className="relative p-4 text-[#333] text-end">
                                                 <button
                                                     ref={buttonRef}
                                                     className='text-[18px] font-bold px-2 pb-2 rounded-[8px] hover:bg-[#e9d6fe]'
@@ -257,6 +283,26 @@ export default function Users() {
                                                 >
                                                     ...
                                                 </button>
+                                            </td> */}
+                                            <td className="relative p-4 text-[#333] text-end">
+                                                <button
+                                                    ref={buttonRef}
+                                                    className='text-[18px] font-bold px-2 pb-2 rounded-[8px] hover:bg-[var(--md-light)]'
+                                                    onClick={(e) => handleActionClick(e, searchedUser)}
+                                                >
+                                                    ...
+                                                </button>
+
+                                                {showActions && userDetails.userID === searchedUser.userID && (
+                                                    <div
+                                                        className='absolute right-0 mt-2 flex flex-col gap-3 items-start w-[220px] min-h-[100px] p-3 bg-white rounded-[12px] shadow-md z-50'
+                                                    >
+                                                        <button className='flex gap-2 items-center hover:text-gray-600' onClick={handleMakeAdmin}><BiShield /> Make Admin</button>
+                                                        <button className='flex gap-2 items-center hover:text-gray-600' onClick={handleMakeRegUser}><BiUser /> Make Regular User</button>
+                                                        <button className='flex gap-2 items-center text-blue-500 hover:text-blue-300' onClick={handleShowDetails}><BiInfoCircle /> View Details</button>
+                                                        <button className='flex gap-2 items-center text-red-500 hover:text-red-300' onClick={handleDeleteUser}><CgTrashEmpty /> Delete User</button>
+                                                    </div>
+                                                )}
                                             </td>
                                         </tr>
                                 ) : (
@@ -282,10 +328,10 @@ export default function Users() {
                 )
             }
 
-            {
+            {/* {
                 showActions && (
                     <div
-                        className='fixed flex flex-col gap-3 items-start w-[220px] min-h-[100px] p-3 bg-white rounded-[12px] shadow-md z-50'
+                        className='absolute flex flex-col gap-3 items-start w-[220px] min-h-[100px] p-3 bg-white rounded-[12px] shadow-md z-50'
                         style={{ top: `${actionPos.top}px`, left: `${actionPos.left}px` }}
                     >
                         <button className='flex gap-2 items-center transition-all duration-150 ease-linear hover:text-gray-600' onClick={handleMakeAdmin}><BiShield /> Make Admin</button>
@@ -294,7 +340,7 @@ export default function Users() {
                         <button className='flex gap-2 items-center transition-all duration-150 ease-linear text-red-500 hover:text-red-300' onClick={handleDeleteUser}><CgTrashEmpty /> Delete User</button>
                     </div>
                 )
-            }
+            } */}
 
             {
                 showDetails && (
