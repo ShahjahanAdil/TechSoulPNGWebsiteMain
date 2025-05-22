@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import pngBg from "../../../assets/images/bgPNGFinal.jpg";
 import axios from "axios";
@@ -8,6 +8,9 @@ import { FiDownload } from "react-icons/fi";
 import Search from "../../../components/Search";
 
 export default function Main() {
+
+    const { category } = useParams()
+
     const [images, setImages] = useState([]);
     const [page, setPage] = useState(1);
     const [totalImagePages, setTotalImagePages] = useState(1);
@@ -16,13 +19,17 @@ export default function Main() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetchCategories();
+        fetchCategories()
     }, []);
 
     useEffect(() => {
-        fetchImages();
+        fetchImages()
         window.scrollTo(0, 0)
-    }, [page])
+    }, [page, category])
+
+    useEffect(() => {
+        setPage(1)
+    }, [category])
 
     const fetchCategories = () => {
         setLoading(true);
@@ -42,10 +49,15 @@ export default function Main() {
     };
 
     const fetchImages = () => {
+        // const apiURL = category ?
+        //     `${import.meta.env.VITE_HOST}/frontend/main/fetch-images/${category}?page=${page}` :
+        //     `${import.meta.env.VITE_HOST}/frontend/main/fetch-images?page=${page}`
+
+        const apiURL = `${import.meta.env.VITE_HOST}/frontend/main/fetch-images?page=${page}` +
+            (category ? `&category=${category}` : '');
+
         setLoading(true);
-        axios.get(
-            `${import.meta.env.VITE_HOST}/frontend/main/fetch-images?page=${page}`
-        )
+        axios.get(apiURL)
             .then((res) => {
                 const { status, data } = res;
                 if (status === 200) {
@@ -182,6 +194,7 @@ export default function Main() {
                                 <button
                                     key={index}
                                     className="flex items-center justify-center w-fit text-center capitalize truncate px-2 py-1 sm:px-4 sm:py-2 bg-[#eeeeeeae] hover:bg-[#71C194] text-[10px] sm:text-sm text-[#666] hover:text-white font-bold rounded-lg transition-all duration-300"
+                                    onClick={() => navigate(`/images/${cat.category.toLowerCase()}`)}
                                 >
                                     {cat.category}
                                 </button>

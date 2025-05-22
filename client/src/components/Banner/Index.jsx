@@ -44,12 +44,13 @@ export default function Banner() {
 
       <div className="mt-5 text-gray-600">
         <ul className="flex flex-wrap justify-center gap-2 cursor-pointer">
-          {categories.map((item, i) => (
+          {categories.map((cat, i) => (
             <li
               key={i}
               className="bg-[#ececec] text-[10px] sm:text-[12px] flex items-center py-1 px-3 capitalize rounded-[20px] gap-2 whitespace-nowrap transition-all duration-150 ease-linear hover:bg-[#dfdfdf]"
+              onClick={()=>navigate(`/images/${cat.category.toLowerCase()}`)}
             >
-              <RiSearchLine /> {item.category}
+              <RiSearchLine /> {cat.category}
             </li>
           ))}
         </ul>
