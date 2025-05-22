@@ -15,7 +15,8 @@ export default function DownloadPage() {
     const [imageDets, setImageDets] = useState({});
     const [similarImages, setSimilarImages] = useState([]);
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [downloadLoading, setDownloadLoading] = useState(false);
 
     useEffect(() => {
         fetchImage()
@@ -84,6 +85,7 @@ export default function DownloadPage() {
                 return window.toastify("Upgrade to premium to download this image!", "error");
             }
 
+            setDownloadLoading(true)
             const res = await axios.post(`${import.meta.env.VITE_HOST}/frontend/image/download/${imageID}`, {
                 userID: userData.userID,
             });
@@ -118,6 +120,8 @@ export default function DownloadPage() {
         } catch (err) {
             window.toastify(err.response?.data?.message || "Download failed", "error");
             console.error("Download failed:", err);
+        } finally {
+            setDownloadLoading(false)
         }
     };
 
@@ -129,7 +133,7 @@ export default function DownloadPage() {
     return (
         <>
             <Search />
-            <Dcards imageDets={imageDets} similarImages={similarImages} dimensions={dimensions} handleDownload={handleDownload} />
+            <Dcards imageDets={imageDets} similarImages={similarImages} dimensions={dimensions} handleDownload={handleDownload} downloadLoading={downloadLoading} />
         </>
     );
 }
