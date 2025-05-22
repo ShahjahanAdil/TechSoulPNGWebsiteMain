@@ -227,7 +227,7 @@ const Dcards = ({ imageDets, similarImages, dimensions, handleDownload }) => {
                                                         </svg>
                                                 }
                                             </span>
-                                            <span className="bg-[#4EAA76] text-white !text-[10px] uppercase px-2 py-1 rounded shadow transform scale-0 opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-100 !flex items-center gap-1">
+                                            <span className="bg-[#05cf5e] text-white !text-[10px] uppercase px-2 py-1 rounded shadow transform scale-0 opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-100 !flex items-center gap-1">
                                                 <MdOutlineFileDownload className="text-[14px]" /> {imageDets?.imageURL?.split(".").pop().split(/\#|\?/)[0]}
                                             </span>
                                         </div>
