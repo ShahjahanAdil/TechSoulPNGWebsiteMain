@@ -42,7 +42,7 @@ import dayjs from 'dayjs'
 const Navbar = () => {
 
     const { userData, handleLogout } = useAuthContext()
-    const { user, logout } = useAuth0()
+    const { logout } = useAuth0()
     const [menuOpen, setMenuOpen] = useState(false);
     const [hoverShow, setHoverShow] = useState(false);
     const navigate = useNavigate();

@@ -32,7 +32,7 @@ const Dcards = ({ imageDets, similarImages, dimensions, handleDownload, download
                             style={{ backgroundImage: `url(${pngImg})`, backgroundSize: '220%' }}
                         >
                             {/* License Tag */}
-                            <span className={`absolute top-1 left-1 sm:top-2 sm:left-2 ${imageDets.license === 'free' ? 'bg-[#4EAA76]' : 'bg-transparent'} text-white !text-xs font-semibold !px-2 !py-1 rounded`}>
+                            <span className={`absolute top-1 left-1 sm:top-2 sm:left-2 ${imageDets.license === 'free' ? 'bg-[#4EAA76]' : 'bg-transparent'} !text-white !text-xs font-semibold !px-2 !py-1 rounded`}>
                                 {
                                     imageDets.license === 'free' ?
                                         'FREE'
@@ -69,7 +69,7 @@ const Dcards = ({ imageDets, similarImages, dimensions, handleDownload, download
                                         //         <path fill="#FFF8DC" fill-rule="nonzero" d="M14.626 15.48a.7.7 0 0 1-1.224.051l-.028-.051-2.1-4.2a.7.7 0 0 1 1.226-.674l.026.048L14 13.602l1.474-2.948a.7.7 0 0 1 .889-.336l.05.023a.7.7 0 0 1 .336.889l-.023.05z" opacity=".7"></path>
                                         //     </g>
                                         // </svg>
-                                        <img src={crownIcon} alt="crown" className="w-[25px] md:w-[35px]" />
+                                        <img src={crownIcon} alt="crown" className="w-[20px] md:w-[30px]" />
                                 }
                             </span>
 
@@ -124,7 +124,8 @@ const Dcards = ({ imageDets, similarImages, dimensions, handleDownload, download
                             <p>
                                 <span className="text-[#666] text-[14px]">MIME Type:</span>
                                 <span className="uppercase font-bold indent-1 inline-block text-[#333]">
-                                    {imageDets?.imageURL?.split(".").pop().split(/\#|\?/)[0]}
+                                    {/* {imageDets?.imageURL?.split(".").pop().split(/\#|\?/)[0]} */}
+                                     {imageDets?.imageURL?.split(".").pop().split(/[#?]/)[0]}
                                 </span>
                             </p>
                             <p>
@@ -237,8 +238,8 @@ const Dcards = ({ imageDets, similarImages, dimensions, handleDownload, download
                                                         <img src={crownIcon} alt="crown" className="w-[12px] md:w-[20px]" />
                                                 }
                                             </span>
-                                            <span className="bg-[#4EAA76] text-white !text-[10px] uppercase px-2 py-1 rounded shadow transform scale-0 opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-100 !flex items-center gap-1">
-                                                <MdOutlineFileDownload className="text-[14px]" /> {imageDets?.imageURL?.split(".").pop().split(/\#|\?/)[0]}
+                                            <span className="bg-[#05cf5e] text-white !text-[10px] uppercase px-2 py-1 rounded shadow transform scale-0 opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-100 !flex items-center gap-1">
+                                                <MdOutlineFileDownload className="text-[14px]" /> {imageDets?.imageURL?.split(".").pop().split(/[#?]/)[0]}
                                             </span>
                                         </div>
 
