@@ -23,7 +23,7 @@ export default function Search() {
         <input
           type="text"
           placeholder="Copyright images waiting for you to discover"
-          className="w-full max-w-[700px] text-[11px] sm:text-[14px] !border-none !p-2 text-sm md:text-base"
+          className="w-full bg-white max-w-[700px] text-[11px] sm:text-[14px] !border-none !p-2 text-sm md:text-base"
         />
 
         <button className="bg-[#6FD38E] text-white p-3 rounded-r-md flex items-center gap-1 text-sm md:text-base">

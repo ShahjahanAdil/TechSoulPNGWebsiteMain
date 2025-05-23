@@ -1,115 +1,125 @@
-import React from 'react'
-import { RiFireFill } from "react-icons/ri";
-import Slider from 'react-slick';
+import React from "react";
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import card1 from '../../assets/images/s5.png'
-import card2 from '../../assets/images/s2.png'
-import card3 from '../../assets/images/s3.png'
-import card4 from '../../assets/images/s4.png'
-import card5 from '../../assets/images/s5.png'
+import './CardSlider.css';
+import card1 from "../../assets/images/burger.png";
+import card2 from "../../assets/images/car.avif";
+import card3 from "../../assets/images/flower.jpg";
+import card4 from "../../assets/images/travel.jpg";
+import card5 from "../../assets/images/eid.jpg";
+import card6 from "../../assets/images/fathers day.jpg";
 
-
-export default function CardsSlider() {
-
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 300,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2,
-                }
-            }
-        ]
-    };
-
-    return (
-        <>
-            <div className='mainContainer ps-2 md:ps-5 py-2 md:py-5'>
-                <h3>Marketing Calendar</h3>
-
-                <div className="my-8">
-                    <Slider {...settings}>
-                        {[
-                            {
-                                title: "International Nurses...",
-                                date: "12 May 2025",
-                                bg: "bg-[#FFECEC]",
-                                border: "border-[#FFB2B2]",
-                                img: card1
-                            },
-                            {
-                                title: "Free Ai templates",
-                                date: "Design work More Efficiently",
-                                bg: "bg-[#FFECEC]",
-                                border: "border-[#FFB2B2]",
-                                img: card2
-
-                            },
-                            {
-                                title: "Mother's day",
-                                date: "12 May 2025",
-                                bg: "bg-[#FFECEC]",
-                                border: "border-[#FFB2B2]",
-                                img: card3
-
-                            },
-                            {
-                                title: "Ascension Day",
-                                date: "29 May 2025",
-                                bg: "bg-[#FFECEC]",
-                                border: "border-[#FFB2B2]",
-                                img: card4
-
-                            },
-                            {
-                                title: "Islamic pilgrimage",
-                                date: "24 June 2025",
-                                bg: "bg-[#EBFBF0]",
-                                border: "border-[#CDEBDA]",
-                                img: card5
-
-                            }
-                        ].map((card, index) => (
-                            <div key={index} className='px-1 md:px-2'>
-                                <div className={`w-full rounded-2xl ${card.bg} overflow-hidden sm:py-[auto] sm:px-[auto] py-4 px-6 border-t-4 ${card.border}`}>
-                                    <div className="text-[16px] md:text-2xl font-semibold">
-                                        {card.title}
-                                    </div>
-                                    <span className='text-gray-400 text-sm block mt-2'>
-                                        {card.date}
-                                    </span>
-                                    <div className="flex justify-between mt-4 text-red-700 text-lg">
-                                        <div className="flex md:gap-1 sm:gap-auto items-center">
-                                            <RiFireFill />
-                                            <RiFireFill />
-                                            <RiFireFill />
-                                            <RiFireFill />
-                                            <RiFireFill />
-                                        </div>
-                                        <div className="w-[70px] h-[70px] sm:h-[auto] sm:w-[auto] rounded-3xl">
-                                            <img src={card.img} alt="..." className="w-full h-full object-contain" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </Slider>
-                </div>
-            </div>
-        </>
-    );
+const images = [
+  { src: card1, label: "PNG Images" },
+  { src: card2, label: "WEBP Images" },
+  { src: card3, label: "JPG Images" },
+  { src: card4, label: "JPEG Images" },
+  { src: card5, label: "Occasional Images" },
+  { src: card6, label: "Fathers Day" },
+];
+function NextArrow(props) {
+  const { onClick } = props;
+  return (
+    <div
+      className="absolute -right-2 top-1/2 transform -translate-y-1/2 z-10 bg-[#333] p-2 rounded-full shadow cursor-pointer hover:bg-[#4eaa76cb]"
+      onClick={onClick}
+    >
+      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+      </svg>
+    </div>
+  );
 }
+
+
+function PrevArrow(props) {
+  const { onClick } = props;
+  return (
+    <div
+      className="absolute -left-2 top-1/2 transform -translate-y-1/2 z-10 bg-[#333] p-2 rounded-full shadow cursor-pointer hover:bg-[#4eaa76cb]"
+      onClick={onClick}
+    >
+      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+        <path fillRule="evenodd" d="M12.707 14.707a1 1 0 010-1.414L9.414 10l3.293-3.293a1 1 0 10-1.414-1.414l-4 4a1 1 0 000 1.414l4 4a1 1 0 001.414 0z" clipRule="evenodd" />
+      </svg>
+    </div>
+  );
+}
+
+
+
+function CardsSlider() {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 100,
+    autoplay: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    
+    ],
+  };
+
+  return (
+    <>
+    
+    <div className="relative px-8">
+  <Slider {...settings} >
+  {images.map((img, index) => (
+    <div key={index} className="px-4">
+      <div
+        className="relative h-64 bg-cover bg-center bg-no-repeat rounded-md transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-lg cursor-pointer group"
+        style={{ backgroundImage: `url(${img.src})` }}
+      >
+        <div className="absolute inset-0 bg-[#00000031] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
+
+        <div className="absolute bottom-0 left-0 w-full h-[60px] flex items-center justify-center text-black bg-transparent group-hover:text-white transition-all duration-300 z-20">
+          {img.label}
+        </div>
+
+        <div className="absolute top-2 left-2 text-white bg-black/50 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+          3,120 images
+        </div>
+
+        <div className="absolute top-2 right-2 text-white bg-black/50 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+          abc
+        </div>
+      </div>
+    </div>
+  ))}
+</Slider>
+
+    </div>
+ 
+</>
+  );
+}
+
+export default CardsSlider;

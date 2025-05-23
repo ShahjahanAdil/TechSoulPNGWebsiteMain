@@ -12,7 +12,7 @@ import Slider2 from "../../../Components/Slider2";
 
 export default function Home() {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden bg-[#f1fcec86]">
       <Banner />
       <CardsSlider />
       <Cards />
