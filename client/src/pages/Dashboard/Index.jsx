@@ -4,7 +4,7 @@ import Profile from "./Profile";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import userImage from "../../assets/images/user.png";
-import { FaCrown, FaUser, FaHeart, FaFolderOpen } from "react-icons/fa";
+import { FaUser, FaHeart, FaFolderOpen } from "react-icons/fa";
 import { FaCreditCard, FaUsersGear, FaX } from "react-icons/fa6";
 import { MdOutlineStarPurple500 } from "react-icons/md";
 import { LuDownload } from "react-icons/lu";

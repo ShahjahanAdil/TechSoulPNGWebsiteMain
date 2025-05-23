@@ -259,6 +259,7 @@ export default function Images() {
                             <th className="p-4 whitespace-nowrap">Image</th>
                             <th className="p-4 whitespace-nowrap">Title</th>
                             <th className="p-4 whitespace-nowrap">Category</th>
+                            <th className="p-4 whitespace-nowrap">Type</th>
                             <th className="p-4 whitespace-nowrap">Licensing</th>
                             <th className="p-4 whitespace-nowrap">Status</th>
                             <th className="p-4 whitespace-nowrap">Upload Date</th>

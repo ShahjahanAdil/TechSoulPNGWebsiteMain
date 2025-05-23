@@ -19,6 +19,7 @@ router.get("/main/fetch-categories", async (req, res) => {
 router.get("/main/fetch-images", async (req, res) => {
     try {
         const category = req.query.category;
+        const searchText = req.query.searchText;
         const page = parseInt(req.query.page) || 1;
         const limit = 25;
         const skip = (page - 1) * limit;
@@ -32,6 +33,16 @@ router.get("/main/fetch-images", async (req, res) => {
                     { category: { $regex: category, $options: "i" } },
                     { subcategory: { $regex: category, $options: "i" } },
                     { tags: { $elemMatch: { $regex: category, $options: "i" } } }
+                ]
+            };
+        } else if (searchText) {
+            searchQuery = {
+                $or: [
+                    { title: { $regex: searchText, $options: "i" } },
+                    { description: { $regex: searchText, $options: "i" } },
+                    { category: { $regex: searchText, $options: "i" } },
+                    { subcategory: { $regex: searchText, $options: "i" } },
+                    { tags: { $elemMatch: { $regex: searchText, $options: "i" } } }
                 ]
             };
         }

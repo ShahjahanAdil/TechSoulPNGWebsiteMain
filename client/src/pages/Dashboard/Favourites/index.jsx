@@ -1,11 +1,13 @@
 import React from "react";
 import pngImg from "../../../assets/images/bgPNGFinal.jpg";
 import car from "../../../assets/images/car.png";
+import { FaHeart } from "react-icons/fa";
 
 export default function Favourites() {
   return (
     <div className="p-4 md:p-8 bg-white rounded-[20px] h-full shadow">
-      <h5 className="my-4 p-[20px] md:text-center ">My Favourites</h5>
+      {/* <h5 className="my-4 p-[20px] md:text-center ">My Favourites</h5> */}
+      <h5 className="flex items-center gap-2 !text-[#55AF7C] font-semibold mb-8"><FaHeart /> My Favourites</h5>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         <div
           style={{ backgroundImage: `url(${pngImg})` }}

@@ -44,9 +44,9 @@ export default function Profile() {
     return (
         <>
             <div className="p-4 md:p-8 bg-white rounded-[20px]  h-full shadow">
-                <h5 className="text-xl  !text-[#55AF7C] text-center font-semibold mb-6">My Profile</h5>
+                <h5 className="text-xl  !text-[#55AF7C] font-semibold mb-8">My Profile</h5>
 
-                <h6 className="font-semibold mb-5">User Details</h6>
+                {/* <h6 className="font-semibold mb-5">User Details</h6> */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <div className="space-y-4">

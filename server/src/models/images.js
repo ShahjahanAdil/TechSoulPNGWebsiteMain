@@ -9,6 +9,7 @@ const imagesSchema = new Schema({
     description: { type: String, required: true },
     category: { type: String, required: true },
     subcategory: { type: String },
+    type: { type: String, default: 'png' },
     tags: { type: [String] },
     status: { type: String },
     license: { type: String },

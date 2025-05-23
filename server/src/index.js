@@ -31,7 +31,7 @@ app.listen(PORT, () => {
 //             {},
 //             {
 //                 $set: {
-//                     favourite: false
+//                     type: 'png'
 //                 }
 //             }
 //         );

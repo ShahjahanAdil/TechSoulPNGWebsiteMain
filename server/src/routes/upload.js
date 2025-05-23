@@ -19,8 +19,9 @@ router.post("/upload-image", upload.single("image"), async (req, res) => {
         ...formData,
         imageID: generateRandomID(),
         imageURL: fileUrl,
+        type: req.file.mimetype.split("/").pop(),
         tags: parsedTags,
-        status: "published"
+        status: "published",
     }
 
     await imagesModel.create(imageData)
