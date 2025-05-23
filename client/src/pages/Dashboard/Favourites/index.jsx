@@ -4,7 +4,7 @@ import car from "../../../assets/images/car.png";
 
 export default function Favourites() {
   return (
-    <div className="p-4 md:p-8 bg-white rounded-[20px] h-fit shadow">
+    <div className="p-4 md:p-8 bg-white rounded-[20px] h-full shadow">
       <h5 className="my-4 p-[20px] md:text-center ">My Favourites</h5>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         <div

@@ -86,7 +86,7 @@ export default function DownloadPage() {
             }
 
             setDownloadLoading(true)
-            const res = await axios.post(`${import.meta.env.VITE_HOST}/frontend/image/download/${imageID}`, {
+            const res = await axios.post(`${import.meta.env.VITE_HOST}/frontend/image/download/${imageID}?imageURL=${imageDets.imageURL}`, {
                 userID: userData.userID,
             });
 

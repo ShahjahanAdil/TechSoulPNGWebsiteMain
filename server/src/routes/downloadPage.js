@@ -49,6 +49,7 @@ router.post("/image/download/:imageID", async (req, res) => {
         const userID = req.body.userID
         const user = await authModel.findOne({ userID })
         const imageID = req.params.imageID
+        const imageURL = req.query.imageURL
 
         if (!user) {
             return res.status(404).json({ message: "User not found." })
@@ -76,7 +77,7 @@ router.post("/image/download/:imageID", async (req, res) => {
 
         await user.save()
 
-        await downloadsModel.create({ userID, imageID })
+        await downloadsModel.create({ userID, imageID, imageURL })
 
         return res.status(200).json({ message: "Image downloaded.", remainingDownloads: dailyLimit - user.dailyDownloadCount, dailyDownloadCount: user.dailyDownloadCount });
 
