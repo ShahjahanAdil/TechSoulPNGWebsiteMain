@@ -167,7 +167,7 @@ const Navbar = () => {
             )}
 
             {/* Below navabar */}
-            <section className="navbar relative w-full h-14 bg-[#FFFFFF] flex justify-between items-center !gap-5 px-5">
+            <section className={`navbar relative w-full h-14 ${pathname === '/home' ? 'bg-[#f1fcec86]' : pathname === '/' ? 'bg-[#f1fcec86]' : 'bg-[#FFFFFF]'} flex justify-between items-center !gap-5 px-5 shadow-sm`}>
                 <div className="flex  flex-1 items-center gap-[30px] w-full lg:w-fit">
                     <div className="logo">
                         <img src={logooo} alt="logo" className="sm:w-[150px] w-[150px] cursor-pointer" onClick={() => navigate('/')} />

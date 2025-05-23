@@ -1,144 +1,125 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import './CardSlider.css';
-import card1 from '../../assets/images/s1.jpg';
-import card2 from '../../assets/images/s4.jpg';
-import card3 from '../../assets/images/s5.jpg';
-import card4 from '../../assets/images/s5.jpg';
-import card5 from '../../assets/images/clothes.png';
+import card1 from "../../assets/images/burger.png";
+import card2 from "../../assets/images/car.avif";
+import card3 from "../../assets/images/flower.jpg";
+import card4 from "../../assets/images/travel.jpg";
+import card5 from "../../assets/images/eid.jpg";
+import card6 from "../../assets/images/fathers day.jpg";
 
-const Card = ({ category, title, author, imageUrl, imageCount }) => (
-  <article className="card">
-    <div className="card__info-hover">
-      <svg className="card__trending" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="..." />
-      </svg>
-      <div className="card__clock-info">
-        <svg className="card__images" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="..." />
-        </svg>
-        <span className="card__stock-count">{imageCount} images</span>
-      </div>
-    </div>
-
-    <div className="card__img" style={{ backgroundImage: `url(${imageUrl})` }} />
-    <a href="#" className="card_link" aria-label={`View details for ${title}`}>
-      <div className="card__img--hover" style={{ backgroundImage: `url(${imageUrl})` }} />
-    </a>
-
-    <div className="card__info">
-      <span className="card__category">{category}</span>
-      <h3 className="card__title">{title}</h3>
-      <span className="card__by">
-        by{' '}
-        <a href="#" className="card__author" title="author">
-          {author}
-        </a>
-      </span>
-    </div>
-  </article>
-);
-
-const CardsSlider = () => {
-  const cardsData = [
-    {
-      id: 1,
-      category: 'Nature',
-      title: 'Sunset Over the Hills',
-      author: 'Alice Green',
-      imageUrl: card1,
-      imageCount: 10,
-    },
-    {
-      id: 2,
-      category: 'Architecture',
-      title: 'Modern Cityscape',
-      author: 'Bob Brown',
-      imageUrl: card2,
-      imageCount: 7,
-    },
-    {
-      id: 3,
-      category: 'Food',
-      title: 'Delicious Pasta',
-      author: 'Carol White',
-      imageUrl: card3,
-      imageCount: 5,
-    },
-    {
-      id: 4,
-      category: 'Food',
-      title: 'Delicious Pasta',
-      author: 'Carol White',
-      imageUrl: card4,
-      imageCount: 5,
-    },
-    {
-      id: 5,
-      category: 'Food',
-      title: 'Delicious Pasta',
-      author: 'Carol White',
-      imageUrl: card5,
-      imageCount: 5,
-    },
-    {
-      id: 6,
-      category: 'Food',
-      title: 'Delicious Pasta',
-      author: 'Carol White',
-      imageUrl: card3,
-      imageCount: 5,
-    },
-    {
-      id: 7,
-      category: 'Food',
-      title: 'Delicious Pasta',
-      author: 'Carol White',
-      imageUrl: card3,
-      imageCount: 5,
-    },
-  ];
-
-  const sliderRef = useRef(null);
-  const scrollRef = useRef(0);
-
-  useEffect(() => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-
-    const scrollCards = () => {
-      const card = slider.querySelector('.card');
-      if (!card) return;
-
-      const style = window.getComputedStyle(card);
-      const marginLeft = parseFloat(style.marginLeft);
-      const marginRight = parseFloat(style.marginRight);
-      const cardFullWidth = card.offsetWidth + marginLeft + marginRight;
-
-      let newScroll = scrollRef.current + cardFullWidth;
-
-      if (newScroll > slider.scrollWidth - slider.clientWidth) {
-        newScroll = 0;
-      }
-
-      slider.scrollTo({
-        left: newScroll,
-        behavior: 'smooth',
-      });
-
-      scrollRef.current = newScroll;
-    };
-
-    const interval = setInterval(scrollCards, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
+const images = [
+  { src: card1, label: "PNG Images" },
+  { src: card2, label: "WEBP Images" },
+  { src: card3, label: "JPG Images" },
+  { src: card4, label: "JPEG Images" },
+  { src: card5, label: "Occasional Images" },
+  { src: card6, label: "Fathers Day" },
+];
+function NextArrow(props) {
+  const { onClick } = props;
   return (
-    <div className="cards" ref={sliderRef}>
-      {cardsData.map((card) => (
-        <Card key={card.id} {...card} />
-      ))}
+    <div
+      className="absolute -right-2 top-1/2 transform -translate-y-1/2 z-10 bg-[#333] p-2 rounded-full shadow cursor-pointer hover:bg-[#4eaa76cb]"
+      onClick={onClick}
+    >
+      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+      </svg>
     </div>
   );
-};
+}
+
+
+function PrevArrow(props) {
+  const { onClick } = props;
+  return (
+    <div
+      className="absolute -left-2 top-1/2 transform -translate-y-1/2 z-10 bg-[#333] p-2 rounded-full shadow cursor-pointer hover:bg-[#4eaa76cb]"
+      onClick={onClick}
+    >
+      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+        <path fillRule="evenodd" d="M12.707 14.707a1 1 0 010-1.414L9.414 10l3.293-3.293a1 1 0 10-1.414-1.414l-4 4a1 1 0 000 1.414l4 4a1 1 0 001.414 0z" clipRule="evenodd" />
+      </svg>
+    </div>
+  );
+}
+
+
+
+function CardsSlider() {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 100,
+    autoplay: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    
+    ],
+  };
+
+  return (
+    <>
+    
+    <div className="relative px-8">
+  <Slider {...settings} >
+  {images.map((img, index) => (
+    <div key={index} className="px-4">
+      <div
+        className="relative h-64 bg-cover bg-center bg-no-repeat rounded-md transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-lg cursor-pointer group"
+        style={{ backgroundImage: `url(${img.src})` }}
+      >
+        <div className="absolute inset-0 bg-[#00000031] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
+
+        <div className="absolute bottom-0 left-0 w-full h-[60px] flex items-center justify-center text-black bg-transparent group-hover:text-white transition-all duration-300 z-20">
+          {img.label}
+        </div>
+
+        <div className="absolute top-2 left-2 text-white bg-black/50 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+          3,120 images
+        </div>
+
+        <div className="absolute top-2 right-2 text-white bg-black/50 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+          abc
+        </div>
+      </div>
+    </div>
+  ))}
+</Slider>
+
+    </div>
+ 
+</>
+  );
+}
 
 export default CardsSlider;
