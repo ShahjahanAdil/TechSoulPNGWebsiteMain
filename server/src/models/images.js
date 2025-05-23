@@ -12,6 +12,7 @@ const imagesSchema = new Schema({
     tags: { type: [String] },
     status: { type: String },
     license: { type: String },
+    favourite: { type: Boolean, default: false }
 }, { timestamps: true })
 
 const imagesModel = mongoose.models.images || mongoose.model("images", imagesSchema)
