@@ -57,6 +57,7 @@ const downloadPageRouter = require('./routes/downloadPage')
 const mainPageRouter = require('./routes/mainPage')
 const profileRouter = require('./routes/profile')
 const myDownloadsRouter = require('./routes/myDownloads')
+const favouritesRouter = require('./routes/favourites')
 
 app.use('/auth', authRouter)
 app.use('/admin', adminDashboardRouter)
@@ -70,5 +71,6 @@ app.use('/frontend', downloadPageRouter)
 app.use('/frontend', mainPageRouter)
 app.use('/dashboard', profileRouter)
 app.use('/dashboard', myDownloadsRouter)
+app.use('/frontend', favouritesRouter)
 // app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));

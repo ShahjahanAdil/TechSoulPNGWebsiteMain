@@ -2,10 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { useAuthContext } from "../../contexts/AuthContext";
+import { FaHeart } from "react-icons/fa";
 
 const tabs = ["nature", "technology", "clothing", "food"];
 
 export default function Cards() {
+
+    const { userData } = useAuthContext()
     const [images, setImages] = useState([]);
     const [activeTab, setActiveTab] = useState("nature");
     const [loading, setLoading] = useState(false);
@@ -34,6 +38,27 @@ export default function Cards() {
                 setLoading(false);
             });
     };
+
+    const handleAddToFavourites = ({ imageID, imageURL, favourite, license }) => {
+        const newFav = {
+            userID: userData.userID,
+            imageID,
+            imageURL,
+            favourite,
+            license
+        }
+
+        axios.post(`${import.meta.env.VITE_HOST}/frontend/favourites/add`, newFav)
+            .then((res) => {
+                const { data } = res
+                const updatedImages = images.map(img => img.imageID === imageID ? { ...img, favourite: !img.favourite } : img)
+                setImages(updatedImages)
+                window.toastify(data.message, "success")
+            })
+            .catch((err) => {
+                console.error("Frontend POST error", err.message);
+            })
+    }
 
     return (
         <div className="mainContainer ps-2 md:ps-5 py-2 md:py-5">
@@ -76,6 +101,20 @@ export default function Cards() {
                                     {img.title}
                                 </p>
                             </div>
+
+                            <span className={`absolute top-2.5 right-2.5 bg-white ${img.favourite ? 'text-red-500' : 'text-gray-500'} !text-[12px] uppercase p-2 rounded shadow transform scale-0 opacity-0 transition-all duration-500 !flex items-center ease-out group-hover:scale-100 group-hover:opacity-100`}
+                                onClick={(e) => {
+                                    e.stopPropagation()
+                                    handleAddToFavourites({
+                                        imageID: img.imageID,
+                                        imageURL: img.imageURL,
+                                        favourite: img.favourite,
+                                        license: img.license
+                                    })
+                                }}
+                            >
+                                <FaHeart />
+                            </span>
                         </div>
                     ))}
                 </div>

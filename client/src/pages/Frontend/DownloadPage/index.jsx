@@ -133,7 +133,7 @@ export default function DownloadPage() {
     return (
         <>
             <Search />
-            <Dcards imageDets={imageDets} similarImages={similarImages} dimensions={dimensions} handleDownload={handleDownload} downloadLoading={downloadLoading} />
+            <Dcards imageDets={imageDets} setImageDets={setImageDets} similarImages={similarImages} setSimilarImages={setSimilarImages} dimensions={dimensions} handleDownload={handleDownload} downloadLoading={downloadLoading} />
         </>
     );
 }

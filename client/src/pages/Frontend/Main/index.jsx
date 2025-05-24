@@ -8,12 +8,15 @@ import { FiDownload } from "react-icons/fi";
 import Search from "../../../components/Search";
 import { FaHeart } from "react-icons/fa";
 import axios from "axios";
+import { useAuthContext } from "../../../contexts/AuthContext";
 
 export default function Main() {
+
     const { category } = useParams();
     const searchParams = new URLSearchParams(window.location.search);
     const searchText = searchParams.get('s');
 
+    const { userData } = useAuthContext()
     const [images, setImages] = useState([]);
     const [page, setPage] = useState(1);
     const [totalImagePages, setTotalImagePages] = useState(1);
@@ -53,10 +56,6 @@ export default function Main() {
     };
 
     const fetchImages = () => {
-        // const apiURL = category ?
-        //     `${import.meta.env.VITE_HOST}/frontend/main/fetch-images/${category}?page=${page}` :
-        //     `${import.meta.env.VITE_HOST}/frontend/main/fetch-images?page=${page}`
-
         const apiURL =
             `${import.meta.env.VITE_HOST}/frontend/main/fetch-images?page=${page}` +
             (category ? `&category=${category}` : searchText ? `&searchText=${searchText}` : '');
@@ -78,6 +77,27 @@ export default function Main() {
                 setLoading(false);
             });
     };
+
+    const handleAddToFavourites = ({ imageID, imageURL, favourite, license }) => {
+        const newFav = {
+            userID: userData.userID,
+            imageID,
+            imageURL,
+            favourite,
+            license
+        }
+
+        axios.post(`${import.meta.env.VITE_HOST}/frontend/favourites/add`, newFav)
+            .then((res) => {
+                const { data } = res
+                const updatedImages = images.map(img => img.imageID === imageID ? { ...img, favourite: !img.favourite } : img)
+                setImages(updatedImages)
+                window.toastify(data.message, "success")
+            })
+            .catch((err) => {
+                console.error("Frontend POST error", err.message);
+            })
+    }
 
     const [buttonsPerPage, setButtonsPerPage] = useState(20);
     const [currentPage, setCurrentPage] = useState(0);
@@ -235,7 +255,17 @@ export default function Main() {
                                         />
                                         <div className="absolute inset-0 bg-[#0000004f] bg-opacity-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex flex-col justify-between px-4 py-3">
                                             <div className="flex justify-between">
-                                                <span className="bg-white text-gray-500 !text-[12px] uppercase px-2 py-1 rounded shadow transform scale-0 opacity-0 transition-all duration-500 !flex items-center ease-out group-hover:scale-100 group-hover:opacity-100">
+                                                <span className={`bg-white ${img.favourite ? 'text-red-500' : 'text-gray-500'} !text-[12px] uppercase px-2 py-1 rounded shadow transform scale-0 opacity-0 transition-all duration-500 !flex items-center ease-out group-hover:scale-100 group-hover:opacity-100`}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation()
+                                                        handleAddToFavourites({
+                                                            imageID: img.imageID,
+                                                            imageURL: img.imageURL,
+                                                            favourite: img.favourite,
+                                                            license: img.license
+                                                        })
+                                                    }}
+                                                >
                                                     <FaHeart />
                                                 </span>
                                                 <span className="bg-[#4EAA76] text-white uppercase transform scale-0 opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-100 !text-[12px] px-2 py-1 rounded shadow !flex !items-center gap-1 ">

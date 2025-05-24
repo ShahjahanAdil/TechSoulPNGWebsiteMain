@@ -4,7 +4,7 @@ const { Schema } = mongoose
 const favouritesSchema = new Schema({
     userID: { type: String, required: true },
     imageID: { type: String, required: true },
-    imageURL: { type: String, required: true, unique: true },
+    imageURL: { type: String, required: true },
     favourite: { type: Boolean },
     license: { type: String },
 }, { timestamps: true })
