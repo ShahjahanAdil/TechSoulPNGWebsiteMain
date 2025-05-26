@@ -705,11 +705,11 @@ const Navbar = () => {
                           viewBox="0 0 18 18"
                           className="_ktturt _tea4l2 _1yoi2w4"
                         >
-                          <g fill="none" fill-rule="evenodd">
+                          <g fill="none" fillRule="evenodd">
                             <circle cx="9" cy="9" r="9" fill="#47537D"></circle>
                             <g fill="#FFF" transform="translate(3.5 2.723)">
                               <path
-                                fill-rule="nonzero"
+                                fillRule="nonzero"
                                 d="m6.6 10.755 2.646-.022a.66.66 0 0 0 .654-.66V5.475a1.32 1.32 0 0 0-1.32-1.32H6.6zM5.557.565a.88.88 0 0 1 .218.58V9.93H.825V4.137c0-.38.164-.742.45-.993L4.316.483a.88.88 0 0 1 1.242.082m-1.02 5.24h-1.65a.412.412 0 1 0 0 .825h1.65a.412.412 0 1 0 0-.825m0-1.65h-1.65a.412.412 0 1 0 0 .825h1.65a.412.412 0 1 0 0-.825"
                               ></path>
                               <rect
@@ -732,9 +732,9 @@ const Navbar = () => {
                           viewBox="0 0 18 18"
                           className="_ktturt _tea4l2 _1yoi2w4"
                         >
-                          <g fill="none" fill-rule="evenodd">
+                          <g fill="none" fillRule="evenodd">
                             <circle cx="9" cy="9" r="9" fill="#47537D"></circle>
-                            <g fill="#FFF" fill-rule="nonzero">
+                            <g fill="#FFF" fillRule="nonzero">
                               <path d="M10.25 9.269a2.32 2.32 0 0 0 1.06-1.998A2.318 2.318 0 1 0 7.734 9.27a.193.193 0 0 1-.032.34 3.4 3.4 0 0 0-2.046 2.545.484.484 0 0 0 .48.565h5.713a.484.484 0 0 0 .48-.565 3.39 3.39 0 0 0-2.047-2.543.193.193 0 0 1-.031-.342"></path>
                               <path d="M13.98 11.04a2.25 2.25 0 0 0-1.355-1.683.128.128 0 0 1-.02-.226 1.533 1.533 0 0 0-.941-2.819 2.85 2.85 0 0 1-.674 3.05 3.93 3.93 0 0 1 1.696 2.051h.976a.32.32 0 0 0 .318-.373M6.994 9.364a2.87 2.87 0 0 1-.675-3.052l-.023-.002a1.533 1.533 0 0 0-.915 2.821.128.128 0 0 1-.021.225 2.25 2.25 0 0 0-1.355 1.684.32.32 0 0 0 .318.374h.975c.31-.86.909-1.585 1.695-2.05"></path>
                             </g>
@@ -918,7 +918,7 @@ const Navbar = () => {
                   >
                     {userData.plan === "premium" ? (
                       <svg
-                        class="_tea4l2"
+                        className="_tea4l2"
                         xmlns="http://www.w3.org/2000/svg"
                         width="28"
                         height="23"
@@ -933,8 +933,8 @@ const Navbar = () => {
                             y1="11.131%"
                             y2="57.082%"
                           >
-                            <stop offset="0%" stop-color="#FFD700"></stop>
-                            <stop offset="100%" stop-color="#FFC300"></stop>
+                            <stop offset="0%" stopColor="#FFD700"></stop>
+                            <stop offset="100%" stopColor="#FFC300"></stop>
                           </linearGradient>
                           <linearGradient
                             id="isc2z30c"
@@ -943,8 +943,8 @@ const Navbar = () => {
                             y1="61.059%"
                             y2="59.126%"
                           >
-                            <stop offset="0%" stop-color="#FFD700"></stop>
-                            <stop offset="100%" stop-color="#FFB800"></stop>
+                            <stop offset="0%" stopColor="#FFD700"></stop>
+                            <stop offset="100%" stopColor="#FFB800"></stop>
                           </linearGradient>
                           <linearGradient
                             id="isc2z30e"
@@ -953,24 +953,24 @@ const Navbar = () => {
                             y1="27.905%"
                             y2="95.888%"
                           >
-                            <stop offset="0%" stop-color="#FFD700"></stop>
-                            <stop offset="100%" stop-color="#FFC300"></stop>
+                            <stop offset="0%" stopColor="#FFD700"></stop>
+                            <stop offset="100%" stopColor="#FFC300"></stop>
                           </linearGradient>
                         </defs>
                         <path
                           id="isc2z30b"
                           d="M25.455 3.662 22.47 18.458c-.116.35-6.731 1.579-9.755 1.579-2.808 0-9.639-1.23-9.756-1.579L0 3.662l7.948 5.016L12.715 0l4.826 8.678z"
                         ></path>
-                        <g fill="none" fill-rule="evenodd">
+                        <g fill="none" fillRule="evenodd">
                           <path
                             fill="url(#isc2z30a)"
-                            fill-rule="nonzero"
+                            fillRule="nonzero"
                             d="M9.301 3.906 14 15.866H3.733l4.7-11.96a.467.467 0 0 1 .868 0"
                             transform="rotate(-20 8.867 9.333)"
                           ></path>
                           <path
                             fill="url(#isc2z30a)"
-                            fill-rule="nonzero"
+                            fillRule="nonzero"
                             d="m19.568 3.906 4.699 11.96H14l4.699-11.96a.467.467 0 0 1 .869 0"
                             transform="scale(-1 1)rotate(-20 0 117.844)"
                           ></path>
@@ -980,13 +980,13 @@ const Navbar = () => {
                             </mask>
                             <use
                               fill="url(#isc2z30c)"
-                              fill-rule="nonzero"
+                              fillRule="nonzero"
                               href="#isc2z30b"
                             ></use>
                             <path
                               stroke="#FFF8DC"
-                              stroke-linejoin="round"
-                              stroke-width=".933"
+                              strokeLinejoin="round"
+                              strokeWidth=".933"
                               d="m23.712 14.935-.305.084a41.3 41.3 0 0 1-10.29 1.435l-.328.003v-.002q-5.422-.03-10.617-1.438l-.305-.084"
                               mask="url(#isc2z30d)"
                               opacity=".504"
@@ -996,7 +996,7 @@ const Navbar = () => {
                             cx="1.909"
                             cy="5.682"
                             fill="url(#isc2z30e)"
-                            fill-rule="nonzero"
+                            fillRule="nonzero"
                             rx="1.909"
                             ry="1.894"
                           ></ellipse>
@@ -1004,7 +1004,7 @@ const Navbar = () => {
                             cx="14"
                             cy="1.894"
                             fill="url(#isc2z30e)"
-                            fill-rule="nonzero"
+                            fillRule="nonzero"
                             rx="1.909"
                             ry="1.894"
                           ></ellipse>
@@ -1012,13 +1012,13 @@ const Navbar = () => {
                             cx="26.091"
                             cy="5.682"
                             fill="url(#isc2z30e)"
-                            fill-rule="nonzero"
+                            fillRule="nonzero"
                             rx="1.909"
                             ry="1.894"
                           ></ellipse>
                           <path
                             fill="#FFF8DC"
-                            fill-rule="nonzero"
+                            fillRule="nonzero"
                             d="M14.626 15.48a.7.7 0 0 1-1.224.051l-.028-.051-2.1-4.2a.7.7 0 0 1 1.226-.674l.026.048L14 13.602l1.474-2.948a.7.7 0 0 1 .889-.336l.05.023a.7.7 0 0 1 .336.889l-.023.05z"
                             opacity=".7"
                           ></path>

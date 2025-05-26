@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import flag13 from "../../assets/images/fbg1.jpg";
 import flag14 from "../../assets/images/fbg2.jpg";
@@ -18,7 +18,9 @@ import { useAuthContext } from "../../contexts/AuthContext";
 
 const Dcards = ({ imageDets, setImageDets, similarImages, setSimilarImages, dimensions, handleDownload, downloadLoading, }) => {
 
-    const { userData } = useAuthContext()
+    const { userData, dispatch } = useAuthContext()
+    const [shortDownloadLoading, setShortDownloadLoading] = useState(false)
+    const [downloadingImageID, setDownloadingImageID] = useState("")
     const navigate = useNavigate();
 
     const handleAddToFavourites = ({ imageID, imageURL, favourite, license }) => {
@@ -46,6 +48,62 @@ const Dcards = ({ imageDets, setImageDets, similarImages, setSimilarImages, dime
             })
     }
 
+    const handleShortDownload = async (img) => {
+        try {
+            if (!userData.userID) {
+                return window.toastify("Please login to continue downloading!", "info")
+            }
+
+            const isFreeUser = userData.plan === "free";
+            const isFreeImage = img.license === "free";
+
+            if (isFreeUser && !isFreeImage) {
+                return window.toastify("Upgrade to premium to download this image!", "error");
+            }
+
+            setShortDownloadLoading(true)
+            setDownloadingImageID(img.imageID)
+
+            const res = await axios.post(`${import.meta.env.VITE_HOST}/frontend/image/download/${img.imageID}?imageURL=${img.imageURL}`, {
+                userID: userData.userID,
+            });
+
+            const { status, data } = res;
+
+            if (status === 200) {
+                window.toastify(data.message, "success");
+
+                dispatch({
+                    type: "SET_PROFILE",
+                    payload: { user: { ...userData, dailyDownloadCount: data.dailyDownloadCount, } },
+                });
+
+                const response = await fetch(
+                    `${import.meta.env.VITE_HOST}${img.imageURL}`,
+                    { mode: "cors" }
+                );
+
+                const blob = await response.blob();
+                const blobUrl = URL.createObjectURL(blob);
+
+                const link = document.createElement("a");
+                link.href = blobUrl;
+                link.download = img.title || "download.png";
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+
+                URL.revokeObjectURL(blobUrl);
+            }
+        } catch (err) {
+            window.toastify(err.response?.data?.message || "Download failed", "error");
+            console.error("Download failed:", err);
+        } finally {
+            setShortDownloadLoading(false)
+            setDownloadingImageID("")
+        }
+    };
+
     return (
         <>
             <div className="flex items-center justify-center !px-4 !py-8">
@@ -72,38 +130,6 @@ const Dcards = ({ imageDets, setImageDets, similarImages, setSimilarImages, dime
                                 {imageDets.license === "free" ? (
                                     "FREE"
                                 ) : (
-                                    // <svg class="_tea4l2" xmlns="http://www.w3.org/2000/svg" width="28" height="23" aria-hidden="true" viewBox="0 0 28 23">
-                                    //     <defs>
-                                    //         <linearGradient id="isc2z30a" x1="50%" x2="50%" y1="11.131%" y2="57.082%">
-                                    //             <stop offset="0%" stop-color="#FFD700"></stop>
-                                    //             <stop offset="100%" stop-color="#FFC300"></stop>
-                                    //         </linearGradient>
-                                    //         <linearGradient id="isc2z30c" x1="90.916%" x2="5.301%" y1="61.059%" y2="59.126%">
-                                    //             <stop offset="0%" stop-color="#FFD700"></stop>
-                                    //             <stop offset="100%" stop-color="#FFB800"></stop>
-                                    //         </linearGradient>
-                                    //         <linearGradient id="isc2z30e" x1="100%" x2="22.218%" y1="27.905%" y2="95.888%">
-                                    //             <stop offset="0%" stop-color="#FFD700"></stop>
-                                    //             <stop offset="100%" stop-color="#FFC300"></stop>
-                                    //         </linearGradient>
-                                    //     </defs>
-                                    //     <path id="isc2z30b" d="M25.455 3.662 22.47 18.458c-.116.35-6.731 1.579-9.755 1.579-2.808 0-9.639-1.23-9.756-1.579L0 3.662l7.948 5.016L12.715 0l4.826 8.678z"></path>
-                                    //     <g fill="none" fill-rule="evenodd">
-                                    //         <path fill="url(#isc2z30a)" fill-rule="nonzero" d="M9.301 3.906 14 15.866H3.733l4.7-11.96a.467.467 0 0 1 .868 0" transform="rotate(-20 8.867 9.333)"></path>
-                                    //         <path fill="url(#isc2z30a)" fill-rule="nonzero" d="m19.568 3.906 4.699 11.96H14l4.699-11.96a.467.467 0 0 1 .869 0" transform="scale(-1 1)rotate(-20 0 117.844)"></path>
-                                    //         <g transform="translate(1.281 1.389)">
-                                    //             <mask id="isc2z30d" fill="#fff">
-                                    //                 <use href="#isc2z30b"></use>
-                                    //             </mask>
-                                    //             <use fill="url(#isc2z30c)" fill-rule="nonzero" href="#isc2z30b"></use>
-                                    //             <path stroke="#FFF8DC" stroke-linejoin="round" stroke-width=".933" d="m23.712 14.935-.305.084a41.3 41.3 0 0 1-10.29 1.435l-.328.003v-.002q-5.422-.03-10.617-1.438l-.305-.084" mask="url(#isc2z30d)" opacity=".504"></path>
-                                    //         </g>
-                                    //         <ellipse cx="1.909" cy="5.682" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse>
-                                    //         <ellipse cx="14" cy="1.894" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse>
-                                    //         <ellipse cx="26.091" cy="5.682" fill="url(#isc2z30e)" fill-rule="nonzero" rx="1.909" ry="1.894"></ellipse>
-                                    //         <path fill="#FFF8DC" fill-rule="nonzero" d="M14.626 15.48a.7.7 0 0 1-1.224.051l-.028-.051-2.1-4.2a.7.7 0 0 1 1.226-.674l.026.048L14 13.602l1.474-2.948a.7.7 0 0 1 .889-.336l.05.023a.7.7 0 0 1 .336.889l-.023.05z" opacity=".7"></path>
-                                    //     </g>
-                                    // </svg>
                                     <img
                                         src={crownIcon}
                                         alt="crown"
@@ -237,6 +263,7 @@ const Dcards = ({ imageDets, setImageDets, similarImages, setSimilarImages, dime
                     {similarImages?.map((similarImg) => {
                         return (
                             <div
+                                key={similarImg.imageID}
                                 className="relative w-full aspect-square cursor-pointer overflow-hidden rounded-lg group"
                                 style={{
                                     backgroundImage: `url(${pngImg})`,
@@ -281,9 +308,22 @@ const Dcards = ({ imageDets, setImageDets, similarImages, setSimilarImages, dime
                                             >
                                                 <FaHeart className="text-[12px]" />
                                             </span>
-                                            <span className="bg-[#4EAA76] text-white !text-[12px] uppercase px-2 py-1 rounded shadow transform scale-0 opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-100 !flex items-center gap-1">
-                                                <MdOutlineFileDownload className="text-[14px]" />{" "}
-                                                {imageDets.type}
+                                            <span
+                                                className="bg-[#4EAA76] text-white !text-[12px] uppercase px-2 py-1 rounded shadow transform scale-0 opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-100 !flex items-center gap-1"
+                                                disabled={shortDownloadLoading}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleShortDownload(similarImg);
+                                                }}
+                                            >
+                                                {
+                                                    downloadingImageID === similarImg.imageID ?
+                                                        <span className="w-5 h-5 border-t-2 rounded-full border-gray-100 animate-spin"></span>
+                                                        :
+                                                        <>
+                                                            <MdOutlineFileDownload className="text-[14px]" /> {similarImg.type}
+                                                        </>
+                                                }
                                             </span>
                                         </div>
 
@@ -457,36 +497,6 @@ const Dcards = ({ imageDets, setImageDets, similarImages, setSimilarImages, dime
                     </div>
                 </div>
             </div>
-
-            {/* <div className="mainContainer px-2 py-6">
-                <h2 className="text-md font-semibold mb-2">Similar Images</h2>
-                <div className="flex flex-wrap gap-2">
-                    <button className="text-sm bg-gray-100 px-3 py-3 rounded-full hover:bg-gray-200 transition items-center gap-2 flex ">
-                        <CiSearch /> tehreek labbaik pakistan flag image
-                    </button>
-                    <button className="text-sm bg-gray-100 px-3 py-3 rounded-full hover:bg-gray-200 transition items-center gap-2 flex">
-                        <CiSearch /> pakistan national flag waving in beautiful s...
-                    </button>
-                    <button className="text-sm bg-gray-100 px-3 py-3 rounded-full hover:bg-gray-200 transition items-center gap-2 flex">
-                        <CiSearch /> realistic 3d waving pakistan flag clipart illu...
-                    </button>
-                    <button className="text-sm bg-gray-100 px-3 py-3 rounded-full hover:bg-gray-200 transition items-center gap-2 flex">
-                        <CiSearch /> flag of pakistan
-                    </button>
-                    <button className="text-sm bg-gray-100 px-3 py-3 rounded-full hover:bg-gray-200 transition items-center gap-2 flex">
-                        <CiSearch /> pakistan flag waving in the wind clipart ill...
-                    </button>
-                    <button className="text-sm bg-gray-100 px-3 py-3 rounded-full hover:bg-gray-200 transition items-center gap-2 flex">
-                        <CiSearch /> beautiful 3d pakistan flag waving clipart ill...
-                    </button>
-                    <button className="text-sm bg-gray-100 px-3 py-3 rounded-full hover:bg-gray-200 transition items-center gap-2 flex">
-                        <CiSearch /> 3d waving flag of pakistan clipart illustration
-                    </button>
-                    <button className="text-sm bg-gray-100 px-3 py-3 rounded-full hover:bg-gray-200 transition items-center gap-2 flex">
-                        <CiSearch /> flag of pakistan
-                    </button>
-                </div>
-            </div> */}
         </>
     );
 };

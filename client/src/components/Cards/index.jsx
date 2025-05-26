@@ -67,11 +67,11 @@ export default function Cards() {
             </h2>
 
             <div className="flex gap-3">
-                {tabs?.map((cat) => {
+                {tabs?.map((cat, i) => {
                     return (
                         <button
-                            className={`capitalize text-[14px] sm:text-[18px] pb-1 rounded-sm transition-all duration-150 ease-in-out cursor-pointer font-bold text-[#333] border-b-[#5ABC84] ${cat === activeTab ? "border-b-4" : "border-none"
-                                }`}
+                            key={i}
+                            className={`capitalize text-[14px] sm:text-[18px] pb-1 rounded-sm transition-all duration-150 ease-in-out cursor-pointer font-bold text-[#333] border-b-[#5ABC84] ${cat === activeTab ? "border-b-4" : "border-none"}`}
                             onClick={() => setActiveTab(cat)}
                         >
                             {cat}

@@ -23,7 +23,7 @@ export default function Search() {
                         <ul className="flex flex-col items-start text-sm">
                             {["png", "jpg", "webp", "backgrounds", "illustrations"].map((item, i) => {
                                 return (
-                                    <li className="px-4 py-2 uppercase text-[#333] transition-all duration-500 ease-in-out hover:text-[#71C194] cursor-pointer">{item}</li>
+                                    <li key={i} className="px-4 py-2 uppercase text-[#333] transition-all duration-500 ease-in-out hover:text-[#71C194] cursor-pointer">{item}</li>
                                 )
                             })}
                         </ul>

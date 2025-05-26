@@ -97,7 +97,7 @@ export default function DownloadPage() {
 
                 dispatch({
                     type: "SET_PROFILE",
-                    payload: { user: { ...userData, dailyDownloadCount: data.dailyDownloadCount, }, },
+                    payload: { user: { ...userData, dailyDownloadCount: data.dailyDownloadCount, } },
                 });
 
                 const response = await fetch(
