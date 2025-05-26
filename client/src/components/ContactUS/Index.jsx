@@ -29,6 +29,7 @@ const ContactUs = () => {
             return window.toastify("Please fill all fields!", "info")
         }
 
+        setLoading(true)
         axios.post(`${import.meta.env.VITE_HOST}/frontend/contact/send-mail`, state)
             .then((res) => {
                 const { status, data } = res;
