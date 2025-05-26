@@ -46,7 +46,7 @@ const ContactUs = () => {
                         <div className="relative">
                             {/* Arrow Icon */}
                             <div
-                                className={`absolute right-0 top-1 h-full pr-5 flex justify-center items-center text-xl !text-[#848484] cursor-pointer transition-transform duration-300 ${isOpen && "rotate-180"}`}
+                                className={`absolute right-5 top-1 h-full flex justify-center items-center text-xl !text-[#848484] cursor-pointer transition-transform duration-300 ${isOpen && "rotate-180"}`}
                                 onClick={() => setIsOpen(!isOpen)}
                             >
                                 <IoIosArrowDown />
@@ -92,6 +92,7 @@ const ContactUs = () => {
                                 placeholder="Choose Your Topic"
                                 className="w-full !p-3 sm:!p-5 border-2 border-gray-200 rounded-[8px] focus:outline-none focus:ring-2 focus:ring-green-500 mt-2"
                                 readOnly
+                                onClick={() => setIsOpen(!isOpen)}
                             />
                         </div>
 
