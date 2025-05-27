@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import flag13 from "../../assets/images/fbg1.jpg";
 import flag14 from "../../assets/images/fbg2.jpg";
@@ -19,9 +19,27 @@ import { useAuthContext } from "../../contexts/AuthContext";
 const Dcards = ({ imageDets, setImageDets, similarImages, setSimilarImages, dimensions, handleDownload, downloadLoading, }) => {
 
     const { userData, dispatch } = useAuthContext()
+    const [favourites, setFavourites] = useState([]);
     const [shortDownloadLoading, setShortDownloadLoading] = useState(false)
     const [downloadingImageID, setDownloadingImageID] = useState("")
     const navigate = useNavigate();
+
+    useEffect(() => {
+        fetchFavourites();
+    }, []);
+
+    const fetchFavourites = () => {
+        axios.get(`${import.meta.env.VITE_HOST}/frontend/favourites/get?userID=${userData.userID}`)
+            .then((res) => {
+                const { status, data } = res;
+                if (status === 200) {
+                    setFavourites(data.userFavourites);
+                }
+            })
+            .catch((err) => {
+                console.error("Frontend POST error", err.message);
+            })
+    };
 
     const handleAddToFavourites = ({ imageID, imageURL, favourite, license }) => {
         const newFav = {
@@ -35,12 +53,14 @@ const Dcards = ({ imageDets, setImageDets, similarImages, setSimilarImages, dime
         axios.post(`${import.meta.env.VITE_HOST}/frontend/favourites/add`, newFav)
             .then((res) => {
                 const { data } = res
-                if (imageID === imageDets.imageID) {
-                    setImageDets(prev => ({ ...prev, favourite: !imageDets.favourite }))
+
+                const wasFav = favourites.some(fav => fav.imageID === imageID);
+                if (wasFav) {
+                    setFavourites(prev => prev.filter(fav => fav.imageID !== imageID));
                 } else {
-                    const updatedSimilarImages = similarImages.map(img => img.imageID === imageID ? { ...img, favourite: !img.favourite } : img)
-                    setSimilarImages(updatedSimilarImages)
+                    setFavourites(prev => [...prev, { imageID }]);
                 }
+
                 window.toastify(data.message, "success")
             })
             .catch((err) => {
@@ -137,7 +157,7 @@ const Dcards = ({ imageDets, setImageDets, similarImages, setSimilarImages, dime
                                     />
                                 )}
                             </span>
-                            <span className={`absolute top-1 right-1 sm:top-2 sm:right-3 ${imageDets.favourite ? 'text-red-500' : 'text-gray-500'} !text-[16px] sm:!text-[20px] cursor-pointer transition-all duration-150 ${imageDets.favourite ? 'hover:text-red-400' : 'hover:text-gray-400'}`}
+                            <span className={`absolute top-1 right-1 sm:top-2 sm:right-3 ${favourites.some((fav) => fav.imageID === imageDets.imageID) ? "text-red-500" : "text-gray-500"} !text-[16px] sm:!text-[20px] cursor-pointer transition-all duration-150 ${favourites.some((fav) => fav.imageID === imageDets.imageID) ? 'hover:text-red-400' : 'hover:text-gray-400'}`}
                                 onClick={() => handleAddToFavourites({
                                     imageID: imageDets.imageID,
                                     imageURL: imageDets.imageURL,
@@ -295,7 +315,7 @@ const Dcards = ({ imageDets, setImageDets, similarImages, setSimilarImages, dime
                                             )}
                                         </span>
                                         <div className="!flex justify-center items-center gap-2">
-                                            <span className={`bg-white ${similarImg.favourite ? 'text-red-500' : 'text-gray-500'} !text-[10px] uppercase px-2 py-1.5 rounded shadow transform scale-0 opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-100`}
+                                            <span className={`bg-white ${favourites.some((fav) => fav.imageID === similarImg.imageID) ? "text-red-500" : "text-gray-500"} !text-[10px] uppercase px-2 py-1.5 rounded shadow transform scale-0 opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-100`}
                                                 onClick={(e) => {
                                                     e.stopPropagation();
                                                     handleAddToFavourites({

@@ -11,6 +11,7 @@ export default function Cards() {
 
     const { userData } = useAuthContext()
     const [images, setImages] = useState([]);
+    const [favourites, setFavourites] = useState([]);
     const [activeTab, setActiveTab] = useState("nature");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -18,6 +19,10 @@ export default function Cards() {
     useEffect(() => {
         fetchImages();
     }, [activeTab]);
+
+    useEffect(() => {
+        fetchFavourites();
+    }, []);
 
     const fetchImages = () => {
         setLoading(true);
@@ -39,6 +44,19 @@ export default function Cards() {
             });
     };
 
+    const fetchFavourites = () => {
+        axios.get(`${import.meta.env.VITE_HOST}/frontend/favourites/get?userID=${userData.userID}`)
+            .then((res) => {
+                const { status, data } = res;
+                if (status === 200) {
+                    setFavourites(data.userFavourites);
+                }
+            })
+            .catch((err) => {
+                console.error("Frontend POST error", err.message);
+            })
+    };
+
     const handleAddToFavourites = ({ imageID, imageURL, favourite, license }) => {
         const newFav = {
             userID: userData.userID,
@@ -51,8 +69,14 @@ export default function Cards() {
         axios.post(`${import.meta.env.VITE_HOST}/frontend/favourites/add`, newFav)
             .then((res) => {
                 const { data } = res
-                const updatedImages = images.map(img => img.imageID === imageID ? { ...img, favourite: !img.favourite } : img)
-                setImages(updatedImages)
+                // const updatedImages = images.map(img => img.imageID === imageID ? { ...img, favourite: !img.favourite } : img)
+                // setImages(updatedImages)
+                const wasFav = favourites.some(fav => fav.imageID === imageID);
+                if (wasFav) {
+                    setFavourites(prev => prev.filter(fav => fav.imageID !== imageID));
+                } else {
+                    setFavourites(prev => [...prev, { imageID }]);
+                }
                 window.toastify(data.message, "success")
             })
             .catch((err) => {
@@ -102,7 +126,7 @@ export default function Cards() {
                                 </p>
                             </div>
 
-                            <span className={`absolute top-2.5 right-2.5 bg-white ${img.favourite ? 'text-red-500' : 'text-gray-500'} !text-[12px] uppercase p-2 rounded shadow transform scale-0 opacity-0 transition-all duration-500 !flex items-center ease-out group-hover:scale-100 group-hover:opacity-100`}
+                            <span className={`absolute top-2.5 right-2.5 bg-white ${favourites.some((fav) => fav.imageID === img.imageID) ? "text-red-500" : "text-gray-500"} !text-[12px] uppercase p-2 rounded shadow transform scale-0 opacity-0 transition-all duration-500 !flex items-center ease-out group-hover:scale-100 group-hover:opacity-100`}
                                 onClick={(e) => {
                                     e.stopPropagation()
                                     handleAddToFavourites({

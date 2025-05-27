@@ -21,6 +21,7 @@ export default function Main() {
     const [images, setImages] = useState([]);
     const [page, setPage] = useState(1);
     const [totalImagePages, setTotalImagePages] = useState(1);
+    const [favourites, setFavourites] = useState([]);
     const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(true);
     const [shortDownloadLoading, setShortDownloadLoading] = useState(false);
@@ -29,6 +30,10 @@ export default function Main() {
 
     useEffect(() => {
         fetchCategories();
+    }, []);
+
+    useEffect(() => {
+        fetchFavourites();
     }, []);
 
     useEffect(() => {
@@ -42,8 +47,7 @@ export default function Main() {
 
     const fetchCategories = () => {
         setLoading(true);
-        axios
-            .get(`${import.meta.env.VITE_HOST}/frontend/main/fetch-categories`)
+        axios.get(`${import.meta.env.VITE_HOST}/frontend/main/fetch-categories`)
             .then((res) => {
                 const { status, data } = res;
                 if (status === 200) {
@@ -56,6 +60,19 @@ export default function Main() {
             .finally(() => {
                 setLoading(false);
             });
+    };
+
+    const fetchFavourites = () => {
+        axios.get(`${import.meta.env.VITE_HOST}/frontend/favourites/get?userID=${userData.userID}`)
+            .then((res) => {
+                const { status, data } = res;
+                if (status === 200) {
+                    setFavourites(data.userFavourites);
+                }
+            })
+            .catch((err) => {
+                console.error("Frontend POST error", err.message);
+            })
     };
 
     const fetchImages = () => {
@@ -95,10 +112,14 @@ export default function Main() {
         axios.post(`${import.meta.env.VITE_HOST}/frontend/favourites/add`, newFav)
             .then((res) => {
                 const { data } = res;
-                const updatedImages = images.map((img) =>
-                    img.imageID === imageID ? { ...img, favourite: !img.favourite } : img
-                );
-                setImages(updatedImages);
+
+                const wasFav = favourites.some(fav => fav.imageID === imageID);
+                if (wasFav) {
+                    setFavourites(prev => prev.filter(fav => fav.imageID !== imageID));
+                } else {
+                    setFavourites(prev => [...prev, { imageID }]);
+                }
+
                 window.toastify(data.message, "success");
             })
             .catch((err) => {
@@ -331,8 +352,7 @@ export default function Main() {
                                         </span>
                                         <div className="!flex justify-center items-center gap-2">
                                             <span
-                                                className={`bg-white ${img.favourite ? "text-red-500" : "text-gray-500"
-                                                    } !text-[10px] uppercase px-2 py-1.5 rounded shadow transform scale-0 opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-100`}
+                                                className={`bg-white ${favourites.some((fav) => fav.imageID === img.imageID) ? "text-red-500" : "text-gray-500"} !text-[10px] uppercase px-2 py-1.5 rounded shadow transform scale-0 opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-100`}
                                                 onClick={(e) => {
                                                     e.stopPropagation();
                                                     handleAddToFavourites({
