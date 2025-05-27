@@ -74,6 +74,7 @@ router.post("/image/download/:imageID", async (req, res) => {
 
         if (isPremium) user.premiumDownloads += 1
         else user.freeDownloads += 1
+        user.downloads += 1
 
         await user.save()
 
