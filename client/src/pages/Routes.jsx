@@ -6,7 +6,7 @@ import Frontend from "./Frontend";
 import Auth from "./Auth";
 import PrivateRoute from "../components/PrivateRoute";
 import ScrollToTop from "../components/ScrollToTop";
-import Dashboard from "./Dashboard/Index";
+import Dashboard from "./Dashboard";
 
 export default function Index() {
   const { isAuthenticated } = useAuthContext();

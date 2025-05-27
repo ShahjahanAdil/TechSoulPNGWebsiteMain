@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import Dcards from "../../../Components/Dcards";
-import Loader from "../../../Components/Loader";
+import Dcards from "../../../components/Dcards";
+import Loader from "../../../components/Loader";
 import axios from "axios";
 import { useAuthContext } from "../../../contexts/AuthContext";
 import Search from "../../../components/Search";

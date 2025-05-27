@@ -11,7 +11,7 @@ import { useAuthContext } from '../../../contexts/AuthContext'
 import axios from 'axios'
 import Chart from '../../../components/Chart'
 
-export default function Dashboard() {
+export default function AdminDashboard() {
 
     const { userData } = useAuthContext()
     const [imagesCount, setImagesCount] = useState(0)

@@ -1,14 +1,14 @@
 import React from "react";
-import Banner from "../../../Components/Banner";
-import CardsSlider from "../../../Components/CardsSlider";
-import Cards from "../../../Components/Cards";
-import Stat from "../../../Components/Stat";
-import Testimonials from "../../../Components/Testimonials";
-import Contributors from "../../../Components/Contributors";
-import Section2 from "../../../Components/Section2";
-import Section3 from "../../../Components/Section3";
-import Background from "../../../Components/Background";
-import Slider2 from "../../../Components/Slider2";
+import Banner from "../../../components/Banner";
+import CardsSlider from "../../../components/CardsSlider";
+import Cards from "../../../components/Cards";
+import Stat from "../../../components/Stat";
+import Testimonials from "../../../components/Testimonials";
+import Contributors from "../../../components/Contributors";
+import Section2 from "../../../components/Section2";
+import Section3 from "../../../components/Section3";
+import Background from "../../../components/Background";
+import Slider2 from "../../../components/Slider2";
 
 export default function Home() {
   return (

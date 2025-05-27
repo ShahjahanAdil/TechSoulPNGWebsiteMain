@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "../../Components/Navbar";
+import Navbar from "../../components/Navbar";
 import Home from "./Home";
 import DownloadPage from './DownloadPage'
 import Main from "./Main";
-import About from "./About/Index";
-import ContactPage from "./ContactPage/Index";
-import Footer from "../../Components/Footer";
+import About from "./About/index";
+import ContactPage from "./ContactPage/index";
+import Footer from "../../components/Footer";
 
 export default function Frontend() {
   return (

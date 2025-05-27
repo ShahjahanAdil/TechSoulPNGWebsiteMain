@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './admin.css'
 import { NavLink, Route, Routes } from 'react-router-dom'
-import Dashboard from './Dashboard'
+// import Dashboard from './Dashboard'
+import AdminDashboard from './AdminDashboard'
 import { BsArrowRight } from 'react-icons/bs'
 import { GrAnalytics } from 'react-icons/gr'
 import { CiUser } from 'react-icons/ci'
@@ -77,8 +78,8 @@ export default function Admin() {
 
                 <div className={`content overflow-x-hidden ${open ? '!ml-[50px] md:!ml-[65px]' : '!ml-[220px]'}`}>
                     <Routes>
-                        <Route index element={<Dashboard />} />
-                        <Route path='/dashboard' element={<Dashboard />} />
+                        <Route index element={<AdminDashboard />} />
+                        <Route path='/dashboard' element={<AdminDashboard />} />
                         <Route path='/images' element={<Images />} />
                         <Route path='/upload' element={<Upload />} />
                         <Route path='/categories' element={<Categories />} />
